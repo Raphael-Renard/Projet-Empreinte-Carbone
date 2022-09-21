@@ -24,7 +24,6 @@ public class Alimentation {
  
 		Alimentation personne = new Alimentation(0.2, 0.6);
         calcul_carbone(personne);
-        System.out.println("hello")
     }
 
 }
