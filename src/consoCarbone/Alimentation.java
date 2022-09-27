@@ -39,7 +39,10 @@ public class Alimentation{
 	}
 	
     public static void CarbonMoyAli(){
-        System.out.println("carbon alimentation en moy");
+	    	System.out.println("Votre empreinte carbone moyenne est de ");
+	    	System.out.println(8*personne.txBoeuf + "T C02 eq à cause du boeuf, ");
+	    	System.out.println(1.6*(1 - personne.txVege - personne.txBoeuf) +"T C02 eq à cause du poisson et autres viandes, ");
+	    	System.out.println(0.9*personne.txVege + "T C02 eq à cause de l'alimentation végétale.");
     }
 	
 	public static void main(String[] args){
