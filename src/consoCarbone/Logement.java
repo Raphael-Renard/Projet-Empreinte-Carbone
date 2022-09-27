@@ -37,17 +37,17 @@ public class Logement{
 		this.ce = ce;
 	}
 
-    	public static void CarbonMoyLog(){
-	    	System.out.println("Votre empreinte carbone moyenne est de " + loge.superficie * loge.ce.getace() + "T CO2 eq.");
-	    	System.out.println("En moyenne les francais.e.s consomment 0.335 T CO2 eq à cause de l'épquipement des logements, 0.675 à cause de la construction et le gros entretien et 1.696 à cause de l'énergie et les utilités.");
-    	}
+    public static void CarbonMoyLog(){
+	    System.out.println("Votre empreinte carbone moyenne est de " + getImpact() + "T CO2 eq.");
+	    System.out.println("En moyenne les francais.e.s consomment 0.335 T CO2 eq à cause de l'épquipement des logements, 0.675 à cause de la construction et le gros entretien et 1.696 à cause de l'énergie et les utilités.");
+    }
     
-    	public static void main(String[] args) { 
+    public static void main(String[] args) { 
 		Logement log = new Logement(75, CE.F);
 		CalculImpactLog(log);
 		CarbonMoyLog();
 		System.out.println("log superficie : "+log.superficie);
 		System.out.println("log CE : "+log.ce);
 		System.out.println("log impact : "+log.impact);
-    	}
+    }
 }
