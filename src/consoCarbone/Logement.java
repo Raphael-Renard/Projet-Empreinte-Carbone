@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public class Logement{
+public class Logement extends ConsoCarbone{
     private int superficie;  //m^2
     private CE ce;
     private double impact;  //impact logement
@@ -25,7 +25,7 @@ public class Logement{
 		return this.ce;
 	}
 	
-	public double getImpact() {
+	public double getImpactL() {
 		return this.impact;
 	}
 	
