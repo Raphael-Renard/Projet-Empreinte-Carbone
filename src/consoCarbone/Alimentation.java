@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public class Alimentation{
+public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  //de boeuf
 	private double txVege;
 	private double impact;  //impact aliment
@@ -26,7 +26,7 @@ public class Alimentation{
 		return this.txVege;
 	}
 	
-	public double getImpact() {
+	public double getImpactA() {
 		return this.impact;
 	}
 	
