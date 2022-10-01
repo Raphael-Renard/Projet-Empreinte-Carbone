@@ -38,16 +38,16 @@ public class Alimentation{
 		this.txVege=tv;
 	}
 	
-    public static void CarbonMoyAli(){
+ /*   public static void CarbonMoyAli(){
 	    System.out.println("Votre empreinte carbone moyenne est de ");
 	    System.out.println(8*gettxBoeuf() + "T C02 eq à cause du boeuf, ");
 	    System.out.println(1.6*(1 - gettxVege() - gettxBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
 	    System.out.println(0.9*gettxVege() + "T C02 eq à cause de l'alimentation végétale.");
     	}
-	
+*/	
 	public static void main(String[] args){
 		Alimentation a = new Alimentation(0.3,0.6);
-		CarbonMoyAli();
+		//CarbonMoyAli();
 		CalculImpactAli(a);
 		System.out.println("ali txB : "+a.txBoeuf);
 		System.out.println("ali txV : "+a.txVege);
