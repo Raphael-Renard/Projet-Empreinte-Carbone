@@ -54,5 +54,10 @@ public class Alimentation extends ConsoCarbone{
 		System.out.println("ali txV : "+a.txVege);
 		System.out.println("ali impact : "+a.impact);
 	}
+	
+	@Override
+	public String toString() {
+	    return ("taux de boeuf : " + this.txBoeuf + ", taux de repas végétariens : " + this.txVege + ", impact : " + this.impact);
+	  }
 
 }

@@ -72,5 +72,10 @@ public class Transport extends ConsoCarbone{
     	System.out.println("En moyenne les francais.e.s consomment 1.972 T CO2 eq à cause de leur(s) voiture(s), 0.480 à cause des voyages en avion, 0.383 pour cause de fret et messagerie et 0.085 à cause des voyages en train et bus.");
 
 	}  
+    
+    @Override
+	public String toString() {
+	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.impact);
+	  }
 
 }
