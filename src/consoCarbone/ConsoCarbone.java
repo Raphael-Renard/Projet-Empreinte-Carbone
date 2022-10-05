@@ -7,8 +7,8 @@ public class ConsoCarbone {
 	//quels attributs ? impactA ? impactL ? impactDep ? impactT ?
 	
     public ConsoCarbone(){ 
-    	this.nbConsoC = this.nbConsoC +1;
-        this.id = this.nbConsoC;
+    	nbConsoC = nbConsoC +1;
+        this.id = nbConsoC;
         this.impactGlobal=0; //initialiser ??
     }
 
