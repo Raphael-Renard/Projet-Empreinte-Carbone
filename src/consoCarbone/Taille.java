@@ -13,6 +13,7 @@ public enum Taille {
     public double getProduction() {
     	return this.production;
     }
-    
-
+    public static void main(String[] args) { 
+		System.out.println("aaaa");
+    }
 }
