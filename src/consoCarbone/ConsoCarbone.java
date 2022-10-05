@@ -11,6 +11,7 @@ public class ConsoCarbone {
         this.id = this.nbConsoC;
         this.impactGlobal=0; //initialiser ??
     }
+
     public String toString() {
     	return ("id : "+id+", impact global :"+impactGlobal);
     }
