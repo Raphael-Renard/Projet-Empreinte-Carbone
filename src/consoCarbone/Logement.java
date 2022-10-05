@@ -37,11 +37,11 @@ public class Logement extends ConsoCarbone{
 		this.ce = ce;
 	}
 
-  /*  public static void CarbonMoyLog(){ ca marche pas + consignes ???
-	    System.out.println("Votre empreinte carbone moyenne est de " + getImpact() + "T CO2 eq.");
+    public static void CarbonMoyLog(Logement l){
+	    System.out.println("Votre empreinte carbone moyenne est de " + l.getImpactL() + "T CO2 eq.");
 	    System.out.println("En moyenne les francais.e.s consomment 0.335 T CO2 eq à cause de l'épquipement des logements, 0.675 à cause de la construction et le gros entretien et 1.696 à cause de l'énergie et les utilités.");
     }
-   */ 
+   
     public static void main(String[] args) { 
 		Logement log = new Logement(75, CE.F);
 		CalculImpactLog(log);
