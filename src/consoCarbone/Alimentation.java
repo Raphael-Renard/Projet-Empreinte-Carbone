@@ -4,7 +4,7 @@ public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  //de boeuf
 	private double txVege;
 	private double impact;  //impact aliment
-	static final int boeuf = 8, autre = 1.6, vege = 0.9;
+	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
     public Alimentation(double txBoeuf, double txVege){
         this.txBoeuf = txBoeuf;
