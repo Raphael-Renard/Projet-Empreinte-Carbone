@@ -25,4 +25,13 @@ public class BienConso extends ConsoCarbone{
     public void setmontant(double m) {
 		this.montant=m;
 	}
+    
+    public String toString() {
+    	return ("montant : "+montant+", impact des depenses :"+impact);
+    }
+    public static void main(String[] args) {
+    	BienConso c = new BienConso(1200);
+    	CalculImpactDep(c);
+    	System.out.println(c);
+     }
 }
