@@ -40,9 +40,9 @@ public class Alimentation extends ConsoCarbone{
 	
     public static void CarbonMoyAli(Alimentation A){
 	    System.out.println("Votre empreinte carbone moyenne en alimentation est de ");
-	    System.out.println(8*A.txBoeuf() + "T C02 eq à cause du boeuf, ");
-	    System.out.println(1.6*(1 - A.txVege() - A.txBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
-	    System.out.println(0.9*A.txVege() + "T C02 eq à cause de l'alimentation végétale.");
+	    System.out.println(8*A.gettxBoeuf() + "T C02 eq à cause du boeuf, ");
+	    System.out.println(1.6*(1 - A.gettxVege() - A.gettxBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
+	    System.out.println(0.9*A.gettxVege() + "T C02 eq à cause de l'alimentation végétale.");
 	    System.out.println("En moyenne les francais.e.s consomment 1.114 T CO2 eq à cause des viandes et poissons, 0.408 à cause des produits laitiers et oeufs, 0.263 à cause des boissons et 0.538 pour d'autres raisons.");
     	}
 	
