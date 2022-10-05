@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public class Transport {
+public class Transport extends ConsoCarbone{
 	private boolean possede;
 	private Taille taille;
 	private int kilomAnnee;

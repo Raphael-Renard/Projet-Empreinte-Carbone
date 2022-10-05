@@ -13,6 +13,4 @@ public enum Taille {
     public double getProduction() {
     	return this.production;
     }
-    
-
 }
