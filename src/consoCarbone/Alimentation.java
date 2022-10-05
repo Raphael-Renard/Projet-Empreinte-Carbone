@@ -4,6 +4,7 @@ public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  //de boeuf
 	private double txVege;
 	private double impact;  //impact aliment
+	static final int boeuf = 8, autre = 1.6, vege = 0.9;
     
     public Alimentation(double txBoeuf, double txVege){
         this.txBoeuf = txBoeuf;
@@ -15,7 +16,7 @@ public class Alimentation extends ConsoCarbone{
     }
 
 	static void CalculImpactAli(Alimentation personne) {
-		personne.impact = 8*personne.txBoeuf + 1.6 *(1 - personne.txVege - personne.txBoeuf) + 0.9 * personne.txVege;
+		personne.impact = boeuf * personne.txBoeuf + autre *(1 - personne.txVege - personne.txBoeuf) + vege * personne.txVege;
 	}
 	
 	public double gettxBoeuf() {
@@ -40,9 +41,9 @@ public class Alimentation extends ConsoCarbone{
 	
     public static void CarbonMoyAli(Alimentation A){
 	    System.out.println("Votre empreinte carbone moyenne en alimentation est de ");
-	    System.out.println(8*A.gettxBoeuf() + "T C02 eq à cause du boeuf, ");
-	    System.out.println(1.6*(1 - A.gettxVege() - A.gettxBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
-	    System.out.println(0.9*A.gettxVege() + "T C02 eq à cause de l'alimentation végétale.");
+	    System.out.println(boeuf*A.gettxBoeuf() + "T C02 eq à cause du boeuf, ");
+	    System.out.println(autre*(1 - A.gettxVege() - A.gettxBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
+	    System.out.println(vege*A.gettxVege() + "T C02 eq à cause de l'alimentation végétale.");
 	    System.out.println("En moyenne les francais.e.s consomment 1.114 T CO2 eq à cause des viandes et poissons, 0.408 à cause des produits laitiers et oeufs, 0.263 à cause des boissons et 0.538 pour d'autres raisons.");
     	}
 	
