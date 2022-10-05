@@ -38,13 +38,14 @@ public class Alimentation extends ConsoCarbone{
 		this.txVege=tv;
 	}
 	
- /*   public static void CarbonMoyAli(){
-	    System.out.println("Votre empreinte carbone moyenne est de ");
-	    System.out.println(8*gettxBoeuf() + "T C02 eq à cause du boeuf, ");
-	    System.out.println(1.6*(1 - gettxVege() - gettxBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
-	    System.out.println(0.9*gettxVege() + "T C02 eq à cause de l'alimentation végétale.");
+    public static void CarbonMoyAli(Alimentation A){
+	    System.out.println("Votre empreinte carbone moyenne en alimentation est de ");
+	    System.out.println(8*A.txBoeuf() + "T C02 eq à cause du boeuf, ");
+	    System.out.println(1.6*(1 - A.txVege() - A.txBoeuf()) +"T C02 eq à cause du poisson et autres viandes, ");
+	    System.out.println(0.9*A.txVege() + "T C02 eq à cause de l'alimentation végétale.");
+	    System.out.println("En moyenne les francais.e.s consomment 1.114 T CO2 eq à cause des viandes et poissons, 0.408 à cause des produits laitiers et oeufs, 0.263 à cause des boissons et 0.538 pour d'autres raisons.");
     	}
-*/	
+	
 	public static void main(String[] args){
 		Alimentation a = new Alimentation(0.3,0.6);
 		//CarbonMoyAli();
@@ -53,5 +54,10 @@ public class Alimentation extends ConsoCarbone{
 		System.out.println("ali txV : "+a.txVege);
 		System.out.println("ali impact : "+a.impact);
 	}
+	
+	@Override
+	public String toString() {
+	    return ("taux de boeuf : " + this.txBoeuf + ", taux de repas végétariens : " + this.txVege + ", impact : " + this.impact);
+	  }
 
 }
