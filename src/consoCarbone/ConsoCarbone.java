@@ -2,18 +2,25 @@ package consoCarbone;
 
 public class ConsoCarbone {
 	private int id;
-	private int impactGlobal;
+	private double impact;
 	static int nbConsoC;
-	//quels attributs ? impactA ? impactL ? impactDep ? impactT ?
 	
     public ConsoCarbone(){ 
     	nbConsoC = nbConsoC +1;
         this.id = nbConsoC;
-        this.impactGlobal=0; //initialiser ??
+        this.impact=0;
     }
-
+    
+    public void setimpact(double i) {
+		this.impact=i;
+	}
+    
+    public double getImpact() {
+		return this.impact;
+	}
+    
     public String toString() {
-    	return ("id : "+id+", impact global :"+impactGlobal);
+    	return ("id : "+id+", impact global :"+impact);
     }
     public static void main(String[] args) {
     	ConsoCarbone c = new BienConso();

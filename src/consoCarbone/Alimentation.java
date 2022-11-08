@@ -3,7 +3,7 @@ package consoCarbone;
 public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  //de boeuf
 	private double txVege;
-	private double impact;  //impact aliment
+	//private double impact;  //impact a
 	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
     public Alimentation(double txBoeuf, double txVege){
@@ -15,8 +15,9 @@ public class Alimentation extends ConsoCarbone{
         this(1,0);
     }
 
-	static void CalculImpactAli(Alimentation personne) {
-		personne.impact = boeuf * personne.txBoeuf + autre *(1 - personne.txVege - personne.txBoeuf) + vege * personne.txVege;
+	public void CalculImpactAli() {
+		double tmp =boeuf * this.txBoeuf + autre *(1 - this.txVege - this.txBoeuf) + vege * this.txVege;
+		super.setimpact(tmp);
 	}
 	
 	public double gettxBoeuf() {
@@ -27,9 +28,6 @@ public class Alimentation extends ConsoCarbone{
 		return this.txVege;
 	}
 	
-	public double getImpactA() {
-		return this.impact;
-	}
 	
 	public void settxBoeuf(double tb) {
 		this.txBoeuf=tb;
@@ -50,15 +48,15 @@ public class Alimentation extends ConsoCarbone{
 	public static void main(String[] args){
 		Alimentation a = new Alimentation(0.3,0.6);
 		//CarbonMoyAli();
-		CalculImpactAli(a);
+		a.CalculImpactAli();
 		System.out.println("ali txB : "+a.txBoeuf);
 		System.out.println("ali txV : "+a.txVege);
-		System.out.println("ali impact : "+a.impact);
+		System.out.println("ali impact : "+a.getImpact());
 	}
 	
 	@Override
 	public String toString() {
-	    return ("taux de boeuf : " + this.txBoeuf + ", taux de repas végétariens : " + this.txVege + ", impact : " + this.impact);
+	    return ("taux de boeuf : " + this.txBoeuf + ", taux de repas végétariens : " + this.txVege + ", impact : " + this.getImpact());
 	  }
 
 }

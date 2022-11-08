@@ -5,18 +5,17 @@ public class Transport extends ConsoCarbone{
 	private Taille taille;
 	private int kilomAnnee;
 	private int amortissement;
-	private double impact;
+	//private double impact;
 	
-	static void CalculImpactTransp(Transport T, double fabrication){
-        if (T.possede) {
-        	T.impact = T.kilomAnnee * 1.93 * 0.0001 + fabrication / T.amortissement;
+	public void CalculImpactTransp(double fabrication){
+        if (this.possede) {
+        	super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
         }
         
         else {
-        	T.impact = 0;
+        	super.setimpact( 0);
         }
     }
-	
 	
 	public int getamortissement() {
 		return this.amortissement;
@@ -40,14 +39,6 @@ public class Transport extends ConsoCarbone{
     
     public void setpossede(boolean p) {
 		this.possede = p;
-    }
-	
-    public double getimpact() {
-		return this.impact;
-	}
-    
-    public void setimpact(double i) {
-		this.impact = i;
     }
     
     public Taille gettaille() {
@@ -75,7 +66,7 @@ public class Transport extends ConsoCarbone{
     
     @Override
 	public String toString() {
-	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.impact);
+	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.getImpact());
 	  }
 
 }
