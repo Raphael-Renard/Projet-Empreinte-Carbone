@@ -3,7 +3,6 @@ package consoCarbone;
 public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  //de boeuf
 	private double txVege;
-	//private double impact;  //impact a
 	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
     public Alimentation(double txBoeuf, double txVege){
@@ -17,7 +16,7 @@ public class Alimentation extends ConsoCarbone{
 
 	public void CalculImpactAli() {
 		double tmp =boeuf * this.txBoeuf + autre *(1 - this.txVege - this.txBoeuf) + vege * this.txVege;
-		super.setimpact(tmp);
+		super.setimpact(tmp); //definition de impact dans classe mère
 	}
 	
 	public double gettxBoeuf() {
@@ -27,7 +26,6 @@ public class Alimentation extends ConsoCarbone{
 	public double gettxVege() {
 		return this.txVege;
 	}
-	
 	
 	public void settxBoeuf(double tb) {
 		this.txBoeuf=tb;
@@ -51,7 +49,7 @@ public class Alimentation extends ConsoCarbone{
 		a.CalculImpactAli();
 		System.out.println("ali txB : "+a.txBoeuf);
 		System.out.println("ali txV : "+a.txVege);
-		System.out.println("ali impact : "+a.getImpact());
+		System.out.println("ali impact : "+a.getImpact()); //getImpact definie dans classe mere
 	}
 	
 	@Override

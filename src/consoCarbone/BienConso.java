@@ -2,7 +2,6 @@ package consoCarbone;
 
 public class BienConso extends ConsoCarbone{
 	private double montant; //depenses annuelles en euros
-	//private double impact;
 	
 	public BienConso(){
         this(0);

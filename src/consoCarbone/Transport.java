@@ -5,7 +5,6 @@ public class Transport extends ConsoCarbone{
 	private Taille taille;
 	private int kilomAnnee;
 	private int amortissement;
-	//private double impact;
 	
 	public void CalculImpactTransp(double fabrication){
         if (this.possede) {

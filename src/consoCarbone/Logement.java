@@ -4,7 +4,6 @@ public class Logement extends ConsoCarbone{
 	
     private int superficie;  //m^2
     private CE ce;
-    //private double impact;  //impact logement
 
     public Logement(){
         this(0,CE.F);
@@ -16,7 +15,7 @@ public class Logement extends ConsoCarbone{
 
     public void CalculImpactLog(){
     	double tmp = this.superficie * this.ce.getace();
-        super.setimpact(tmp);
+        super.setimpact(tmp); //impact definie dans la classe mère
     }
     
 	public int getsuperficie() {
