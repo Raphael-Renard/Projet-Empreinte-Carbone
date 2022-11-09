@@ -17,33 +17,35 @@ public class Transport extends ConsoCarbone{
         }
     }
 	
+	// getter
 	public int getamortissement() {
 		return this.amortissement;
 	}
     
+	public int getkilom() {
+		return this.kilomAnnee;
+	}
+
+	public boolean getpossede() {
+		return this.possede;
+	}
+
+	public Taille gettaille() {
+		return this.taille;
+	}
+
+	// setter
     public void setamortissement(int a) {
 		this.amortissement = a;
     }
 	
-	public int getkilom() {
-		return this.kilomAnnee;
-	}
-    
     public void setkilom(int k) {
 		this.kilomAnnee = k;
     }
-	
-	public boolean getpossede() {
-		return this.possede;
-	}
     
     public void setpossede(boolean p) {
 		this.possede = p;
     }
-    
-    public Taille gettaille() {
-		return this.taille;
-	}
     
     public void settaille(Taille t) {
 		this.taille = t;
@@ -68,5 +70,12 @@ public class Transport extends ConsoCarbone{
 	public String toString() {
 	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.getImpact());
 	  }
+	
+	public static void main(String[] args) { 
+		Transport transp = new Transport(0, CE.C);
+		transp.CalculImpactTransp(250);
+		//CarbonMoyLog();
+		System.out.println(transp);
+    }
 
 }

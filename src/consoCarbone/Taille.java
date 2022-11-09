@@ -1,8 +1,8 @@
 package consoCarbone;
 
 public enum Taille {
-	P(4.2),
-    G(19);
+	P(4.2), // petite voiture
+    G(19); // grosse voiture
 
     private double production;
     
