@@ -1,8 +1,6 @@
 package consoCarbone;
 
 public class Alimentation extends ConsoCarbone{
-	private double txBoeuf;  //de boeuf
-	private double txVege;
 	private double txBoeuf;  // taux de boeuf
 	private double txVege; // taux d'alimentation vegetale
 	//private double impact;  //impact a
@@ -53,15 +51,6 @@ public class Alimentation extends ConsoCarbone{
 	    System.out.println("En moyenne les francais.e.s consomment 1.114 T CO2 eq à cause des viandes et poissons, 0.408 à cause des produits laitiers et oeufs, 0.263 à cause des boissons et 0.538 pour d'autres raisons.");
     	}
 	
-	public static void main(String[] args){
-		Alimentation a = new Alimentation(0.3,0.6);
-		//CarbonMoyAli();
-		a.CalculImpactAli();
-		System.out.println("ali txB : "+a.txBoeuf);
-		System.out.println("ali txV : "+a.txVege);
-		System.out.println("ali impact : "+a.getImpact()); //getImpact definie dans classe mere
-	}
-
 	
 	@Override
 	public String toString() {
