@@ -7,11 +7,13 @@ public class BienConso extends ConsoCarbone{
     // constructeur par defaut
 	public BienConso(){
         this(0);
+        this.CalculImpactDep();
     }
 
     // constructeur parametre
     public BienConso(double montant){
         this.montant = montant;
+        this.CalculImpactDep();
     }
 
 
@@ -36,7 +38,7 @@ public class BienConso extends ConsoCarbone{
 
     public static void main(String[] args) {
     	BienConso c = new BienConso(1200);
-    	c.CalculImpactDep();
+    	// c.CalculImpactDep();
     	System.out.println(c);
      }
 }

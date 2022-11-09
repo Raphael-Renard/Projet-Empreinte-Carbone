@@ -9,15 +9,17 @@ public class Transport extends ConsoCarbone{
 	
 	// constructeur par defaut
 	public Transport(){
-        this(false, Taille.P, 0, 0);
+        this(false, Taille.P, 0, 0, 0);
+		this.CalculImpactTransp(0);
     }
 
     // constructeur parametre
-    public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement){
+    public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication){
         this.possede = possede;
 		this.taille = taille;
 		this.kilomAnnee = kilomAnnee;
 		this.amortissement = amortissement;
+		this.CalculImpactTransp(fabrication);
     }
 
 	// getter
@@ -54,7 +56,7 @@ public class Transport extends ConsoCarbone{
 		this.taille = t;
 	}
     
-	
+
 	public void CalculImpactTransp(double fabrication){
         if (this.possede) {
         	super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
@@ -69,7 +71,7 @@ public class Transport extends ConsoCarbone{
     	System.out.println("Votre empreinte carbone moyenne en transports est de ");
     	if (T.possede) {
     		System.out.println(1.93*T.kilomAnnee*0.0001 + "T C02 eq à cause du kilometrage et ");
-    		System.out.println(fabrication / T.amortissement +"T C02 eq à cause de la fabriquation de la voiture.");
+    		System.out.println(fabrication / T.amortissement +"T C02 eq à cause de la fabrication de la voiture.");
     	}
     	
     	else {
@@ -82,12 +84,12 @@ public class Transport extends ConsoCarbone{
     
     @Override
 	public String toString() {
-	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.kilomAnnee + ", impact :" + this.getImpact());
+	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.kilomAnnee + ", impact : " + this.getImpact());
 	  }
 	
 	public static void main(String[] args) { 
-		Transport transp = new Transport(true, Taille.G, 100000,340);
-		transp.CalculImpactTransp(250);
+		Transport transp = new Transport(true, Taille.G, 100000,340, 30000);
+		// transp.CalculImpactTransp(250);
 		// CarbonMoyTransp(transp, 250);
 		System.out.println(transp);
     }

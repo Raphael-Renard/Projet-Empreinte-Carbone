@@ -9,12 +9,14 @@ public class Logement extends ConsoCarbone{
 	// constructeur par defaut
     public Logement(){
         this(0,CE.F);
+		this.CalculImpactLog();
     }
 
 	// constructeur parametre
     public Logement(int superficie, CE ce){
         this.superficie = superficie;
         this.ce = ce;
+		this.CalculImpactLog();
     }
 
     public void CalculImpactLog(){
@@ -52,8 +54,8 @@ public class Logement extends ConsoCarbone{
 
     public static void main(String[] args) { 
 		Logement log = new Logement(75, CE.C);
-		log.CalculImpactLog();
-		//CarbonMoyLog();
+		// log.CalculImpactLog();
+		//CarbonMoyLog(log);
 		System.out.println(log);
     }
 }
