@@ -27,7 +27,7 @@ public class ConsoCarbone {
     
 	@Override
     public String toString() {
-    	return ("id : " + id + ",\nimpact consoCarbon :" + impact+"\n");
+    	return ("id : " + id + ",\nimpact consoCarbon :" + impact+" TCO2eq\n");
     }
 
 }

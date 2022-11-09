@@ -54,7 +54,7 @@ public class Alimentation extends ConsoCarbone{
 	
 	@Override
 	public String toString() {
-	    return ("id : "+super.getid()+",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\nimpact : " + this.getImpact()+"\n");
+	    return ("id : "+super.getid()+",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
 	  }
 
 }

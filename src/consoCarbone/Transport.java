@@ -83,7 +83,7 @@ public class Transport extends ConsoCarbone{
     
     @Override
 	public String toString() {
-	    return ("id : "+super.getid()+",\npossede : " + this.possede + ",\ntaille : " + this.taille + ",\nkilomAnnee : " + this.kilomAnnee + ",\nimpact : " + this.getImpact()+"\n");
+	    return ("id : "+super.getid()+",\npossede : " + this.possede + ",\ntaille : " + this.taille + ",\nkilomAnnee : " + this.kilomAnnee + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
 	  }
 	
 
