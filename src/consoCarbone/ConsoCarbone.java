@@ -33,5 +33,8 @@ public class ConsoCarbone {
 
 		ConsoCarbone d = new ConsoCarbone();
     	System.out.println(d);
+
+		Logement log = new Logement();
+    	System.out.println(log);
      }
 }
