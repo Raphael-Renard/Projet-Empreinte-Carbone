@@ -46,9 +46,9 @@ public class Logement extends ConsoCarbone{
 	    System.out.println("En moyenne les francais.e.s consomment 0.335 T CO2 eq à cause de l'épquipement des logements, 0.675 à cause de la construction et le gros entretien et 1.696 à cause de l'énergie et les utilités.");
     }
 	
-	@Override
+	 //@Override
     public String toString() {
-    	return ("superficie : " + superficie + ",\nclasse energetique : " + ce + ",\nimpact des depenses :" + this.getImpact());
+    	return ("id : "+super.getid()+",\nsuperficie : " + superficie + ",\nclasse energetique : " + ce + ",\nimpact des depenses :" + this.getImpact()+"\n");
     }
 
 }

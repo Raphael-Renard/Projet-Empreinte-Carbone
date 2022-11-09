@@ -21,10 +21,13 @@ public class ConsoCarbone {
     public double getImpact() {
 		return this.impact;
 	}
+    public int getid() {
+		return this.id;
+	}
     
 	@Override
     public String toString() {
-    	return ("id : " + id + ", impact consoCarbon :" + impact);
+    	return ("id : " + id + ",\nimpact consoCarbon :" + impact+"\n");
     }
 
 }

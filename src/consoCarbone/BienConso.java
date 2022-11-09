@@ -32,7 +32,7 @@ public class BienConso extends ConsoCarbone{
     
     @Override
     public String toString() {
-    	return ("montant : " + montant + " euros\nimpact des depenses : " + this.getImpact());
+    	return ("id : "+super.getid()+",\nmontant : " + montant + " euros,\nimpact des depenses : " + this.getImpact()+"\n");
     }
 
     public static void main(String[] args) {
