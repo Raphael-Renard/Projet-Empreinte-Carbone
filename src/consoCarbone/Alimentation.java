@@ -7,18 +7,27 @@ public class Alimentation extends ConsoCarbone{
 
 	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
-	// constructeur parametre
-    public Alimentation(double txBoeuf, double txVege){
-        this.txBoeuf = txBoeuf;
-        this.txVege = txVege;
-		this.CalculImpactAli();
-    }
-
 	// constructeur par defaut
     public Alimentation(){
         this(1,0);
 		this.CalculImpactAli();
     }
+    
+	// constructeur parametre
+    public Alimentation(double txBoeuf, double txVege){
+    	if(txBoeuf+txVege>1) {  //on teste si les taux sont realiste
+    		System.out.println("erreur dans les taux de Boeuf et Vegetarien.\nOn initialise donc à 0 les taux.");
+    		this.txBoeuf = 0;
+            this.txVege = 0;
+    	}
+    	else {
+            this.txBoeuf = txBoeuf;
+            this.txVege = txVege;
+    		this.CalculImpactAli();
+    	}
+
+    }
+
 
 	public void CalculImpactAli() {
 		double tmp =boeuf * this.txBoeuf + autre *(1 - this.txVege - this.txBoeuf) + vege * this.txVege;

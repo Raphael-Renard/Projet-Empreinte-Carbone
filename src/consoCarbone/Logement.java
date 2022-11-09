@@ -13,7 +13,13 @@ public class Logement extends ConsoCarbone{
 
 	// constructeur parametre
     public Logement(int superficie, CE ce){
-        this.superficie = superficie;
+    	if(superficie<0) {
+    		System.out.println("Superficie negative. On initialise donc à 0");
+    		this.superficie=0;
+    	}
+    	else {
+    		this.superficie = superficie;
+    	}
         this.ce = ce;
 		this.CalculImpactLog();
     }

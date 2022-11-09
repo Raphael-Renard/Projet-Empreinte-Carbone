@@ -11,7 +11,13 @@ public class BienConso extends ConsoCarbone{
 
     // constructeur parametre
     public BienConso(double montant){
-        this.montant = montant;
+    	if(montant<0) {
+    		System.out.println("Montant negatif. On initialise donc à 0");
+    		this.montant=0;
+    	}
+    	else{
+    		this.montant = montant;
+    	}
         this.CalculImpactDep();
     }
 

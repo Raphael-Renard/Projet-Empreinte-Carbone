@@ -14,11 +14,21 @@ public class Transport extends ConsoCarbone{
 
     // constructeur parametre
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication){
-        this.possede = possede;
-		this.taille = taille;
-		this.kilomAnnee = kilomAnnee;
-		this.amortissement = amortissement;
-		this.CalculImpactTransp(fabrication);
+    	if(kilomAnnee<0 | amortissement<0 | fabrication<0) {
+    		System.out.println("Erreur kilomAnnee, amortissement ou fabrication negative. On initialise tout à 0");
+    		this.possede = false;
+			this.taille = Taille.P;
+    		this.kilomAnnee = 0;
+    		this.amortissement = 0;
+    		this.CalculImpactTransp(0);
+    	}
+    	else {
+	        this.possede = possede;
+			this.taille = taille;
+			this.kilomAnnee = kilomAnnee;
+			this.amortissement = amortissement;
+			this.CalculImpactTransp(fabrication);
+    	}
     }
 
 	// getter
