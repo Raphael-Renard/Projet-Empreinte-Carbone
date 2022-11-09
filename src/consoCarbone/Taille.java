@@ -6,10 +6,12 @@ public enum Taille {
 
     private double production;
     
+    // constructeur
     private Taille(double production){
         this.production = production;
     }
     
+    // getter
     public double getProduction() {
     	return this.production;
     }

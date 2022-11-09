@@ -6,11 +6,13 @@ public class Alimentation extends ConsoCarbone{
 	//private double impact;  //impact a
 	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
+	// constructeur parametre
     public Alimentation(double txBoeuf, double txVege){
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
     }
 
+	// constructeur par defaut
     public Alimentation(){
         this(1,0);
     }
@@ -20,6 +22,7 @@ public class Alimentation extends ConsoCarbone{
 		super.setimpact(tmp);
 	}
 	
+	// getter
 	public double gettxBoeuf() {
 		return this.txBoeuf;
 	}
@@ -28,7 +31,7 @@ public class Alimentation extends ConsoCarbone{
 		return this.txVege;
 	}
 	
-	
+	// setter
 	public void settxBoeuf(double tb) {
 		this.txBoeuf=tb;
 	}
