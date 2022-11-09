@@ -37,7 +37,7 @@ public class BienConso extends ConsoCarbone{
     
     @Override
     public String toString() {
-    	return ("id : "+super.getid()+",\nmontant : " + montant + " euros,\nimpact des depenses : " + this.getImpact()+"\n");
+    	return ("id : "+super.getid()+",\nmontant : " + montant + " euros,\nimpact des depenses : " + this.getImpact()+" TCO2eq\n");
     }
 
 }
