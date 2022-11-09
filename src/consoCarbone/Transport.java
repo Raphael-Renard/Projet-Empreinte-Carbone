@@ -86,11 +86,5 @@ public class Transport extends ConsoCarbone{
 	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.kilomAnnee + ", impact : " + this.getImpact());
 	  }
 	
-	public static void main(String[] args) { 
-		Transport transp = new Transport(true, Taille.G, 100000,340, 30000);
-		// transp.CalculImpactTransp(250);
-		// CarbonMoyTransp(transp, 250);
-		System.out.println(transp);
-    }
 
 }

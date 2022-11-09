@@ -51,10 +51,4 @@ public class Logement extends ConsoCarbone{
     	return ("superficie : " + superficie + ",\nclasse energetique : " + ce + ",\nimpact des depenses :" + this.getImpact());
     }
 
-    public static void main(String[] args) { 
-		Logement log = new Logement(75, CE.C);
-		// log.CalculImpactLog();
-		//CarbonMoyLog(log);
-		System.out.println(log);
-    }
 }

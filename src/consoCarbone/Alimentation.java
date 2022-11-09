@@ -57,13 +57,4 @@ public class Alimentation extends ConsoCarbone{
 	    return ("taux de boeuf : " + this.txBoeuf + ", taux de repas végétariens : " + this.txVege + ", impact : " + this.getImpact());
 	  }
 
-	public static void main(String[] args){
-		Alimentation a = new Alimentation(0.3,0.6);
-		//CarbonMoyAli();
-		// a.CalculImpactAli();
-		// System.out.println("ali txB : "+a.txBoeuf);
-		// System.out.println("ali txV : "+a.txVege);
-		// System.out.println("ali impact : "+a.getImpact());
-		System.out.println(a);
-	}
 }

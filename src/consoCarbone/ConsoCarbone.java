@@ -24,20 +24,7 @@ public class ConsoCarbone {
     
 	@Override
     public String toString() {
-    	return ("id : " + id + ", impact global :" + impact);
+    	return ("id : " + id + ", impact consoCarbon :" + impact);
     }
 
-    public static void main(String[] args) {
-		// fait appel a la fonction toString de BienConso
-    	ConsoCarbone c = new BienConso();
-    	System.out.println(c);
-
-		// fait appel a la fonction toString de ConsoCarbone
-		ConsoCarbone d = new ConsoCarbone();
-    	System.out.println(d);
-
-		// fait appel a la fonction toString de Logement
-		Logement log = new Logement();
-    	System.out.println(log);
-     }
 }
