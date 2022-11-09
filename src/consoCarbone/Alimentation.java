@@ -3,15 +3,23 @@ package consoCarbone;
 public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  //de boeuf
 	private double txVege;
+	private double txBoeuf;  // taux de boeuf
+	private double txVege; // taux d'alimentation vegetale
+	//private double impact;  //impact a
+
 	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
+	// constructeur parametre
     public Alimentation(double txBoeuf, double txVege){
         this.txBoeuf = txBoeuf;
         this.txVege = txVege;
+		this.CalculImpactAli();
     }
 
+	// constructeur par defaut
     public Alimentation(){
         this(1,0);
+		this.CalculImpactAli();
     }
 
 	public void CalculImpactAli() {
@@ -19,6 +27,7 @@ public class Alimentation extends ConsoCarbone{
 		super.setimpact(tmp); //definition de impact dans classe mère
 	}
 	
+	// getter
 	public double gettxBoeuf() {
 		return this.txBoeuf;
 	}
@@ -26,7 +35,8 @@ public class Alimentation extends ConsoCarbone{
 	public double gettxVege() {
 		return this.txVege;
 	}
-	
+		// setter
+
 	public void settxBoeuf(double tb) {
 		this.txBoeuf=tb;
 	}
@@ -51,10 +61,20 @@ public class Alimentation extends ConsoCarbone{
 		System.out.println("ali txV : "+a.txVege);
 		System.out.println("ali impact : "+a.getImpact()); //getImpact definie dans classe mere
 	}
+
 	
 	@Override
 	public String toString() {
 	    return ("taux de boeuf : " + this.txBoeuf + ", taux de repas végétariens : " + this.txVege + ", impact : " + this.getImpact());
 	  }
 
+	public static void main(String[] args){
+		Alimentation a = new Alimentation(0.3,0.6);
+		//CarbonMoyAli();
+		// a.CalculImpactAli();
+		// System.out.println("ali txB : "+a.txBoeuf);
+		// System.out.println("ali txV : "+a.txVege);
+		// System.out.println("ali impact : "+a.getImpact());
+		System.out.println(a);
+	}
 }

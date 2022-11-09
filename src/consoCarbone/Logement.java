@@ -2,15 +2,20 @@ package consoCarbone;
 
 public class Logement extends ConsoCarbone{
 	
-    private int superficie;  //m^2
+    private int superficie;  //superficie en m^2
     private CE ce;
 
+	// constructeur par defaut
     public Logement(){
         this(0,CE.F);
+		this.CalculImpactLog();
     }
+
+	// constructeur parametre
     public Logement(int superficie, CE ce){
         this.superficie = superficie;
         this.ce = ce;
+		this.CalculImpactLog();
     }
 
     public void CalculImpactLog(){
@@ -18,6 +23,7 @@ public class Logement extends ConsoCarbone{
         super.setimpact(tmp); //impact definie dans la classe mère
     }
     
+	// getter
 	public int getsuperficie() {
 		return this.superficie;
 	}
@@ -26,6 +32,7 @@ public class Logement extends ConsoCarbone{
 		return this.ce;
 	}
 	
+	// setter
 	public void setsuperficie(int s) {
 		this.superficie = s;
 	}
@@ -38,14 +45,16 @@ public class Logement extends ConsoCarbone{
 	    System.out.println("Votre empreinte carbone moyenne est de " + L.getImpact() + "T CO2 eq.");
 	    System.out.println("En moyenne les francais.e.s consomment 0.335 T CO2 eq à cause de l'épquipement des logements, 0.675 à cause de la construction et le gros entretien et 1.696 à cause de l'énergie et les utilités.");
     }
+	
+	@Override
     public String toString() {
-    	return ("superficie : "+superficie+",\nClasseEnergetique : "+ce+",\nimpact des depenses :"+this.getImpact());
+    	return ("superficie : " + superficie + ",\nclasse energetique : " + ce + ",\nimpact des depenses :" + this.getImpact());
     }
 
     public static void main(String[] args) { 
 		Logement log = new Logement(75, CE.C);
-		log.CalculImpactLog();
-		//CarbonMoyLog();
+		// log.CalculImpactLog();
+		//CarbonMoyLog(log);
 		System.out.println(log);
     }
 }

@@ -11,10 +11,12 @@ public enum CE {
 
     private double ace;
     
+    // constructeur
     private CE(double ace){
-        this.ace=ace;
+        this.ace = ace;
     }
     
+    // getter
     public double getace() {
     	return this.ace;
     }

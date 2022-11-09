@@ -6,6 +6,56 @@ public class Transport extends ConsoCarbone{
 	private int kilomAnnee;
 	private int amortissement;
 	
+	// constructeur par defaut
+	public Transport(){
+        this(false, Taille.P, 0, 0, 0);
+		this.CalculImpactTransp(0);
+    }
+
+    // constructeur parametre
+    public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication){
+        this.possede = possede;
+		this.taille = taille;
+		this.kilomAnnee = kilomAnnee;
+		this.amortissement = amortissement;
+		this.CalculImpactTransp(fabrication);
+    }
+
+	// getter
+	public int getamortissement() {
+		return this.amortissement;
+	}
+    
+	public int getkilom() {
+		return this.kilomAnnee;
+	}
+
+	public boolean getpossede() {
+		return this.possede;
+	}
+
+	public Taille gettaille() {
+		return this.taille;
+	}
+
+	// setter
+    public void setamortissement(int a) {
+		this.amortissement = a;
+    }
+	
+    public void setkilom(int k) {
+		this.kilomAnnee = k;
+    }
+    
+    public void setpossede(boolean p) {
+		this.possede = p;
+    }
+    
+    public void settaille(Taille t) {
+		this.taille = t;
+	}
+    
+
 	public void CalculImpactTransp(double fabrication){
         if (this.possede) {
         	super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
@@ -15,44 +65,12 @@ public class Transport extends ConsoCarbone{
         	super.setimpact( 0);
         }
     }
-	
-	public int getamortissement() {
-		return this.amortissement;
-	}
-    
-    public void setamortissement(int a) {
-		this.amortissement = a;
-    }
-	
-	public int getkilom() {
-		return this.kilomAnnee;
-	}
-    
-    public void setkilom(int k) {
-		this.kilomAnnee = k;
-    }
-	
-	public boolean getpossede() {
-		return this.possede;
-	}
-    
-    public void setpossede(boolean p) {
-		this.possede = p;
-    }
-    
-    public Taille gettaille() {
-		return this.taille;
-	}
-    
-    public void settaille(Taille t) {
-		this.taille = t;
-	}
-    
+
     public static void CarbonMoyTransp(Transport T, double fabrication){
     	System.out.println("Votre empreinte carbone moyenne en transports est de ");
     	if (T.possede) {
     		System.out.println(1.93*T.kilomAnnee*0.0001 + "T C02 eq à cause du kilometrage et ");
-    		System.out.println(fabrication / T.amortissement +"T C02 eq à cause de la fabriquation de la voiture.");
+    		System.out.println(fabrication / T.amortissement +"T C02 eq à cause de la fabrication de la voiture.");
     	}
     	
     	else {
@@ -65,7 +83,14 @@ public class Transport extends ConsoCarbone{
     
     @Override
 	public String toString() {
-	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.getImpact());
+	    return ("possede : " + this.possede + ", taille : " + this.taille + ", kilomAnnee : " + this.kilomAnnee + ", impact : " + this.getImpact());
 	  }
+	
+	public static void main(String[] args) { 
+		Transport transp = new Transport(true, Taille.G, 100000,340, 30000);
+		// transp.CalculImpactTransp(250);
+		// CarbonMoyTransp(transp, 250);
+		System.out.println(transp);
+    }
 
 }
