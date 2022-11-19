@@ -2,7 +2,8 @@ package users;
 
 import consoCarbone.*;
 
-public class User {
+public class User { 
+	//ajouter id?conso globale?
 	Alimentation alimentation;
 	BienConso bienConso;
 	Logement logement;
