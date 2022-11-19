@@ -3,7 +3,6 @@ package consoCarbone;
 public class Alimentation extends ConsoCarbone{
 	private double txBoeuf;  // taux de boeuf
 	private double txVege; // taux d'alimentation vegetale
-	//private double impact;  //impact a
 
 	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
     
