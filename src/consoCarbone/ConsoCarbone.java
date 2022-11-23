@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public abstract class ConsoCarbone {
+public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
 	private int id;
 	private double impact;
 	static int nbConsoC = 0; // compteur pour id
@@ -29,5 +29,4 @@ public abstract class ConsoCarbone {
     public String toString() {
     	return ("id : " + id + ",\nimpact consoCarbon :" + impact+" TCO2eq\n");
     }
-
 }
