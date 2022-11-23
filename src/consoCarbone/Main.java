@@ -15,8 +15,8 @@ public class Main { //classe contenant une méthode main permetant de faire des 
     	System.out.println("1er cas :\n"+c1+"\n");
 
 		// fait appel a la fonction toString de ConsoCarbone
-		ConsoCarbone d = new ConsoCarbone();
-    	System.out.println("2e cas :\n"+d+"\n");
+		//ConsoCarbone d = new ConsoCarbone();
+    //	System.out.println("2e cas :\n"+d+"\n");
 
 		// fait appel a la fonction toString de Logement
 		Logement log1 = new Logement();
