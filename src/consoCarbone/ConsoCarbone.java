@@ -1,6 +1,6 @@
 package consoCarbone;
 
-public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
+public abstract class ConsoCarbone{
 	private int id;
 	private double impact;
 	static int nbConsoC = 0; // compteur pour id
