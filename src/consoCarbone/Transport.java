@@ -1,5 +1,9 @@
 package consoCarbone;
 
+/**
+ * Transport est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
+concernant ses déplacements
+ */
 public class Transport extends ConsoCarbone{
 	private boolean possede;
 	private Taille taille;

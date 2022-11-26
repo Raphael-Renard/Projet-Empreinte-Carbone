@@ -1,5 +1,11 @@
 package consoCarbone;
 
+
+/**
+ * Alimentation est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
+concernant son alimentation
+ */
+
 public class Alimentation extends ConsoCarbone{
 	/** taux de repas à base de boeuf
 	 */

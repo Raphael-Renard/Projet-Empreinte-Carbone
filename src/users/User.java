@@ -1,18 +1,26 @@
 package users;
 
+import java.util.*;
+
 import consoCarbone.*;
 
 public class User { 
 	//ajouter id?conso globale?
-	Alimentation alimentation;
-	BienConso bienConso;
-	Logement logement;
-	Transport transport;
-	ServicesPublics services;
+	private Alimentation alimentation;
+	private BienConso bienConso;
+	private Logement logement;
+	private Transport transport;
+	private ServicesPublics services;
 	
 	public User() {
 		//utiliser constructeurs des conso
+		alimentation = new Alimentation();
+		bienConso = new BienConso();
+		logement = new Logement();
+		transport = new Transport();
+		services = new ServicesPublics();
 	}
+	// faire un constructeur paramétré
 	
 	private double calculerEmpreinte() {
 		return (alimentation.getImpact()+bienConso.getImpact()+logement.getImpact()+transport.getImpact()+services.getImpact());
@@ -26,5 +34,26 @@ public class User {
 		System.out.println("L'utilisateur consomme "+services.getImpact()+" à cause des services publiques.");
 		System.out.println("Au total la consommation de l'utilisateur est de "+this.calculerEmpreinte());
 
+	}
+
+	//méthode qui ordonne les consommations carbone de l’utilisateur.rice dans une liste
+	// puis présente l’information obtenue à ce.tte dernier.e
+	public void ordonne () {
+		ArrayList<ConsoCarbone> liste = new ArrayList<ConsoCarbone>();
+		liste.add(alimentation);
+		liste.add(bienConso);
+		liste.add(logement);
+		liste.add(transport);
+		liste.add(services);
+		Collections.sort(liste);
+		for (ConsoCarbone poste_conso : liste) {
+			System.out.println(poste_conso.getClass().getSimpleName()+", impact : "+poste_conso.getImpact()+"\n");
+		}
+	}
+
+
+	public static void main(String[] args) {
+		User utilisateur = new User();
+		utilisateur.ordonne();
 	}
 }

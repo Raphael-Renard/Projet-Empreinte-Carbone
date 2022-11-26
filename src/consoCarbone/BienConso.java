@@ -1,5 +1,11 @@
 package consoCarbone;
 
+
+/**
+ * BienConso est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
+concernant ses dépenses en biens de consommation
+ */
+
 public class BienConso extends ConsoCarbone{
 	private double montant; //depenses annuelles en euros
 	

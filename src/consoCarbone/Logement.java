@@ -1,5 +1,9 @@
 package consoCarbone;
 
+/**
+ * Logement est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
+concernant son logement
+ */
 public class Logement extends ConsoCarbone{
 	/** Superficie en m^2 du logement
 	 */
