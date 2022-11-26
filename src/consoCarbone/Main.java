@@ -14,10 +14,6 @@ public class Main { //classe contenant une méthode main permetant de faire des 
     	ConsoCarbone c1 = new BienConso(20);
     	System.out.println("1er cas :\n"+c1+"\n");
 
-		// fait appel a la fonction toString de ConsoCarbone
-		//ConsoCarbone d = new ConsoCarbone();
-    //	System.out.println("2e cas :\n"+d+"\n");
-
 		// fait appel a la fonction toString de Logement
 		Logement log1 = new Logement();
     	System.out.println("3e cas :\n"+log1+"\n");
@@ -29,6 +25,8 @@ public class Main { //classe contenant une méthode main permetant de faire des 
     	//fait appel a la fonction toString de Alimentation
     	ConsoCarbone a2 = new Alimentation(0.4,0.6);
     	System.out.println("5e cas :\n"+a2+"\n");
+    	
+    	System.out.println(a2.compareTo(log2));
     	
 	}
 
