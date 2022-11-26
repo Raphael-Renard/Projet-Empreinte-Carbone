@@ -13,14 +13,21 @@ public class User {
 	private ServicesPublics services;
 	
 	public User() {
-		//utiliser constructeurs des conso
 		alimentation = new Alimentation();
 		bienConso = new BienConso();
 		logement = new Logement();
 		transport = new Transport();
 		services = new ServicesPublics();
 	}
-	// faire un constructeur paramétré
+
+	// constructeur paramétré
+	public User(double txBoeuf, double txVege, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
+		alimentation = new Alimentation(txBoeuf, txVege);
+		bienConso = new BienConso(montant);
+		logement = new Logement(superficie, ce);
+		transport = new Transport(possede, taille, kilomAnnee, amortissement, fabrication);
+		services = new ServicesPublics();
+	}
 	
 	private double calculerEmpreinte() {
 		return (alimentation.getImpact()+bienConso.getImpact()+logement.getImpact()+transport.getImpact()+services.getImpact());
