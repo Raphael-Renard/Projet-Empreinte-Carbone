@@ -17,8 +17,7 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
         this.impact=0;
     }
     
-    @Override
-    public int compareTo(ConsoCarbone o){  //return int
+    public int compareTo(ConsoCarbone o){  //return int
     	double tmp = this.impact - o.getImpact();
     	if (tmp <0) {return -1;}
     	else if (tmp >0) {return 1;}
