@@ -1,10 +1,17 @@
 package consoCarbone;
 
 public class Alimentation extends ConsoCarbone{
-	private double txBoeuf;  // taux de boeuf
-	private double txVege; // taux d'alimentation vegetale
+	/** taux de repas à base de boeuf
+	 */
+	private double txBoeuf;
+	/** taux de repas végétariens
+	 */
+	private double txVege;
 
-	static final double boeuf = 8, autre = 1.6, vege = 0.9; //coefficients constants des impacts
+	/**
+	 coefficient fixe influençant l'impact de l'alimentation
+	 */
+	static final double boeuf = 8, autre = 1.6, vege = 0.9;
     
 	// constructeur par defaut
     public Alimentation(){
@@ -27,7 +34,9 @@ public class Alimentation extends ConsoCarbone{
 
     }
 
-
+    /** Calcule de l'impact de l'alimentation en terme de gaz a effets de serre en TCO2eq.
+    Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
+    */
 	public void CalculImpactAli() {
 		double tmp =boeuf * this.txBoeuf + autre *(1 - this.txVege - this.txBoeuf) + vege * this.txVege;
 		super.setimpact(tmp); //definition de impact dans classe mère
@@ -51,6 +60,9 @@ public class Alimentation extends ConsoCarbone{
 		this.txVege=tv;
 	}
 	
+	/**
+	 Affiche la consommation de l'alimentaion en paramètre. Puis affiche la distribution de l'impact moyen d'un français à cause de l'alimentation.
+	 */
     public static void CarbonMoyAli(Alimentation A){
 	    System.out.println("Votre empreinte carbone moyenne en alimentation est de ");
 	    System.out.println(boeuf*A.gettxBoeuf() + "T C02 eq à cause du boeuf, ");
@@ -60,7 +72,9 @@ public class Alimentation extends ConsoCarbone{
     	}
 	
 	
-	@Override
+	//@Override
+    /** Réécriture pour afficher une alimentation avec ses paramètres
+	 */
 	public String toString() {
 	    return ("id : "+super.getid()+",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
 	  }
