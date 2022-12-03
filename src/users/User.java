@@ -12,6 +12,7 @@ public class User {
 	private Transport transport;
 	private ServicesPublics services;
 	
+	// constructeur par défaut
 	public User() {
 		alimentation = new Alimentation();
 		bienConso = new BienConso();
@@ -21,8 +22,8 @@ public class User {
 	}
 
 	// constructeur paramétré
-	public User(double txBoeuf, double txVege, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
-		alimentation = new Alimentation(txBoeuf, txVege);
+	public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
+		alimentation = new Alimentation(txBoeuf, txVege, saison, locaux, gaspillage, vrac, ecommerce);
 		bienConso = new BienConso(montant);
 		logement = new Logement(superficie, ce);
 		transport = new Transport(possede, taille, kilomAnnee, amortissement, fabrication);
@@ -43,7 +44,7 @@ public class User {
 
 	}
 
-	//méthode qui ordonne les consommations carbone de l’utilisateur.rice dans une liste
+	// méthode qui ordonne les consommations carbone de l’utilisateur.rice dans une liste
 	// puis présente l’information obtenue à ce.tte dernier.e
 	public void ordonne () {
 		ArrayList<ConsoCarbone> liste = new ArrayList<ConsoCarbone>();

@@ -23,7 +23,7 @@ public class Main { //classe contenant une méthode main permetant de faire des 
     	System.out.println("4e cas :\n"+log2+"\n");
     	
     	//fait appel a la fonction toString de Alimentation
-    	ConsoCarbone a2 = new Alimentation(0.4,0.6);
+    	ConsoCarbone a2 = new Alimentation(0.4,0.6,false,true,18,false,false);
     	System.out.println("5e cas :\n"+a2+"\n");
     	
 

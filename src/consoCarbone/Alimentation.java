@@ -156,7 +156,7 @@ public class Alimentation extends ConsoCarbone{
     /** Réécriture pour afficher une alimentation avec ses paramètres
 	 */
 	public String toString() {
-	    return ("id : "+super.getid()+",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
+	    return ("id : " + super.getid() + ",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\naliments de saison : " + this.saison + ",\naliments locaux : " + this.locaux + ",\ngaspillage : " + this.gaspillage + ",\ncourses en vrac : " + this.vrac + ",\ne-commerces : " + this.ecommerce + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
 	  }
 
 }
