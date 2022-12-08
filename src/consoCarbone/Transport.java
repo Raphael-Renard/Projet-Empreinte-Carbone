@@ -5,7 +5,7 @@ package consoCarbone;
 concernant ses déplacements
  */
 public class Transport extends ConsoCarbone{
-	private boolean possede;
+	private boolean possede; //javadoc
 	private Taille taille;
 	private int kilomAnnee;
 	private int amortissement;
@@ -69,7 +69,9 @@ public class Transport extends ConsoCarbone{
 		this.taille = t;
 	}
     
-
+    /** Calcule de l'impact des transports en terme de gaz a effets de serre en TCO2eq.
+    Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
+    */
 	public void CalculImpactTransp(double fabrication){
         if (this.possede) {
         	super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
@@ -94,7 +96,8 @@ public class Transport extends ConsoCarbone{
     	System.out.println("En moyenne les francais.e.s consomment 1.972 T CO2 eq à cause de leur(s) voiture(s), 0.480 à cause des voyages en avion, 0.383 pour cause de fret et messagerie et 0.085 à cause des voyages en train et bus.");
 
 	}  
-    
+    /** Réécriture pour afficher une consommation des transports avec ses paramètres
+	 */
     @Override
 	public String toString() {
 	    return ("id : "+super.getid()+",\npossede : " + this.possede + ",\ntaille : " + this.taille + ",\nkilomAnnee : " + this.kilomAnnee + ",\nimpact : " + this.getImpact()+" TCO2eq\n");

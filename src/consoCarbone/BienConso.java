@@ -27,7 +27,9 @@ public class BienConso extends ConsoCarbone{
         this.CalculImpactDep();
     }
 
-
+    /** Calcule de l'impact des dépenses en terme de gaz a effets de serre en TCO2eq.
+    Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
+    */
     public void CalculImpactDep(){
         super.setimpact(this.montant / 1750);
     }
@@ -46,7 +48,8 @@ public class BienConso extends ConsoCarbone{
 	    System.out.println("Votre empreinte carbone moyenne est de " + L.getImpact() + "T CO2 eq.");
 	    System.out.println("En moyenne les francais.e.s consomment 0.763 T CO2 eq à cause des vêtements, 0.682 à cause des autres biens et services et 1.180 à cause des achats et usages Internet et technologies.");
     }
-    
+    /** Réécriture pour afficher une comsommation des dépenses avec ses paramètres
+	 */
     @Override
     public String toString() {
     	return ("id : "+super.getid()+",\nmontant : " + montant + " euros,\nimpact des depenses : " + this.getImpact()+" TCO2eq\n");

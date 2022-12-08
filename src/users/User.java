@@ -57,11 +57,12 @@ public class User {
 		for (ConsoCarbone poste_conso : liste) {
 			System.out.println(poste_conso.getClass().getSimpleName()+", impact : "+poste_conso.getImpact()+"\n");
 		}
+		System.out.println(Collections.max(liste));
+		//Collections.max.conseil(); ==> creer conseil pour chaque classe
 	}
 
-
 	public static void main(String[] args) {
-		User utilisateur = new User();
+		User utilisateur = new User(0.4, 0.5, false, false, 259, true, true,1500, 200,CE.A, true, Taille.P, 1500, 10, 0.4);
 		utilisateur.ordonne();
 	}
 }

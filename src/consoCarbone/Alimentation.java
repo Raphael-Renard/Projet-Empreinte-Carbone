@@ -35,7 +35,9 @@ public class Alimentation extends ConsoCarbone{
 	static final double boeuf = 8, autre = 1.6, vege = 0.9;
     
 
-	// constructeur par défaut
+	/**
+	 * constructeur par défaut donnant une consommation maximum
+	 */
     public Alimentation(){
         this(1,0,false,false,20,false,false);
 		this.CalculImpactAli();
