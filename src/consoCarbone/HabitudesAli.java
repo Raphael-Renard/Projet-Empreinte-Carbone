@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import java.util.Scanner;
+
 /**
  * HabitudesAli est la classe qui permet de moduler l'impact carbone d'un poste de consommation carbone 
  concernant le régime alimentaire d'un.e utilisateur.rice en fonction des habitudes alimentaires de ce.tte dernier.e 
@@ -25,8 +27,67 @@ public class HabitudesAli extends Alimentation {
 	/** 
 	 * Constructeur par défaut 
 	*/ 
-    public HabitudesAli(){
-        this(false,false,20,false,false);
+	 public HabitudesAli(){
+	        this(false,false,20,false,false);
+	        this.CalculImpactAli();
+	  }
+	 
+    public HabitudesAli(Scanner sc2){
+		System.out.print(" Mangez vous des produits de saison ? (Y/n) :");
+		String str1 = sc2.nextLine();
+		System.out.print(" Mangez vous des produits locaux ? (Y/n) :");
+		String str2 = sc2.nextLine();
+		System.out.print(" Entrez le nombre en kilo de gaspillage par an :");
+		String str3 = sc2.nextLine();
+		System.out.print(" Faites vous vos courses en vrac ? (Y/n) :");
+		String str4 = sc2.nextLine();
+		System.out.print(" Faites vous vos courses dans des e-commerces ? (Y/n) :");
+		String str5 = sc2.nextLine();
+    	if(Double.valueOf(str3)<0) {
+    		this.gaspillage = 0;
+    	}else {
+    		this.gaspillage = Double.valueOf(str3);
+    	}
+		this.saison=false;
+		this.locaux=false;
+		this.vrac=false;
+		this.ecommerce=false;
+		switch( str1 ) {
+		    case "Y":
+		        this.saison=true;
+		        break;
+		    case "n":
+		        break;
+		    default:
+		        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		switch( str2 ) {
+	    case "Y":
+	        this.locaux=true;
+	        break;
+	    case "n":
+	        break;
+	    default:
+	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		switch( str4 ) {
+	    case "Y":
+	        this.vrac=true;
+	        break;
+	    case "n":
+	        break;
+	    default:
+	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		switch( str5 ) {
+	    case "Y":
+	        this.ecommerce=true;
+	        break;
+	    case "n":
+	        break;
+	    default:
+	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
 		this.CalculImpactAli();
     }
 

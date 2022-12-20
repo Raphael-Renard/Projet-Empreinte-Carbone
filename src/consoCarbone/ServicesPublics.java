@@ -16,4 +16,7 @@ public class ServicesPublics extends ConsoCarbone{
 	public ServicesPublics() {
 		super.setimpact(empreinte);
 	}
+	public void conseil() {
+		System.out.println("Cette empreinte ne change pas car elle est partagée par toute la société.");
+	}
 }

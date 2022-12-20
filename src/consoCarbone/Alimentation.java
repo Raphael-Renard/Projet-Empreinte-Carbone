@@ -1,5 +1,6 @@
 package consoCarbone;
 
+import java.util.Scanner;
 
 /**
  * Alimentation est la classe qui définit un poste de consommation carbone de l’utilisateur.rice concernant son alimentation
@@ -25,8 +26,26 @@ public class Alimentation extends ConsoCarbone{
 	/**
 	 * Constructeur par défaut donnant une consommation maximum
 	 */
-    public Alimentation(){
+	public Alimentation(){
         this(1,0);
+        this.CalculImpactAli();
+	}
+        
+    public Alimentation(Scanner sc){
+		System.out.print(" Entrez le taux de repas (une valeur entre 0 et 1) à base de boeuf :");
+		String str1 = sc.nextLine();
+		System.out.print(" Entrez le taux de repas végétariens :");
+		String str2 = sc.nextLine();
+    	double txBoeuf = Double.valueOf(str1),txVege = Double.valueOf(str2);
+    	if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont realistes
+    		System.out.println("erreur dans les taux\nOn initialise donc à 0 les taux.");
+    		this.txBoeuf = 0;
+            this.txVege = 0;
+    	}
+    	else {
+            this.txBoeuf = txBoeuf;
+            this.txVege = txVege;
+    	}
 		this.CalculImpactAli();
     }
     

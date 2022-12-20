@@ -1,5 +1,6 @@
 package consoCarbone;
 
+import java.util.Scanner;
 
 /**
  * BienConso est la classe qui définit un poste de consommation carbone de l’utilisateur.rice concernant ses dépenses en biens de consommation
@@ -14,8 +15,20 @@ public class BienConso extends ConsoCarbone{
     /** 
      * Constructeur par défaut
 	 */
-	public BienConso(){
+    public BienConso(){
         this(0);
+        this.CalculImpactDep();
+    }
+	public BienConso(Scanner sc){
+		//Scanner sc = new Scanner(System.in);
+		System.out.print(" Entrez le montant des dépenses annuelles :");
+		String str1 = sc.nextLine();
+		//sc.close();
+		if(Double.valueOf(str1)<0) {
+    		System.out.println("Montant negatif. On initialise donc à 0");
+    		this.montant=0;
+    	}
+		this.montant = Double.valueOf(str1);
         this.CalculImpactDep();
     }
 

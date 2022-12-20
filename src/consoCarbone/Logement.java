@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import java.util.Scanner;
+
 /**
  * Logement est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
 concernant son logement
@@ -19,6 +21,21 @@ public class Logement extends ConsoCarbone{
 	 */
     public Logement(){
         this(0,CE.F);
+        this.CalculImpactLog();
+    }
+    public Logement(Scanner sc){
+    	System.out.print(" Entrez la superficie en m^2 :");
+		String str1 = sc.nextLine();
+		System.out.print(" Entrez la classe énergétique du logement (A/B/C/D/E/F) :");
+		String str2 = sc.nextLine();
+    	if(Integer.valueOf(str1)<0) {
+    		System.out.println("Superficie negative. On initialise donc à 0");
+    		this.superficie=0;
+    	}
+    	else {
+    		this.superficie = Integer.valueOf(str1);
+    	}
+    	this.ce = CE.valueOf(str2);
 		this.CalculImpactLog();
     }
 

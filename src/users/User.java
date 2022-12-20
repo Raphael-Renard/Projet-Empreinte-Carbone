@@ -36,11 +36,11 @@ public class User {
 	/** empreinte carbonne totale de l'utilisateur.rice
 	*/
 	private double empreinte;
-	
+	/*
 	/** 
 	 * Constructeur par défaut 
 	*/ 
-	public User() {
+/*	public User() {
 		alimentation = new Alimentation();
 		bienConso = new BienConso();
 		listeLogement = new ArrayList<Logement>();
@@ -51,11 +51,12 @@ public class User {
 		habitudes = new HabitudesAli();
 		empreinte = calculerEmpreinte();
 	}
-
+*/
 	/** 
 	 * Constructeur paramétré 
 	*/
-	public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
+/*
+public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
 		alimentation = new Alimentation(txBoeuf, txVege);
 		habitudes = new HabitudesAli(saison, locaux, gaspillage, vrac, ecommerce);
 		bienConso = new BienConso(montant);
@@ -65,8 +66,37 @@ public class User {
 		listeTransport.add(new Transport(possede, taille, kilomAnnee, amortissement, fabrication));
 		services = new ServicesPublics();
 		empreinte = calculerEmpreinte();
-	} //Pb : initialiser les listes
-	
+	} //Pb : initialiser les listes  mais facile si interactions avec lecteur
+*/
+	public User() {
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println(" <<Initialisation d'un utilisateur>>");
+		System.out.println("<<Initialisation de l'alimentation>>");
+		alimentation = new Alimentation(sc1);
+    	System.out.println("<<Initialisation des habitudes alimentaires>>");
+		habitudes = new HabitudesAli(sc1);
+		System.out.println(" <<Initialisation des dépenses>>");
+		bienConso = new BienConso(sc1);
+		System.out.println(" <<Initialisation du logement>>");
+		listeLogement = new ArrayList<Logement>();
+		System.out.print(" Entrez le nombre de logements que vous avez :");
+		String str3 = sc1.nextLine(); // condition >0 ou pas
+		for (int i=0; i<Integer.valueOf(str3);i++) {
+			listeLogement.add( new Logement(sc1));
+		}
+		System.out.println(" <<Initialisation des Transports>>");
+		listeTransport = new ArrayList<Transport>();
+		System.out.print(" Entrez le nombre de voitures que vous possédez :");
+		str3 = sc1.nextLine(); // condition >0 ou pas
+		for (int i=0; i<Integer.valueOf(str3);i++) {
+			
+			listeTransport.add(new Transport(sc1));
+		}
+		services = new ServicesPublics();
+		empreinte = calculerEmpreinte();
+		System.out.println(" <<Fin de l'initialisation>>");
+		sc1.close();
+	}
 	/**
 	 * Méthode qui calcule l'empreinte carbone de l'utilisateur.rice
 	 * @return empreinte carbone
@@ -126,7 +156,10 @@ public class User {
 	}
 
 	public static void main(String[] args) {
-		User utilisateur = new User(0.4, 0.5, false, false, 259, true, true,1500, 200,CE.A, true, Taille.P, 1500, 10, 0.4);
-		utilisateur.ordonne();
+		//User utilisateur = new User(0.4, 0.5, false, false, 259, true, true,1500, 200,CE.A, true, Taille.P, 1500, 10, 0.4);
+		User use = new User();
+		use.ordonne();
+		//System.out.println(use.listeLogement);
+		//utilisateur.ordonne();
 	}
 } 

@@ -1,5 +1,7 @@
 package consoCarbone;
 
+import java.util.Scanner;
+
 /**
  * Transport est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
 concernant ses déplacements
@@ -22,10 +24,36 @@ public class Transport extends ConsoCarbone{ //javadoc
 
 	/** 
 	 * Constructeur par défaut 
-	*/ 
+	*/
 	public Transport(){
         this(false, Taille.P, 0, 0, 0);
 		this.CalculImpactTransp(0);
+	}
+	
+	public Transport(Scanner sc){
+		System.out.print(" Saisir la taille de la voiture grande ou petite(G/P) :");
+		String str1 = sc.nextLine();
+		System.out.print(" Entrez le nombre de kilomètre parcourut chaque année :");
+		String str2 = sc.nextLine();
+		System.out.print(" Saisir la durée de conservation du véhicule :");
+		String str4 = sc.nextLine();
+		System.out.print(" Saisir les émissions nécessaires à la fabrication de la voiture :");
+		String str5 = sc.nextLine();
+		if(Integer.valueOf(str2)<0 | Integer.valueOf(str4)<0 | Double.valueOf(str5)<0) {
+    		System.out.println("Erreur kilomAnnee, amortissement ou fabrication negative. On initialise tout à 0");
+    		this.possede = false;
+			this.taille = Taille.P;
+    		this.kilomAnnee = 0;
+    		this.amortissement = 0;
+    		this.CalculImpactTransp(0);
+    	}
+    	else {
+	        this.possede = true;
+			this.taille = Taille.valueOf(str1);
+			this.kilomAnnee = Integer.valueOf(str2);
+			this.amortissement = Integer.valueOf(str4);
+			this.CalculImpactTransp(Double.valueOf(str5));
+    	}
     }
 
     /** 
