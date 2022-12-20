@@ -15,22 +15,10 @@ public class Alimentation extends ConsoCarbone{
 	private double txVege;
 	/** mangez-vous des aliments de saison ?
 	 */
-	private boolean saison;
-	/** mangez-vous des aliments produits localement ?
-	 */
-	private boolean locaux;
-	/** kg de nourriture gaspillée par an
-	 */
-	private double gaspillage;
-	/** faites-vous vos courses en vrac ?
-	 */
-	private boolean vrac;
-	/** faites-vous vos courses dans des e-commerces ?
-	 */
-	private boolean ecommerce;	
+	
 
 	/**
-	 coefficient fixe influençant l'impact de l'alimentation
+	 coefficients fixes influençant l'impact de l'alimentation
 	 */
 	static final double boeuf = 8, autre = 1.6, vege = 0.9;
     
@@ -39,29 +27,20 @@ public class Alimentation extends ConsoCarbone{
 	 * constructeur par défaut donnant une consommation maximum
 	 */
     public Alimentation(){
-        this(1,0,false,false,20,false,false);
+        this(1,0);
 		this.CalculImpactAli();
     }
     
 	// constructeur paramétré
-    public Alimentation(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce){
-    	if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0 | gaspillage<0) {  //on teste si les taux sont realistes
+    public Alimentation(double txBoeuf, double txVege){
+    	if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont realistes
     		System.out.println("erreur dans les taux\nOn initialise donc à 0 les taux.");
     		this.txBoeuf = 0;
             this.txVege = 0;
-			this.saison = false;
-			this.locaux = false;
-			this.vrac = false;
-			this.ecommerce = false;
-			this.gaspillage = 0;
     	}
     	else {
             this.txBoeuf = txBoeuf;
             this.txVege = txVege;
-			this.locaux = locaux;
-			this.vrac = vrac;
-			this.ecommerce = ecommerce;
-			this.gaspillage = gaspillage;
     		this.CalculImpactAli();
     	}
 
@@ -74,11 +53,6 @@ public class Alimentation extends ConsoCarbone{
     */
 	public void CalculImpactAli() {
 		double tmp = boeuf * this.txBoeuf + autre *(1 - this.txVege - this.txBoeuf) + vege * this.txVege;
-		
-		if (this.saison) {tmp = tmp * 0.1;}
-		if (this.locaux) {tmp = tmp - 0.17;}
-		if (this.vrac) {tmp = tmp * 0.6;}
-		if (this.ecommerce) {tmp = tmp * 0.7;}
 		super.setimpact(tmp); //definition de impact dans classe mère
 	}
 
@@ -91,26 +65,6 @@ public class Alimentation extends ConsoCarbone{
 	public double gettxVege() {
 		return this.txVege;
 	}
-
-	public boolean getsaison() {
-		return this.saison;
-	}
-
-	public boolean getlocaux() {
-		return this.locaux;
-	}
-
-	public boolean getvrac() {
-		return this.vrac;
-	}
-
-	public boolean getecommerce() {
-		return this.ecommerce;
-	}
-
-	public double getgaspillage() {
-		return this.gaspillage;
-	}
 	
 	// setter
 
@@ -122,25 +76,6 @@ public class Alimentation extends ConsoCarbone{
 		this.txVege=tv;
 	}
 
-	public void setsaison(boolean s) {
-		this.saison=s;
-	}
-
-	public void setlocaux(boolean l) {
-		this.locaux=l;
-	}
-
-	public void setgaspillage(double g) {
-		this.gaspillage=g;
-	}
-
-	public void setvrac(boolean v) {
-		this.vrac=v;
-	}
-
-	public void setecommerce(boolean ec) {
-		this.ecommerce=ec;
-	}
 	
 	/**
 	 Affiche la consommation de l'alimentaion en paramètre. Puis affiche la distribution de l'impact moyen d'un français à cause de l'alimentation.
@@ -158,7 +93,7 @@ public class Alimentation extends ConsoCarbone{
     /** Réécriture pour afficher une alimentation avec ses paramètres
 	 */
 	public String toString() {
-	    return ("id : " + super.getid() + ",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\naliments de saison : " + this.saison + ",\naliments locaux : " + this.locaux + ",\ngaspillage : " + this.gaspillage + ",\ncourses en vrac : " + this.vrac + ",\ne-commerces : " + this.ecommerce + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
+	    return ("id : " + super.getid() + ",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
 	  }
 
 }

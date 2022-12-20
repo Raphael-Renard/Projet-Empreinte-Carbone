@@ -11,6 +11,7 @@ public class User {
 	private Logement logement;
 	private Transport transport;
 	private ServicesPublics services;
+	private HabitudesAli habitudes;
 	
 	// constructeur par défaut
 	public User() {
@@ -19,11 +20,13 @@ public class User {
 		logement = new Logement();
 		transport = new Transport();
 		services = new ServicesPublics();
+		habitudes = new HabitudesAli();
 	}
 
 	// constructeur paramétré
 	public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
-		alimentation = new Alimentation(txBoeuf, txVege, saison, locaux, gaspillage, vrac, ecommerce);
+		alimentation = new Alimentation(txBoeuf, txVege);
+		habitudes = new HabitudesAli(saison, locaux, gaspillage, vrac, ecommerce);
 		bienConso = new BienConso(montant);
 		logement = new Logement(superficie, ce);
 		transport = new Transport(possede, taille, kilomAnnee, amortissement, fabrication);
