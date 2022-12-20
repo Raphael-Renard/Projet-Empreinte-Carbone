@@ -49,4 +49,6 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
     public String toString() {
     	return ("id : " + id + ",\nimpact consoCarbon :" + impact+" TCO2eq\n");
     }
+
+	public void conseil(){}
 }

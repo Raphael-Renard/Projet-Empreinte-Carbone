@@ -81,4 +81,13 @@ public class Logement extends ConsoCarbone{
     	return ("id : "+super.getid()+",\nsuperficie : " + superficie + ",\nclasse energetique : " + ce + ",\nimpact des depenses :" + this.getImpact()+" TCO2eq\n");
     }
 
+	@Override
+	public void conseil(){
+		if (this.ce == CE.E | this.ce == CE.F | this.ce == CE.G){
+			System.out.println("Songez à renover votre logement pour qu'il ait une meilleure classe énergétique.");
+		}
+		if (this.superficie > 100) {
+			System.out.println("Si vous n'avez pas besoin d'un logement aussi grand, songez à déménager pour réduire les dépenses énergétiques.");
+		}
+	}
 }

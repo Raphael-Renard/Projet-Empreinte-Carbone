@@ -4,12 +4,22 @@ package consoCarbone;
  * Transport est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
 concernant ses déplacements
  */
-public class Transport extends ConsoCarbone{
-	private boolean possede; //javadoc
+public class Transport extends ConsoCarbone{ //javadoc
+	
+	/** boolean indiquant si l’utilisateur.rice possède une voiture
+	 */
+	private boolean possede;
+	/** taille du véhicule
+	 */
 	private Taille taille;
+	/** nombre de kilomètres parcourus par an
+	 */
 	private int kilomAnnee;
+	/** durée de conservation du véhicule
+	 */
 	private int amortissement;
 	
+
 	// constructeur par defaut
 	public Transport(){
         this(false, Taille.P, 0, 0, 0);
@@ -101,7 +111,19 @@ public class Transport extends ConsoCarbone{
     @Override
 	public String toString() {
 	    return ("id : "+super.getid()+",\npossede : " + this.possede + ",\ntaille : " + this.taille + ",\nkilomAnnee : " + this.kilomAnnee + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
-	  }
+	}
 	
 
+	@Override
+	public void conseil(){
+		if (this.taille == Taille.G){
+			System.out.println("Si cela ne vous est pas utile, songez à changer de voiture pour en acheter une plus petite.");
+		}
+		if (this.kilomAnnee > 2000) {
+			System.out.println("Si possible, favorisez les transports en commun et le covoiturage; le train pour les longs trajets; la marche, le vélo, la trotinette ou encore les rollers pour les courts trajets.");
+		}
+		if (this.amortissement < 5) {
+			System.out.println("Gardez votre voiture le plus longtemps possible. N'en changez que si c'est nécéssaire ou si vous souhaitez faire l'aquisition d'un véhicule plus écologique.");
+		}
+	}
 }

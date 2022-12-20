@@ -60,8 +60,8 @@ public class User {
 		for (ConsoCarbone poste_conso : liste) {
 			System.out.println(poste_conso.getClass().getSimpleName()+", impact : "+poste_conso.getImpact()+"\n");
 		}
-		System.out.println(Collections.max(liste));
-		//Collections.max.conseil(); ==> creer conseil pour chaque classe
+		System.out.println("Impact max :\n"+Collections.max(liste));
+		Collections.max(liste).conseil(); // pb : se réfère tjrs à la méthode de ConsoCarbone
 	}
 
 	public static void main(String[] args) {

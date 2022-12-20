@@ -55,4 +55,10 @@ public class BienConso extends ConsoCarbone{
     	return ("id : "+super.getid()+",\nmontant : " + montant + " euros,\nimpact des depenses : " + this.getImpact()+" TCO2eq\n");
     }
 
+    @Override
+    public void conseil(){
+		if (this.montant > 2500){
+			System.out.println("Essayez de faire moins d'achats si cela ne vous est pas utile. Essayer d'acheter des objets reconditionnés, des vêtements dans des friperies,...");
+		}
+	}
 }

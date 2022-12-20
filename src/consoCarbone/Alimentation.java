@@ -13,8 +13,6 @@ public class Alimentation extends ConsoCarbone{
 	/** taux de repas végétariens
 	 */
 	private double txVege;
-	/** mangez-vous des aliments de saison ?
-	 */
 	
 
 	/**
@@ -94,6 +92,17 @@ public class Alimentation extends ConsoCarbone{
 	 */
 	public String toString() {
 	    return ("id : " + super.getid() + ",\ntaux de boeuf : " + this.txBoeuf + ",\ntaux de repas végétariens : " + this.txVege + ",\nimpact : " + this.getImpact()+" TCO2eq\n");
-	  }
+	}
+	
 
+	@Override
+	public void conseil(){
+		if (this.txBoeuf > 0.5){
+			System.out.println("Essayez de manger moins de boeuf, remplacez par d'autres viandes moins polluantes comme le poulet. Essayez de manger moins de viande, remplacez par des alternatives végatales comme les légumineuses.");
+		}
+		else if (this.txVege < 0.3) {
+			System.out.println("Essayez de manger moins de viande, remplacez par des alternatives végatales comme les légumineuses.");
+		}
+
+	}
 }
