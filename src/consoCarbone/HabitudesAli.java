@@ -152,4 +152,26 @@ public class HabitudesAli extends Alimentation {
 		this.ecommerce=ec;
 		this.CalculImpactHabAli();
 	}
+	
+	public String toString() {
+	    return ("id : " + super.getid() + ",\nAlimentation de saison : " + this.getsaison() + ",\nAlimentation locale : " + this.getlocaux() + ",\nGaspillage alimentaire : "+this.getgaspillage()+"kg,\nCourse en vrac : "+this.getvrac()+",\nCourse dans des e-commerces : "+this.getecommerce()+",\nimpact : " + this.getImpact()+" TCO2eq\n");
+	}
+	
+	public void conseil() {
+		if(!this.getsaison()) {
+			System.out.println("Essayez de consommer des produits de saison.");
+		}
+		if(!this.getlocaux()) {
+			System.out.println("Essayez de consommer des produits locaux.");
+		}
+		if(!this.getvrac()) {
+			System.out.println("Essayez de faire vos courses en vrac.");
+		}
+		if(!this.getecommerce()) {
+			System.out.println("Essayez de faire vos courses dans des e-commerces.");
+		}
+		if(this.getgaspillage()>25) {
+			System.out.println("Essayez de réduire le gaspillage alimentaire.");
+		}
+	}
 }

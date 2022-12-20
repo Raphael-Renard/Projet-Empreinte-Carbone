@@ -73,5 +73,5 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
 	/** Donne des conseils pour réduire son empreinte carbone.
 	 * La méthode est redéfinie dans les classes filles.
 	 */
-	public void conseil(){}
+	public abstract void conseil();
 }

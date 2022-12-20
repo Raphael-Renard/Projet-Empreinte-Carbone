@@ -12,21 +12,27 @@ public class User {
 	/** poste de consommation carbone alimentaire
 	 */
 	private Alimentation alimentation;
+	
 	/** poste de consommation carbone lié aux dépenses en biens de consommation
 	*/
 	private BienConso bienConso;
+	
 	/** poste de consommation carbone lié au logement
 	*/
 	private Logement logement;
+	
 	/** poste de consommation carbone lié au transport
 	*/
 	private Transport transport;
+	
 	/** poste de consommation carbone lié aux services publics
 	*/
 	private ServicesPublics services;
+	
 	/** permet de moduler l'impact carbone d'alimentation en fonction des habitudes alimentaires
 	*/
 	private HabitudesAli habitudes;
+	
 	/** empreinte carbonne totale de l'utilisateur.rice
 	*/
 	private double empreinte;
@@ -62,7 +68,7 @@ public class User {
 	 * @return empreinte carbone
 	 */
 	private double calculerEmpreinte() {
-		return (alimentation.getImpact()+bienConso.getImpact()+logement.getImpact()+transport.getImpact()+services.getImpact());
+		return (alimentation.getImpact()+habitudes.getImpact()+bienConso.getImpact()+logement.getImpact()+transport.getImpact()+services.getImpact());
 	}
 	
 	/**
@@ -70,6 +76,7 @@ public class User {
 	 */
 	private void detaillerEmpreinte() {
 		System.out.println("L'utilisateur consomme "+alimentation.getImpact()+" à cause de l'alimentation.");
+		System.out.println("L'utilisateur consomme "+habitudes.getImpact()+" à cause de vos habitudes alimentaires.");
 		System.out.println("L'utilisateur consomme "+bienConso.getImpact()+" à cause des dépenses.");
 		System.out.println("L'utilisateur consomme "+logement.getImpact()+" à cause du logement.");
 		System.out.println("L'utilisateur consomme "+transport.getImpact()+" à cause des transports.");
@@ -85,13 +92,14 @@ public class User {
 	public void ordonne () {
 		ArrayList<ConsoCarbone> liste = new ArrayList<ConsoCarbone>();
 		liste.add(alimentation);
+		liste.add(habitudes);
 		liste.add(bienConso);
 		liste.add(logement);
 		liste.add(transport);
 		liste.add(services);
 		Collections.sort(liste);
 		for (ConsoCarbone poste_conso : liste) {
-			System.out.println(poste_conso.getClass().getSimpleName()+", impact : "+poste_conso.getImpact()+"\n");
+			System.out.println(poste_conso.getClass().getSimpleName()+", impact : "+poste_conso.getImpact()+" TCO2eq\n");
 		}
 		System.out.println("Impact max :\n"+Collections.max(liste));
 		Collections.max(liste).conseil(); // pb : se réfère tjrs à la méthode de ConsoCarbone

@@ -118,11 +118,14 @@ public class Alimentation extends ConsoCarbone{
 	 */
 	@Override
 	public void conseil(){
-		if (this.txBoeuf > 0.5){
+		if (this.txBoeuf > 0.3){
 			System.out.println("Essayez de manger moins de boeuf, remplacez par d'autres viandes moins polluantes comme le poulet. Essayez de manger moins de viande, remplacez par des alternatives végatales comme les légumineuses.");
 		}
-		else if (this.txVege < 0.3) {
+		else if (this.txVege < 0.5) {
 			System.out.println("Essayez de manger moins de viande, remplacez par des alternatives végatales comme les légumineuses.");
+		}
+		else {
+			System.out.println("Essayer de ne plus manger de viande pour réduire encore plus votre consommation.");
 		}
 
 	}
