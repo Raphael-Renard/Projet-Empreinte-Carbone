@@ -110,8 +110,12 @@ public class User {
 		liste.add(alimentation);
 		liste.add(habitudes);
 		liste.add(bienConso);
-	//	liste.add(logement);    quelle solution pour comparer ??
-	//	liste.add(transport);
+		for (Logement loge : listeLogement) {   //consoderer la somme des logements ???
+			liste.add(loge);
+		}
+		for (Transport transp : listeTransport) {
+			liste.add(transp);
+		}
 		liste.add(services);
 		Collections.sort(liste);
 		for (ConsoCarbone poste_conso : liste) {
