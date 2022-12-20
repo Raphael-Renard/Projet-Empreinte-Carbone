@@ -1,5 +1,9 @@
 package consoCarbone;
 
+/**
+ * CE est l'énumération des différentes classes énergétiques possibles pour un logement
+ */
+
 public enum CE {
     A(0.005),
     B(0.01),
@@ -9,14 +13,22 @@ public enum CE {
     F(0.08),
     G(0.1);
 
+    /**
+     * coeffcient multiplicatif associé à la classe énergétique
+     */
     private double ace;
     
-    // constructeur
+    /**
+     * Constructeur 
+     */ 
     private CE(double ace){
         this.ace = ace;
     }
     
-    // getter
+    /**
+	 * getter
+	 * @return coeffcient multiplicatif ace associé à la classe énergétique
+	 */
     public double getace() {
     	return this.ace;
     }

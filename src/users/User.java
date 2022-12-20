@@ -4,16 +4,36 @@ import java.util.*;
 
 import consoCarbone.*;
 
-public class User { 
-	//ajouter id?conso globale?
+/**
+ * User est la classe qui associe un.e utilisateur.rice à sa consommation carbone
+ */
+public class User {
+	//private int id;
+	/** poste de consommation carbone alimentaire
+	 */
 	private Alimentation alimentation;
+	/** poste de consommation carbone lié aux dépenses en biens de consommation
+	*/
 	private BienConso bienConso;
+	/** poste de consommation carbone lié au logement
+	*/
 	private Logement logement;
+	/** poste de consommation carbone lié au transport
+	*/
 	private Transport transport;
+	/** poste de consommation carbone lié aux services publics
+	*/
 	private ServicesPublics services;
+	/** permet de moduler l'impact carbone d'alimentation en fonction des habitudes alimentaires
+	*/
 	private HabitudesAli habitudes;
+	/** empreinte carbonne totale de l'utilisateur.rice
+	*/
+	private double empreinte;
 	
-	// constructeur par défaut
+	/** 
+	 * Constructeur par défaut 
+	*/ 
 	public User() {
 		alimentation = new Alimentation();
 		bienConso = new BienConso();
@@ -21,9 +41,12 @@ public class User {
 		transport = new Transport();
 		services = new ServicesPublics();
 		habitudes = new HabitudesAli();
+		empreinte = calculerEmpreinte();
 	}
 
-	// constructeur paramétré
+	/** 
+	 * Constructeur paramétré 
+	*/
 	public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
 		alimentation = new Alimentation(txBoeuf, txVege);
 		habitudes = new HabitudesAli(saison, locaux, gaspillage, vrac, ecommerce);
@@ -31,12 +54,20 @@ public class User {
 		logement = new Logement(superficie, ce);
 		transport = new Transport(possede, taille, kilomAnnee, amortissement, fabrication);
 		services = new ServicesPublics();
+		empreinte = calculerEmpreinte();
 	}
 	
+	/**
+	 * Méthode qui calcule l'empreinte carbone de l'utilisateur.rice
+	 * @return empreinte carbone
+	 */
 	private double calculerEmpreinte() {
 		return (alimentation.getImpact()+bienConso.getImpact()+logement.getImpact()+transport.getImpact()+services.getImpact());
 	}
 	
+	/**
+	 * Méthode qui détaille l'empreinte carbone de l'utilisateur.rice pour chaque poste de consommation
+	 */
 	private void detaillerEmpreinte() {
 		System.out.println("L'utilisateur consomme "+alimentation.getImpact()+" à cause de l'alimentation.");
 		System.out.println("L'utilisateur consomme "+bienConso.getImpact()+" à cause des dépenses.");
@@ -47,8 +78,10 @@ public class User {
 
 	}
 
-	// méthode qui ordonne les consommations carbone de l’utilisateur.rice dans une liste
-	// puis présente l’information obtenue à ce.tte dernier.e
+	/**
+	 *  Méthode qui ordonne les consommations carbone de l’utilisateur.rice dans une liste
+	 * puis présente l’information obtenue à ce.tte dernier.e
+	*/ 
 	public void ordonne () {
 		ArrayList<ConsoCarbone> liste = new ArrayList<ConsoCarbone>();
 		liste.add(alimentation);

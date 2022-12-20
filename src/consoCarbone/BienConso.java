@@ -2,20 +2,26 @@ package consoCarbone;
 
 
 /**
- * BienConso est la classe qui définit un poste de consommation carbone de l’utilisateur.rice
-concernant ses dépenses en biens de consommation
+ * BienConso est la classe qui définit un poste de consommation carbone de l’utilisateur.rice concernant ses dépenses en biens de consommation
  */
 
 public class BienConso extends ConsoCarbone{
-	private double montant; //depenses annuelles en euros
+	/** dépenses annuelles en euros
+	 */
+    private double montant;
 	
-    // constructeur par defaut
+
+    /** 
+     * Constructeur par défaut
+	 */
 	public BienConso(){
         this(0);
         this.CalculImpactDep();
     }
 
-    // constructeur parametre
+    /** 
+     * Constructeur paramétré
+     */
     public BienConso(double montant){
     	if(montant<0) {
     		System.out.println("Montant negatif. On initialise donc à 0");
@@ -28,26 +34,39 @@ public class BienConso extends ConsoCarbone{
     }
 
     /** Calcule de l'impact des dépenses en terme de gaz a effets de serre en TCO2eq.
-    Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
+     * Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
     */
     public void CalculImpactDep(){
         super.setimpact(this.montant / 1750);
     }
     
-    // getter
+
+
+    /**
+	 * getter
+	 * @return montant des dépenses annuelles en euros
+	 */
     public double getMontant() {
 		return this.montant;
 	}
     
-    // setter
+    /**
+	 * setter
+	 * @param m est le montant
+	 */
     public void setmontant(double m) {
 		this.montant=m;
+        this.CalculImpactDep();
 	}
     
+    /**
+     * Affiche l'empreinte carbone de l'utilisateur.rice et la compare avec celle d'un.e français.e moyen.ne
+     */
     public static void CarbonMoyBien(BienConso L){
 	    System.out.println("Votre empreinte carbone moyenne est de " + L.getImpact() + "T CO2 eq.");
 	    System.out.println("En moyenne les francais.e.s consomment 0.763 T CO2 eq à cause des vêtements, 0.682 à cause des autres biens et services et 1.180 à cause des achats et usages Internet et technologies.");
     }
+
     /** Réécriture pour afficher une comsommation des dépenses avec ses paramètres
 	 */
     @Override
@@ -55,6 +74,10 @@ public class BienConso extends ConsoCarbone{
     	return ("id : "+super.getid()+",\nmontant : " + montant + " euros,\nimpact des depenses : " + this.getImpact()+" TCO2eq\n");
     }
 
+
+    /** 
+	 * Méthode qui donne des conseils pour réduire son empreinte carbone
+	 */
     @Override
     public void conseil(){
 		if (this.montant > 2500){

@@ -20,13 +20,17 @@ public class Transport extends ConsoCarbone{ //javadoc
 	private int amortissement;
 	
 
-	// constructeur par defaut
+	/** 
+	 * Constructeur par défaut 
+	*/ 
 	public Transport(){
         this(false, Taille.P, 0, 0, 0);
 		this.CalculImpactTransp(0);
     }
 
-    // constructeur parametre
+    /** 
+	 * Constructeur paramétré
+    */ 
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication){
     	if(kilomAnnee<0 | amortissement<0 | fabrication<0) {
     		System.out.println("Erreur kilomAnnee, amortissement ou fabrication negative. On initialise tout à 0");
@@ -45,42 +49,73 @@ public class Transport extends ConsoCarbone{ //javadoc
     	}
     }
 
-	// getter
+	/**
+	 * getter
+	 * @return durée de conservation du véhicule
+	 */
 	public int getamortissement() {
 		return this.amortissement;
 	}
     
+	/**
+	 * getter
+	 * @return nombre de km parcourus par an
+	 */
 	public int getkilom() {
 		return this.kilomAnnee;
 	}
 
+	/**
+	 * getter
+	 * @return boolean indiquant si l’utilisateur.rice possède une voiture
+	 */
 	public boolean getpossede() {
 		return this.possede;
 	}
 
+	/**
+	 * getter
+	 * @return taille du véhicule
+	 */
 	public Taille gettaille() {
 		return this.taille;
 	}
 
-	// setter
+
+	/**
+	 * setter
+	 * @param a est la durée de conservation du véhicule en années
+	 */
     public void setamortissement(int a) {
 		this.amortissement = a;
     }
 	
+	/**
+	 * setter
+	 * @param k est le nombre de kilomètres parcourus par an
+	 */
     public void setkilom(int k) {
 		this.kilomAnnee = k;
     }
     
+	/**
+	 * setter
+	 * @param p est le boolean représentant si l'utilisateur.ice possède ou non une voiture
+	 */
     public void setpossede(boolean p) {
 		this.possede = p;
     }
     
+	/**
+	 * setter
+	 * @param t est la taille de la voiture
+	 */
     public void settaille(Taille t) {
 		this.taille = t;
 	}
     
     /** Calcule de l'impact des transports en terme de gaz a effets de serre en TCO2eq.
-    Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
+	 * Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
     */
 	public void CalculImpactTransp(double fabrication){
         if (this.possede) {
@@ -92,6 +127,9 @@ public class Transport extends ConsoCarbone{ //javadoc
         }
     }
 
+	/**
+	 Affiche la consommation du Transport en paramètre. Puis affiche la distribution de l'impact moyen d'un français à cause des transports.
+	 */
     public static void CarbonMoyTransp(Transport T, double fabrication){
     	System.out.println("Votre empreinte carbone moyenne en transports est de ");
     	if (T.possede) {
@@ -106,6 +144,7 @@ public class Transport extends ConsoCarbone{ //javadoc
     	System.out.println("En moyenne les francais.e.s consomment 1.972 T CO2 eq à cause de leur(s) voiture(s), 0.480 à cause des voyages en avion, 0.383 pour cause de fret et messagerie et 0.085 à cause des voyages en train et bus.");
 
 	}  
+
     /** Réécriture pour afficher une consommation des transports avec ses paramètres
 	 */
     @Override
@@ -114,6 +153,9 @@ public class Transport extends ConsoCarbone{ //javadoc
 	}
 	
 
+	/** 
+	 * Méthode qui donne des conseils pour réduire son empreinte carbone
+	 */
 	@Override
 	public void conseil(){
 		if (this.taille == Taille.G){

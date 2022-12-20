@@ -1,10 +1,11 @@
 package consoCarbone;
 
+/**
+ * Main est la classe qui contient le programme principal
+ */
 public class Main { //classe contenant une méthode main permetant de faire des tests et de lancer le programme
 
 	public static void main(String[] args) {
-
-		
 
 		// tests polymorphisme
 

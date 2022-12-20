@@ -5,8 +5,14 @@ package consoCarbone;
 concernant son utilisation des services publics
  */
 public class ServicesPublics extends ConsoCarbone{
+	/** empreinte carbone induite par les services publics 
+	*/
 	static final double empreinte=1.5;
-	//singleton
+
+	/** 
+	 * Constructeur par défaut 
+	 * (design pattern : singleton)
+	*/ 
 	public ServicesPublics() {
 		super.setimpact(empreinte);
 	}
