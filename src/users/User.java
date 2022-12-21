@@ -164,12 +164,4 @@ public class User {
 		System.out.println("Impact max :\n"+Collections.max(liste));
 		Collections.max(liste).conseil();
 	}
-
-	public static void main(String[] args) {
-		//User utilisateur = new User(0.4, 0.5, false, false, 259, true, true,1500, 200,CE.A, true, Taille.P, 1500, 10, 0.4);
-		User use = new User();
-		use.ordonne();
-		//System.out.println(use.listeLogement);
-		//utilisateur.ordonne();
-	}
 } 
