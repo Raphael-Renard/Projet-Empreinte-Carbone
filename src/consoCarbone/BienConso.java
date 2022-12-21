@@ -28,26 +28,48 @@ public class BienConso extends ConsoCarbone{
 		System.out.print(" Entrez le montant des dépenses annuelles :");
 		String str1 = sc.nextLine();
 		//sc.close();
-		if(Double.valueOf(str1)<0) {
-    		System.out.println("Montant negatif. On initialise donc à 0");
-    		this.montant=0;
-    	}
-		this.montant = Double.valueOf(str1);
-        this.CalculImpactDep();
+		
+		try {
+			double montant = Double.valueOf(str1);
+			if(montant<0) {
+				throw new Exception("erreur dans le montant");
+			}
+			else {
+				this.montant = montant;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise le montant à 0.");
+			this.montant=0;
+		}
+		catch (Exception e) {
+			System.out.println("Montant négatif. On initialise donc à 0");
+			this.montant=0;
+		}
+		finally {
+			this.CalculImpactDep();
+		}
     }
 
     /** 
      * Constructeur paramétré
      */
     public BienConso(double montant){
-    	if(montant<0) {
-    		System.out.println("Montant negatif. On initialise donc à 0");
+		try {
+			if(montant<0) {
+				throw new Exception("erreur dans le montant");
+			}
+			else {
+				this.montant = montant;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Montant negatif. On initialise donc à 0");
     		this.montant=0;
-    	}
-    	else{
-    		this.montant = montant;
-    	}
-        this.CalculImpactDep();
+		}
+		finally {
+			this.CalculImpactDep();
+		}
     }
 
     /** Calcule de l'impact des dépenses en terme de gaz a effets de serre en TCO2eq.
@@ -72,8 +94,18 @@ public class BienConso extends ConsoCarbone{
 	 * @param m est le montant
 	 */
     public void setmontant(double m) {
-		this.montant=m;
-        this.CalculImpactDep();
+		try {
+			if(m<0) {
+				throw new Exception("erreur dans le montant");
+			}
+			else {
+				this.montant = m;
+				this.CalculImpactDep();
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans le nouveau montant. Changement non accepté.");
+		}
 	}
     
     /**

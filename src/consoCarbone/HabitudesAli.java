@@ -31,6 +31,7 @@ public class HabitudesAli extends Alimentation {
 	        this(0,0,false,false,20,false,false);
 	        this.CalculImpactAli();
 	  }
+	  
 	 /**
 	     * Constructeur interactif
 	     * @param sc2 scanner utilisé pour interagir avec l'utilisateur
@@ -47,11 +48,24 @@ public class HabitudesAli extends Alimentation {
 		String str4 = sc2.nextLine();
 		System.out.print(" Faites vous vos courses dans des e-commerces ? (Y/n) :");
 		String str5 = sc2.nextLine();
-    	if(Double.valueOf(str3)<0) {
-    		this.gaspillage = 0;
-    	}else {
-    		this.gaspillage = Double.valueOf(str3);
-    	}
+		try {
+			Double g = Double.valueOf(str3);
+			if(Double.valueOf(str3)<0) {
+				throw new Exception("erreur dans le nb de kg gaspillés");
+			}
+			else {
+				this.gaspillage = g;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise le gaspillage à 0.");
+			this.gaspillage=0;
+		}
+		catch(Exception e) {
+			this.gaspillage = 0;
+			System.out.println("Réponse non valide (gaspillage<0), initialisation à 0");
+		}
+		finally {
 		this.saison=false;
 		this.locaux=false;
 		this.vrac=false;
@@ -93,6 +107,7 @@ public class HabitudesAli extends Alimentation {
 	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
 		}
 		this.CalculImpactAli();
+		}
     }
 
 	/** 
@@ -100,22 +115,30 @@ public class HabitudesAli extends Alimentation {
     */ 
     public HabitudesAli(double txBoeuf, double txVege,boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce){
     	super(txBoeuf,txVege);
-    	if(gaspillage<0) {
-    		System.out.println("erreur dans les valeurs\nOn initialise donc à 0 le gaspillage et faux le reste.");
+		try{
+			if(gaspillage<0) {
+				throw new Exception("erreur dans le nb de kg gaspillés");
+			}
+			else {
+				this.saison = saison;
+				this.locaux = locaux;
+				this.vrac = vrac;
+				this.ecommerce = ecommerce;
+				this.gaspillage = gaspillage;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans le nb de kg gaspillés. On initialise donc à 0 le gaspillage et faux le reste.");
 			this.saison = false;
 			this.locaux = false;
 			this.vrac = false;
 			this.ecommerce = false;
 			this.gaspillage = 0;
-    	}
-    	else {
-			this.saison = saison;
-			this.locaux = locaux;
-			this.vrac = vrac;
-			this.ecommerce = ecommerce;
-			this.gaspillage = gaspillage;
-    	}
-		this.CalculImpactHabAli();
+
+		}
+		finally {
+			this.CalculImpactHabAli();
+		}
 	}
 
 
@@ -197,8 +220,18 @@ public class HabitudesAli extends Alimentation {
 	 * @param g est le nombre de kilos de nourriture gaspillée par an
 	 */
 	public void setgaspillage(double g) {
-		this.gaspillage=g;
-		this.CalculImpactHabAli();
+		try {
+			if(g<0) {
+				throw new Exception("erreur dans le nb de kg gaspillés");
+			}
+			else {
+				this.gaspillage=g;
+				this.CalculImpactHabAli();
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans le nb de kg gaspillés. Changement non accepté.");
+		}
 	}
 
 	/**

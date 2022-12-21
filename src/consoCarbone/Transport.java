@@ -43,42 +43,86 @@ public class Transport extends ConsoCarbone{ //javadoc
 		String str4 = sc.nextLine();
 		System.out.print(" Saisir les émissions nécessaires à la fabrication de la voiture :");
 		String str5 = sc.nextLine();
-		if(Integer.valueOf(str2)<0 | Integer.valueOf(str4)<0 | Double.valueOf(str5)<0) {
-    		System.out.println("Erreur kilomAnnee, amortissement ou fabrication negative. On initialise tout à 0");
+		try {
+			Integer k = Integer.valueOf(str2);
+			Integer a = Integer.valueOf(str4);
+			Double f = Double.valueOf(str5);
+			if(k<0 | a<0 | f<0) {
+				throw new Exception("erreur dans les valeurs numériques");
+			}
+			else {
+				this.possede = true;
+				this.taille = Taille.valueOf(str1);
+				this.kilomAnnee = k;
+				this.amortissement = a;
+				this.CalculImpactTransp(f);
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise tout à 0.");
+			this.possede = false;
+			this.taille = Taille.P;
+    		this.kilomAnnee = 0;
+    		this.amortissement = 0;
+    		this.CalculImpactTransp(0);
+		}
+		catch (IllegalArgumentException iae) {
+			System.out.print("Input non lisible. On initialise la taille à G.");
+			this.possede = true;
+			this.taille = Taille.G;
+			try{
+				if(Integer.valueOf(str2)<0 | Integer.valueOf(str4)<0 | Double.valueOf(str5)<0) {
+					throw new Exception("erreur dans les valeurs numériques");
+				}
+				else {
+					this.kilomAnnee = Integer.valueOf(str2);
+					this.amortissement = Integer.valueOf(str4);
+					this.CalculImpactTransp(Double.valueOf(str5));
+				}
+			}
+			catch(Exception e){
+				System.out.println("Erreur kilomAnnee, amortissement ou fabrication négative. On initialise tout à 0");
+				this.possede = false;
+				this.taille = Taille.P;
+				this.kilomAnnee = 0;
+				this.amortissement = 0;
+				this.CalculImpactTransp(0);
+			}
+		}
+		catch(Exception e){
+			System.out.println("Erreur kilomAnnee, amortissement ou fabrication négative. On initialise tout à 0");
     		this.possede = false;
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
     		this.CalculImpactTransp(0);
-    	}
-    	else {
-	        this.possede = true;
-			this.taille = Taille.valueOf(str1);
-			this.kilomAnnee = Integer.valueOf(str2);
-			this.amortissement = Integer.valueOf(str4);
-			this.CalculImpactTransp(Double.valueOf(str5));
-    	}
+		}
     }
 
     /** 
 	 * Constructeur paramétré
     */ 
     public Transport(boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication){
-    	if(kilomAnnee<0 | amortissement<0 | fabrication<0) {
-    		System.out.println("Erreur kilomAnnee, amortissement ou fabrication negative. On initialise tout à 0");
+		try {
+			if(kilomAnnee<0 | amortissement<0 | fabrication<0) {
+				throw new Exception("erreur dans les valeurs numériques");
+			}
+			else {
+				this.possede = true;
+				this.taille = taille;
+				this.kilomAnnee = kilomAnnee;
+				this.amortissement = amortissement;
+				this.CalculImpactTransp(fabrication);
+			}
+		}
+		catch(Exception e){
+			System.out.println("Erreur kilomAnnee, amortissement ou fabrication négative. On initialise tout à 0");
     		this.possede = false;
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
     		this.CalculImpactTransp(0);
-    	}
-    	else {
-	        this.possede = possede;
-			this.taille = taille;
-			this.kilomAnnee = kilomAnnee;
-			this.amortissement = amortissement;
-			this.CalculImpactTransp(fabrication);
-    	}
+		}
     }
 
 	/**
@@ -118,16 +162,38 @@ public class Transport extends ConsoCarbone{ //javadoc
 	 * setter
 	 * @param a est la durée de conservation du véhicule en années
 	 */
-    public void setamortissement(int a) {
-		this.amortissement = a;
+    public void setamortissement(int a, double fabrication) {
+		try {
+			if(a<0|fabrication<0) {
+				throw new Exception("erreur dans l'amortissement ou la fabrication");
+			}
+			else {
+				this.amortissement = a;
+				this.CalculImpactTransp(fabrication);
+			}
+		}
+		catch(Exception e){
+			System.out.println("Amortissement ou fabrication négative. Le changement n'est pas accepté.");
+		}
     }
 	
 	/**
 	 * setter
 	 * @param k est le nombre de kilomètres parcourus par an
 	 */
-    public void setkilom(int k) {
-		this.kilomAnnee = k;
+    public void setkilom(int k, double fabrication) {
+		try {
+			if(k<0|fabrication<0) {
+				throw new Exception("erreur dans l'amortissement ou la fabrication");
+			}
+			else {
+				this.kilomAnnee = k;
+				this.CalculImpactTransp(fabrication);
+			}
+		}
+		catch(Exception e){
+			System.out.println("KilomAnnee ou fabrication négative. Le changement n'est pas accepté.");
+		}
     }
     
 	/**
@@ -150,13 +216,20 @@ public class Transport extends ConsoCarbone{ //javadoc
 	 * Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
     */
 	public void CalculImpactTransp(double fabrication){
-        if (this.possede) {
-        	super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
-        }
-        
-        else {
-        	super.setimpact( 0);
-        }
+        try{
+			if (this.possede) {
+				super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
+			}
+			
+			else {
+				super.setimpact( 0);
+			}
+		}
+		catch (ArithmeticException e) {
+			System.out.println("Division par 0. Amortissement initialisé à 1.");
+			this.amortissement = 1;
+			super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication);
+		}
     }
 
 	/**
@@ -166,15 +239,21 @@ public class Transport extends ConsoCarbone{ //javadoc
     	System.out.println("Votre empreinte carbone moyenne en transports est de ");
     	if (T.possede) {
     		System.out.println(1.93*T.kilomAnnee*0.0001 + "T C02 eq à cause du kilometrage et ");
-    		System.out.println(fabrication / T.amortissement +"T C02 eq à cause de la fabrication de la voiture.");
-    	}
+    		try{
+				System.out.println(fabrication / T.amortissement +"T C02 eq à cause de la fabrication de la voiture.");
+    	
+			}
+			catch (ArithmeticException e) {
+				System.out.println(fabrication +"T C02 eq à cause de la fabrication de la voiture.");
+				T.amortissement = 1;
+			}
+		}	
     	
     	else {
     		System.out.println("0 T C02 eq.");
     	}
 	
     	System.out.println("En moyenne les francais.e.s consomment 1.972 T CO2 eq à cause de leur(s) voiture(s), 0.480 à cause des voyages en avion, 0.383 pour cause de fret et messagerie et 0.085 à cause des voyages en train et bus.");
-
 	}  
 
     /** Réécriture pour afficher une consommation des transports avec ses paramètres

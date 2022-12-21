@@ -30,32 +30,61 @@ public class Logement extends ConsoCarbone{
     public Logement(Scanner sc){
     	System.out.print(" Entrez la superficie en m^2 :");
 		String str1 = sc.nextLine();
-		System.out.print(" Entrez la classe énergétique du logement (A/B/C/D/E/F) :");
+		System.out.print(" Entrez la classe énergétique du logement (A/B/C/D/E/F/G) :");
 		String str2 = sc.nextLine();
-    	if(Integer.valueOf(str1)<0) {
-    		System.out.println("Superficie negative. On initialise donc à 0");
-    		this.superficie=0;
-    	}
-    	else {
-    		this.superficie = Integer.valueOf(str1);
-    	}
-    	this.ce = CE.valueOf(str2);
-		this.CalculImpactLog();
+    	
+		try {
+			Integer superficie = Integer.valueOf(str1);
+			
+			if(superficie<0) {
+				throw new Exception("erreur dans la superficie");
+			}
+			else {
+				this.superficie=superficie;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise la superficie à 0.");
+			this.superficie=0;
+		}
+		catch (Exception e) {
+			System.out.println("Superficie négative. On initialise donc à 0.");
+			this.superficie=0;
+		}
+		finally {
+			try {
+			this.ce = CE.valueOf(str2);
+			}
+			catch(Exception ex) {  
+				System.out.print("Input non lisible. On initialise la CE à G.");
+				this.ce=CE.G;
+			}
+			finally{
+			this.CalculImpactLog();
+			}
+		}
     }
 
 	/** 
 	 * Constructeur paramétré
 	 */ 
     public Logement(int superficie, CE ce){
-    	if(superficie<0) {
-    		System.out.println("Superficie negative. On initialise donc à 0");
-    		this.superficie=0;
-    	}
-    	else {
-    		this.superficie = superficie;
-    	}
-        this.ce = ce;
-		this.CalculImpactLog();
+		try {			
+			if(superficie<0) {
+				throw new Exception("erreur dans la superficie");
+			}
+			else {
+				this.superficie=superficie;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Superficie négative. On initialise donc à 0.");
+			this.superficie=0;
+		}
+		finally {
+			this.ce = ce;
+			this.CalculImpactLog();
+		}
     }
 
     /** Calcule de l'impact du logement en terme de gaz a effets de serre en TCO2eq.
@@ -63,7 +92,7 @@ public class Logement extends ConsoCarbone{
      */
     public void CalculImpactLog(){
     	double tmp = this.superficie * this.ce.getace();
-        super.setimpact(tmp); //impact definie dans la classe mère
+        super.setimpact(tmp); //impact défini dans la classe mère
     }
     
 	/**
@@ -87,8 +116,21 @@ public class Logement extends ConsoCarbone{
 	 * @param s est la valeur à affecter à superficie
 	 */
 	public void setsuperficie(int s) {
-		this.superficie = s;
-		this.CalculImpactLog();
+		try {			
+			if(s<0) {
+				throw new Exception("erreur dans la superficie");
+			}
+			else {
+				this.superficie=s;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Superficie négative. On initialise donc à 0.");
+			this.superficie=0;
+		}
+		finally {
+			this.CalculImpactLog();
+		}
 	}
 	
 	/**

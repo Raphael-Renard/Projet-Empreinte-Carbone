@@ -33,7 +33,9 @@ public class Alimentation extends ConsoCarbone{
         this.CalculImpactAli();
 	}
 
-	   
+	/** 
+	 * Constructeur intéractif
+	 */
     public Alimentation(Scanner sc){
 		System.out.print(" Entrez le taux de repas (une valeur entre 0 et 1) à base de boeuf :");
 		String str1 = sc.nextLine();
@@ -41,7 +43,7 @@ public class Alimentation extends ConsoCarbone{
 		String str2 = sc.nextLine();
     	try {
 			double txBoeuf = Double.valueOf(str1),txVege = Double.valueOf(str2);
-			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont réalistes
+			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {
 				throw new Exception("erreur dans les taux");
 			}
 			else {
@@ -70,7 +72,7 @@ public class Alimentation extends ConsoCarbone{
     */ 
     public Alimentation(double txBoeuf, double txVege){
 		try {
-			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont réalistes
+			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {
 				throw new Exception("erreur dans les taux");
 			}
 			else {
@@ -128,13 +130,11 @@ public class Alimentation extends ConsoCarbone{
 			}
 			else {
 				this.txBoeuf = tb;
+				this.CalculImpactAli();
 			}
 		}
 		catch (Exception e) {
 			System.out.println("Erreur dans le nouveau taux. Changement non accepté.");
-		}
-		finally {
-			this.CalculImpactAli();
 		}
 	}
 	
@@ -149,13 +149,11 @@ public class Alimentation extends ConsoCarbone{
 			}
 			else {
 				this.txVege = tv;
+				this.CalculImpactAli();
 			}
 		}
 		catch (Exception e) {
 			System.out.println("Erreur dans le nouveau taux. Changement non accepté.");
-		}
-		finally {
-			this.CalculImpactAli();
 		}
 	}
 

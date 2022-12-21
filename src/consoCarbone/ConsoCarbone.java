@@ -30,7 +30,7 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
      * @return -1 si l'impact du premier objet est plus petit que le second objet comparé, 1 si il est plus grand et 0 sinon.
      * @param objet que l'on veut comparer avec l'objet courant
     */
-    public int compareTo(ConsoCarbone o){  //return int
+    public int compareTo(ConsoCarbone o){
     	double tmp = this.impact - o.getImpact();
     	if (tmp <0) {return -1;}
     	else if (tmp >0) {return 1;}
@@ -42,7 +42,17 @@ public abstract class ConsoCarbone implements Comparable<ConsoCarbone>{
 	 * @param i est l'impact carbone
 	 */
     public void setimpact(double i) {
-		this.impact=i;
+		try {
+			if(i<0) {
+				throw new Exception("erreur dans l'impact");
+			}
+			else {
+				this.impact = i;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans le nouvel impact. Changement non accepté.");
+		}
 	}
     
 	/**
