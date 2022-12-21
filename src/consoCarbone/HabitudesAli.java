@@ -110,6 +110,79 @@ public class HabitudesAli extends Alimentation {
 		}
     }
 
+    /**
+	 * Constructeur interactif sans print
+	 * @param i peut être n'importe quel entier
+	*/
+    public HabitudesAli(Scanner sc2, int i){
+    	super(sc2,i);
+		String str1 = sc2.nextLine();
+		String str2 = sc2.nextLine();
+		String str3 = sc2.nextLine();
+		String str4 = sc2.nextLine();
+		String str5 = sc2.nextLine();
+		try {
+			Double g = Double.valueOf(str3);
+			if(Double.valueOf(str3)<0) {
+				throw new Exception("erreur dans le nb de kg gaspillés");
+			}
+			else {
+				this.gaspillage = g;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise le gaspillage à 0.");
+			this.gaspillage=0;
+		}
+		catch(Exception e) {
+			this.gaspillage = 0;
+			System.out.println("Réponse non valide (gaspillage<0), initialisation à 0");
+		}
+		finally {
+		this.saison=false;
+		this.locaux=false;
+		this.vrac=false;
+		this.ecommerce=false;
+		switch( str1 ) {
+		    case "Y":
+		        this.saison=true;
+		        break;
+		    case "n":
+		        break;
+		    default:
+		        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		switch( str2 ) {
+	    case "Y":
+	        this.locaux=true;
+	        break;
+	    case "n":
+	        break;
+	    default:
+	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		switch( str4 ) {
+	    case "Y":
+	        this.vrac=true;
+	        break;
+	    case "n":
+	        break;
+	    default:
+	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		switch( str5 ) {
+	    case "Y":
+	        this.ecommerce=true;
+	        break;
+	    case "n":
+	        break;
+	    default:
+	        System.out.println("Réponse non valide (Y ou n), initialisation à faux");
+		}
+		this.CalculImpactAli();
+		}
+    }
+    
 	/** 
 	 * Constructeur paramétré
     */ 

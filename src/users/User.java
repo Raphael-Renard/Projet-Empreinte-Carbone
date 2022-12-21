@@ -1,6 +1,7 @@
 package users;
 
 import java.util.*;
+import java.io.*;
 
 import consoCarbone.*;
 
@@ -29,10 +30,6 @@ public class User {
 	*/
 	private ServicesPublics services;
 	
-	///** permet de moduler l'impact carbone d'alimentation en fonction des habitudes alimentaires
-	//*/
-	//private HabitudesAli habitudes;
-	
 	/** empreinte carbonne totale de l'utilisateur.rice
 	*/
 	private double empreinte;
@@ -54,7 +51,6 @@ public class User {
 	/** 
 	 * Constructeur paramétré sans habitudes alimentaires
 	*/
-
 	public User(double txBoeuf, double txVege,double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
 		alimentation = new Alimentation(txBoeuf, txVege);
 		bienConso = new BienConso(montant);
@@ -83,7 +79,6 @@ public class User {
      * @param sc1 scanner utilisé pour interagir avec l'utilisateur
      */
 	public User(Scanner sc1) {
-		//Scanner sc1 = new Scanner(System.in);
 		System.out.println(" <<Initialisation d'un utilisateur>>");
 		System.out.println("<<Initialisation de l'alimentation>>");
 		alimentation = new HabitudesAli(sc1);
@@ -107,8 +102,64 @@ public class User {
 		services = new ServicesPublics();
 		empreinte = calculerEmpreinte();
 		System.out.println(" <<Fin de l'initialisation>>");
-	//	sc1.close();
 	}
+	
+	/**
+     * Constructeur par lecture d'un fichier texte
+     * @param adresse chemin d'accès du fichier
+	 * 
+	 * Le fichier doit être présenté comme suit :
+	 * taux de repas à base de boeuf (entre 0 et 1)
+	 * taux de repas végétarien (entre 0 et 1)
+	 * produits de saison ? (Y/n)
+	 * produits locaux ? (Y/n)
+	 * kg de nourriture gaspillée par an
+	 * courses en vrac ? (Y/n)
+	 * courses dans des e-commerces ? (Y/n)
+	 * dépenses annuelles
+	 * nombre d'appartements
+	 * superficie
+	 * classe énergétique
+	 * [répéter autant de fois qu'il y a de logements]
+	 * nombre de voitures
+	 * taille de la voiture
+	 * nb de km parcourus par an
+	 * durée de conservation du véhicule
+	 * émissions nécessaires à la fabrication de la voiture
+	 * [répéter autant de fois qu'il y a de voitures]
+     */
+	public User(String adresse) {
+		try{
+			File doc = new File(adresse);
+			Scanner sc1 = new Scanner(doc);
+			alimentation = new HabitudesAli(sc1,1);
+			bienConso = new BienConso(sc1,1);
+			listeLogement = new ArrayList<Logement>();
+			String str3 = sc1.nextLine(); // condition >0 ou pas
+			for (int i=0; i<Integer.valueOf(str3);i++) {
+				listeLogement.add( new Logement(sc1,1));
+			}
+			listeTransport = new ArrayList<Transport>();
+			str3 = sc1.nextLine(); // condition >0 ou pas
+			for (int i=0; i<Integer.valueOf(str3);i++) {
+
+				listeTransport.add(new Transport(sc1,1));
+			}
+			services = new ServicesPublics();
+			empreinte = calculerEmpreinte();
+			sc1.close();
+		}
+		catch(FileNotFoundException e) {System.out.println("file not found");}
+	}
+	
+	/**
+	 * 
+	 * @return empreinte de l'utilisateur
+	 */
+	public double getempreinte() {
+		return this.empreinte;
+	}
+	
 	/**
 	 * Méthode qui calcule l'empreinte carbone de l'utilisateur.rice
 	 * @return empreinte carbone
@@ -128,7 +179,7 @@ public class User {
 	/**
 	 * Méthode qui détaille l'empreinte carbone de l'utilisateur.rice pour chaque poste de consommation
 	 */
-	private void detaillerEmpreinte() {
+	public void detaillerEmpreinte() {
 		System.out.println("L'utilisateur consomme "+alimentation.getImpact()+" à cause de l'alimentation.");
 		System.out.println("L'utilisateur consomme "+bienConso.getImpact()+" à cause des dépenses.");
 		for (Logement loge : listeLogement) {
@@ -150,7 +201,7 @@ public class User {
 		ArrayList<ConsoCarbone> liste = new ArrayList<ConsoCarbone>();
 		liste.add(alimentation);
 		liste.add(bienConso);
-		for (Logement loge : listeLogement) {   //consoderer la somme des logements ???
+		for (Logement loge : listeLogement) { 
 			liste.add(loge);
 		}
 		for (Transport transp : listeTransport) {
@@ -163,5 +214,37 @@ public class User {
 		}
 		System.out.println("Impact max :\n"+Collections.max(liste));
 		Collections.max(liste).conseil();
+	}
+
+	public void modifUser(Scanner sc) {
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 && rep !=3 && rep !=4 && rep!= 0) {
+			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
+			System.out.println("Quel type de consommation voulez vous modifier ?");
+			System.out.println("Tapez 1 pour modifiez la consommation liée à l'Alimentation,");
+			System.out.println("Tapez 2 pour modifiez la consommation liée aux dépenses,");
+			System.out.println("Tapez 3 pour modifiez la consommation liée au Logement,"); //attention liste
+			System.out.println("Tapez 4 pour modifiez la consommation liée aux Transports : "); //attention liste
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+		case 1:
+			this.alimentation.modif(sc);
+			break;
+		case 2:
+			this.bienConso.modif(sc);
+			break;
+		case 3:
+			
+		default:			
+		}
 	}
 } 

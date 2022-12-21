@@ -99,6 +99,71 @@ public class Transport extends ConsoCarbone{ //javadoc
 		}
     }
 
+	
+	/**
+     * Constructeur interactif sans print
+     * @param i peut être n'importe quel entier
+     */
+	public Transport(Scanner sc, int i){
+		String str1 = sc.nextLine();
+		String str2 = sc.nextLine();
+		String str4 = sc.nextLine();
+		String str5 = sc.nextLine();
+		try {
+			Integer k = Integer.valueOf(str2);
+			Integer a = Integer.valueOf(str4);
+			Double f = Double.valueOf(str5);
+			if(k<0 | a<0 | f<0) {
+				throw new Exception("erreur dans les valeurs numériques");
+			}
+			else {
+				this.possede = true;
+				this.taille = Taille.valueOf(str1);
+				this.kilomAnnee = k;
+				this.amortissement = a;
+				this.CalculImpactTransp(f);
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise tout à 0.");
+			this.possede = false;
+			this.taille = Taille.P;
+    		this.kilomAnnee = 0;
+    		this.amortissement = 0;
+    		this.CalculImpactTransp(0);
+		}
+		catch (IllegalArgumentException iae) {
+			System.out.print("Input non lisible. On initialise la taille à G.");
+			this.possede = true;
+			this.taille = Taille.G;
+			try{
+				if(Integer.valueOf(str2)<0 | Integer.valueOf(str4)<0 | Double.valueOf(str5)<0) {
+					throw new Exception("erreur dans les valeurs numériques");
+				}
+				else {
+					this.kilomAnnee = Integer.valueOf(str2);
+					this.amortissement = Integer.valueOf(str4);
+					this.CalculImpactTransp(Double.valueOf(str5));
+				}
+			}
+			catch(Exception e){
+				System.out.println("Erreur kilomAnnee, amortissement ou fabrication négative. On initialise tout à 0");
+				this.possede = false;
+				this.taille = Taille.P;
+				this.kilomAnnee = 0;
+				this.amortissement = 0;
+				this.CalculImpactTransp(0);
+			}
+		}
+		catch(Exception e){
+			System.out.println("Erreur kilomAnnee, amortissement ou fabrication négative. On initialise tout à 0");
+    		this.possede = false;
+			this.taille = Taille.P;
+    		this.kilomAnnee = 0;
+    		this.amortissement = 0;
+    		this.CalculImpactTransp(0);
+		}
+    }
     /** 
 	 * Constructeur paramétré
     */ 

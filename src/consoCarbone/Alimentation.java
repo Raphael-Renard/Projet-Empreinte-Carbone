@@ -27,6 +27,7 @@ public class Alimentation extends ConsoCarbone{
 
 	/**
 	 * Constructeur par défaut donnant une consommation maximum
+	 * @param sc scanner utilisé pour interagir avec l'utilisateur
 	 */
 	public Alimentation(){
         this(1,0);
@@ -66,7 +67,39 @@ public class Alimentation extends ConsoCarbone{
 		}
     }
     
+    /** 
+	 * Constructeur intéractif sans print
+	 * @param i peut être n'importe quel entier
+	 */
+    public Alimentation(Scanner sc, int i){
+		String str1 = sc.nextLine();
+		String str2 = sc.nextLine();
+    	try {
+			double txBoeuf = Double.valueOf(str1),txVege = Double.valueOf(str2);
+			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {
+				throw new Exception("erreur dans les taux");
+			}
+			else {
+				this.txBoeuf = txBoeuf;
+				this.txVege = txVege;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise les taux à 0.");
+			this.txBoeuf = 0;
+			this.txVege = 0;
+		}
+		catch (Exception e) {
+			System.out.println("Taux impossibles. On initialise les taux à 0.");
+			this.txBoeuf = 0;
+			this.txVege = 0;
+		}
+		finally {
+			this.CalculImpactAli();
+		}
+    }
 
+    
 	/** 
 	 * Constructeur paramétré
     */ 
@@ -157,7 +190,36 @@ public class Alimentation extends ConsoCarbone{
 		}
 	}
 
-	
+	public void modif(Scanner sc) {
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 && rep!= 0) {
+			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
+			System.out.println("Quel paramètre de consommation voulez vous modifier ?");
+			System.out.println("Tapez 1 pour modifiez le taux de repas à base de boeuf ,");
+			System.out.println("Tapez 2 pour modifiez le taux de repas végétariens,");
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+		case 1:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.settxBoeuf(Integer.valueOf(str1));
+			break;
+		case 2:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.settxVege(Integer.valueOf(str1));
+			break;			
+		}
+	}
 	/**
 	 Affiche la consommation de l'alimentaion en paramètre. Puis affiche la distribution de l'impact moyen d'un français à cause de l'alimentation.
 	 */

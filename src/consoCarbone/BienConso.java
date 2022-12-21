@@ -22,13 +22,38 @@ public class BienConso extends ConsoCarbone{
     /**
      * Constructeur interactif
      * @param sc scanner utilisé pour interagir avec l'utilisateur
- */
+     */
 	public BienConso(Scanner sc){
-		//Scanner sc = new Scanner(System.in);
 		System.out.print(" Entrez le montant des dépenses annuelles :");
 		String str1 = sc.nextLine();
-		//sc.close();
-		
+		try {
+			double montant = Double.valueOf(str1);
+			if(montant<0) {
+				throw new Exception("erreur dans le montant");
+			}
+			else {
+				this.montant = montant;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise le montant à 0.");
+			this.montant=0;
+		}
+		catch (Exception e) {
+			System.out.println("Montant négatif. On initialise donc à 0");
+			this.montant=0;
+		}
+		finally {
+			this.CalculImpactDep();
+		}
+    }
+
+	/**
+     * Constructeur interactif sans print
+     * @param i peut être n'importe quel entier
+ 	*/
+	public BienConso(Scanner sc, int i){
+		String str1 = sc.nextLine();
 		try {
 			double montant = Double.valueOf(str1);
 			if(montant<0) {
@@ -105,6 +130,30 @@ public class BienConso extends ConsoCarbone{
 		}
 		catch (Exception e) {
 			System.out.println("Erreur dans le nouveau montant. Changement non accepté.");
+		}
+	}
+    
+    public void modif(Scanner sc) {
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 && rep!= 0) {
+			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
+			System.out.println("Tapez 1 pour modifiez le montant des dépenses : ");
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+		case 1:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.setmontant(Integer.valueOf(str1));
+			break;		
 		}
 	}
     
