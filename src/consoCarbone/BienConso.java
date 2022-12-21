@@ -19,15 +19,43 @@ public class BienConso extends ConsoCarbone{
         this(0);
         this.CalculImpactDep();
     }
+
     /**
      * Constructeur interactif
      * @param sc scanner utilisé pour interagir avec l'utilisateur
- */
+ 	*/
 	public BienConso(Scanner sc){
-		//Scanner sc = new Scanner(System.in);
 		System.out.print(" Entrez le montant des dépenses annuelles :");
 		String str1 = sc.nextLine();
-		//sc.close();
+		
+		try {
+			double montant = Double.valueOf(str1);
+			if(montant<0) {
+				throw new Exception("erreur dans le montant");
+			}
+			else {
+				this.montant = montant;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise le montant à 0.");
+			this.montant=0;
+		}
+		catch (Exception e) {
+			System.out.println("Montant négatif. On initialise donc à 0");
+			this.montant=0;
+		}
+		finally {
+			this.CalculImpactDep();
+		}
+    }
+
+	/**
+     * Constructeur interactif sans print
+     * @param i peut être n'importe quel entier
+ 	*/
+	public BienConso(Scanner sc, int i){
+		String str1 = sc.nextLine();
 		
 		try {
 			double montant = Double.valueOf(str1);
