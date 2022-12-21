@@ -132,5 +132,8 @@ public class BienConso extends ConsoCarbone{
 		if (this.montant > 2500){
 			System.out.println("Essayez de faire moins d'achats si cela ne vous est pas utile. Essayer d'acheter des objets reconditionnés, des vêtements dans des friperies,...");
 		}
+		else {
+			System.out.println("Essayez de faire moins d'achats si cela ne vous est pas nécéssaire.");
+		}
 	}
 }
