@@ -23,6 +23,7 @@ public class Logement extends ConsoCarbone{
         this(0,CE.F);
         this.CalculImpactLog();
     }
+
     /**
      * Constructeur interactif
      * @param sc scanner utilisé pour interagir avec l'utilisateur
@@ -65,17 +66,16 @@ public class Logement extends ConsoCarbone{
 		}
     }
 
-    /**
+
+	/**
      * Constructeur interactif sans print
      * @param i peut être n'importe quel entier
      */
     public Logement(Scanner sc, int i){
 		String str1 = sc.nextLine();
 		String str2 = sc.nextLine();
-
 		try {
 			Integer superficie = Integer.valueOf(str1);
-
 			if(superficie<0) {
 				throw new Exception("erreur dans la superficie");
 			}
@@ -105,8 +105,6 @@ public class Logement extends ConsoCarbone{
 		}
     }
 
-
-    
 	/** 
 	 * Constructeur paramétré
 	 */ 

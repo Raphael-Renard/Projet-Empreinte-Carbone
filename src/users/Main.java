@@ -5,6 +5,9 @@ import java.util.Scanner;
 import consoCarbone.CE;
 import consoCarbone.Taille;
 
+
+import java.util.Scanner;
+
 public class Main {
 	public static void debut() {
 		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
@@ -74,5 +77,8 @@ public class Main {
 		//System.out.println(use.listeLogement);
 		//utilisateur.ordonne();
 		debut();
+		//User user = new User("~\\Projet\\txt.txt");
+		//user.ordonne();
+
 	}
 }

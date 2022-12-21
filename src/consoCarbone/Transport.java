@@ -99,7 +99,6 @@ public class Transport extends ConsoCarbone{ //javadoc
 		}
     }
 
-	
 	/**
      * Constructeur interactif sans print
      * @param i peut être n'importe quel entier
@@ -164,6 +163,7 @@ public class Transport extends ConsoCarbone{ //javadoc
     		this.CalculImpactTransp(0);
 		}
     }
+
     /** 
 	 * Constructeur paramétré
     */ 

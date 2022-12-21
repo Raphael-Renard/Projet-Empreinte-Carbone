@@ -5,6 +5,8 @@ import java.io.*;
 
 import consoCarbone.*;
 
+import java.io.*;
+
 /**
  * User est la classe qui associe un.e utilisateur.rice à sa consommation carbone
  */
@@ -74,6 +76,7 @@ public class User {
 		services = new ServicesPublics();
 		empreinte = calculerEmpreinte();
 	}
+
 	/**
      * Constructeur interactif
      * @param sc1 scanner utilisé pour interagir avec l'utilisateur
@@ -103,7 +106,7 @@ public class User {
 		empreinte = calculerEmpreinte();
 		System.out.println(" <<Fin de l'initialisation>>");
 	}
-	
+
 	/**
      * Constructeur par lecture d'un fichier texte
      * @param adresse chemin d'accès du fichier
@@ -142,7 +145,6 @@ public class User {
 			listeTransport = new ArrayList<Transport>();
 			str3 = sc1.nextLine(); // condition >0 ou pas
 			for (int i=0; i<Integer.valueOf(str3);i++) {
-
 				listeTransport.add(new Transport(sc1,1));
 			}
 			services = new ServicesPublics();
@@ -151,7 +153,7 @@ public class User {
 		}
 		catch(FileNotFoundException e) {System.out.println("file not found");}
 	}
-	
+
 	/**
 	 * 
 	 * @return empreinte de l'utilisateur
@@ -159,7 +161,7 @@ public class User {
 	public double getempreinte() {
 		return this.empreinte;
 	}
-	
+
 	/**
 	 * Méthode qui calcule l'empreinte carbone de l'utilisateur.rice
 	 * @return empreinte carbone

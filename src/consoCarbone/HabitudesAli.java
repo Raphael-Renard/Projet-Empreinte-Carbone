@@ -27,15 +27,15 @@ public class HabitudesAli extends Alimentation {
 	/** 
 	 * Constructeur par défaut 
 	*/ 
-	 public HabitudesAli(){
-	        this(0,0,false,false,20,false,false);
-	        this.CalculImpactAli();
-	  }
+	public HabitudesAli(){
+	    this(0,0,false,false,20,false,false);
+	    this.CalculImpactAli();
+	}
 	  
-	 /**
-	     * Constructeur interactif
-	     * @param sc2 scanner utilisé pour interagir avec l'utilisateur
-	 */
+	/**
+	 * Constructeur interactif
+	 * @param sc2 scanner utilisé pour interagir avec l'utilisateur
+	*/
     public HabitudesAli(Scanner sc2){
     	super(sc2);
 		System.out.print(" Mangez vous des produits de saison ? (Y/n) :");
@@ -110,7 +110,8 @@ public class HabitudesAli extends Alimentation {
 		}
     }
 
-    /**
+
+	/**
 	 * Constructeur interactif sans print
 	 * @param i peut être n'importe quel entier
 	*/
@@ -182,7 +183,7 @@ public class HabitudesAli extends Alimentation {
 		this.CalculImpactAli();
 		}
     }
-    
+
 	/** 
 	 * Constructeur paramétré
     */ 

@@ -36,6 +36,7 @@ public class Alimentation extends ConsoCarbone{
 
 	/** 
 	 * Constructeur intéractif
+	 * @param sc scanner utilisé pour interagir avec l'utilisateur
 	 */
     public Alimentation(Scanner sc){
 		System.out.print(" Entrez le taux de repas (une valeur entre 0 et 1) à base de boeuf :");
@@ -67,6 +68,7 @@ public class Alimentation extends ConsoCarbone{
 		}
     }
     
+
     /** 
 	 * Constructeur intéractif sans print
 	 * @param i peut être n'importe quel entier
@@ -98,7 +100,6 @@ public class Alimentation extends ConsoCarbone{
 			this.CalculImpactAli();
 		}
     }
-
     
 	/** 
 	 * Constructeur paramétré
