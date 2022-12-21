@@ -34,14 +34,16 @@ class BienConsoTest {
 		this.bien.setmontant(m);
 		//Assert
 		assertEquals(this.bien.getMontant(),res);
-		fail("Not yet implemented");
+		// fail("Not yet implemented");
 	}
 	
 	@ParameterizedTest
 	@CsvSource({ "3000,Essayez de faire moins d'achats si cela ne vous est pas utile. Essayer d'acheter des objets reconditionnés, des vêtements dans des friperies,...", "12,Essayez de faire moins d'achats si cela ne vous est pas nécéssaire."})
 	void testConseil(double m, String rep) {
+		// Act
 		this.bien.setmontant(m);
-		
+		this.bien.conseil();
+		// Assert
 		assertEquals(rep,outContent.toString());
 		//fail("Not yet implemented"); // TODO
 	}

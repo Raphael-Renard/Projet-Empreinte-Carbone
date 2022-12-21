@@ -16,7 +16,7 @@ public class Main {
 		int rep=-6;
 		while(rep != 1 && rep !=2 && rep!= 0) {
 			System.out.println("Vous pouvez quitter quitter en tappant (0).");
-			System.out.println("Voulez vous créer un utilisateur avec un fichier (1) ou en donnant les valeurs (2) : ");
+			System.out.println("Voulez-vous créer un utilisateur avec un fichier (1) ou en donnant les valeurs à la main (2) : ");
 			str1 = sc1.nextLine();
 			if(!str1.matches("-?\\d+")){
 				rep=-6;
@@ -26,13 +26,15 @@ public class Main {
 		}
 		switch(rep) {
 		case 0:
-			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+			System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
 		case 1:
-			//fonction fichier
+			System.out.println("Veuillez donner le chemin d'accès de votre fichier :");
+			User user1 = new User(sc1.nextLine());
+			actions(sc1,user1);
 			break;
 		case 2:
-			User use = new User(sc1);
-			actions(sc1,use);
+			User user2 = new User(sc1);
+			actions(sc1,user2);
 		break;
 		default:			
 		}
