@@ -29,18 +29,18 @@ public class User {
 	*/
 	private ServicesPublics services;
 	
-	/** permet de moduler l'impact carbone d'alimentation en fonction des habitudes alimentaires
-	*/
-	private HabitudesAli habitudes;
+	///** permet de moduler l'impact carbone d'alimentation en fonction des habitudes alimentaires
+	//*/
+	//private HabitudesAli habitudes;
 	
 	/** empreinte carbonne totale de l'utilisateur.rice
 	*/
 	private double empreinte;
-	/*
+	
 	/** 
 	 * Constructeur par défaut 
 	*/ 
-/*	public User() {
+	public User() {
 		alimentation = new Alimentation();
 		bienConso = new BienConso();
 		listeLogement = new ArrayList<Logement>();
@@ -48,17 +48,15 @@ public class User {
 		listeTransport = new ArrayList<Transport>();
 		listeTransport.add(new Transport());
 		services = new ServicesPublics();
-		habitudes = new HabitudesAli();
 		empreinte = calculerEmpreinte();
 	}
-*/
+
 	/** 
-	 * Constructeur paramétré 
+	 * Constructeur paramétré sans habitudes alimentaires
 	*/
-/*
-public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
+
+	public User(double txBoeuf, double txVege,double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
 		alimentation = new Alimentation(txBoeuf, txVege);
-		habitudes = new HabitudesAli(saison, locaux, gaspillage, vrac, ecommerce);
 		bienConso = new BienConso(montant);
 		listeLogement = new ArrayList<Logement>();
 		listeLogement.add( new Logement(superficie, ce));
@@ -66,15 +64,29 @@ public User(double txBoeuf, double txVege, boolean saison, boolean locaux, doubl
 		listeTransport.add(new Transport(possede, taille, kilomAnnee, amortissement, fabrication));
 		services = new ServicesPublics();
 		empreinte = calculerEmpreinte();
-	} //Pb : initialiser les listes  mais facile si interactions avec lecteur
-*/
-	public User() {
-		Scanner sc1 = new Scanner(System.in);
+	}
+	/** 
+	 * Constructeur paramétré avec habitudes alimentaires
+	*/
+	public User(double txBoeuf, double txVege, boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce, double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
+		alimentation = new HabitudesAli(txBoeuf,txVege,saison, locaux, gaspillage, vrac, ecommerce);
+		bienConso = new BienConso(montant);
+		listeLogement = new ArrayList<Logement>();
+		listeLogement.add( new Logement(superficie, ce));
+		listeTransport = new ArrayList<Transport>();
+		listeTransport.add(new Transport(possede, taille, kilomAnnee, amortissement, fabrication));
+		services = new ServicesPublics();
+		empreinte = calculerEmpreinte();
+	}
+	/**
+     * Constructeur interactif
+     * @param sc1 scanner utilisé pour interagir avec l'utilisateur
+     */
+	public User(Scanner sc1) {
+		//Scanner sc1 = new Scanner(System.in);
 		System.out.println(" <<Initialisation d'un utilisateur>>");
 		System.out.println("<<Initialisation de l'alimentation>>");
-		alimentation = new Alimentation(sc1);
-    	System.out.println("<<Initialisation des habitudes alimentaires>>");
-		habitudes = new HabitudesAli(sc1);
+		alimentation = new HabitudesAli(sc1);
 		System.out.println(" <<Initialisation des dépenses>>");
 		bienConso = new BienConso(sc1);
 		System.out.println(" <<Initialisation du logement>>");
@@ -95,7 +107,7 @@ public User(double txBoeuf, double txVege, boolean saison, boolean locaux, doubl
 		services = new ServicesPublics();
 		empreinte = calculerEmpreinte();
 		System.out.println(" <<Fin de l'initialisation>>");
-		sc1.close();
+	//	sc1.close();
 	}
 	/**
 	 * Méthode qui calcule l'empreinte carbone de l'utilisateur.rice
@@ -110,7 +122,7 @@ public User(double txBoeuf, double txVege, boolean saison, boolean locaux, doubl
 		for (Transport transp : listeTransport) {
 			sommetransport += transp.getImpact();
 		}
-		return (alimentation.getImpact()+habitudes.getImpact()+bienConso.getImpact()+sommelogement+sommetransport+services.getImpact());
+		return (alimentation.getImpact()+bienConso.getImpact()+sommelogement+sommetransport+services.getImpact());
 	}
 	
 	/**
@@ -118,7 +130,6 @@ public User(double txBoeuf, double txVege, boolean saison, boolean locaux, doubl
 	 */
 	private void detaillerEmpreinte() {
 		System.out.println("L'utilisateur consomme "+alimentation.getImpact()+" à cause de l'alimentation.");
-		System.out.println("L'utilisateur consomme "+habitudes.getImpact()+" à cause de vos habitudes alimentaires.");
 		System.out.println("L'utilisateur consomme "+bienConso.getImpact()+" à cause des dépenses.");
 		for (Logement loge : listeLogement) {
 			System.out.println("L'utilisateur consomme "+loge.getImpact()+" à cause du logement "+loge.getid()+".");
@@ -138,7 +149,6 @@ public User(double txBoeuf, double txVege, boolean saison, boolean locaux, doubl
 	public void ordonne () {
 		ArrayList<ConsoCarbone> liste = new ArrayList<ConsoCarbone>();
 		liste.add(alimentation);
-		liste.add(habitudes);
 		liste.add(bienConso);
 		for (Logement loge : listeLogement) {   //consoderer la somme des logements ???
 			liste.add(loge);

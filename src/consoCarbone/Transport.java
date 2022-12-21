@@ -30,6 +30,10 @@ public class Transport extends ConsoCarbone{ //javadoc
 		this.CalculImpactTransp(0);
 	}
 	
+	/**
+     * Constructeur interactif
+     * @param sc scanner utilisé pour interagir avec l'utilisateur
+     */
 	public Transport(Scanner sc){
 		System.out.print(" Saisir la taille de la voiture grande ou petite(G/P) :");
 		String str1 = sc.nextLine();

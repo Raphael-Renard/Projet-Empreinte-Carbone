@@ -23,6 +23,10 @@ public class Logement extends ConsoCarbone{
         this(0,CE.F);
         this.CalculImpactLog();
     }
+    /**
+     * Constructeur interactif
+     * @param sc scanner utilisé pour interagir avec l'utilisateur
+     */
     public Logement(Scanner sc){
     	System.out.print(" Entrez la superficie en m^2 :");
 		String str1 = sc.nextLine();

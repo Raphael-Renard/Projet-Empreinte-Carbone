@@ -28,11 +28,15 @@ public class HabitudesAli extends Alimentation {
 	 * Constructeur par défaut 
 	*/ 
 	 public HabitudesAli(){
-	        this(false,false,20,false,false);
+	        this(0,0,false,false,20,false,false);
 	        this.CalculImpactAli();
 	  }
-	 
+	 /**
+	     * Constructeur interactif
+	     * @param sc2 scanner utilisé pour interagir avec l'utilisateur
+	 */
     public HabitudesAli(Scanner sc2){
+    	super(sc2);
 		System.out.print(" Mangez vous des produits de saison ? (Y/n) :");
 		String str1 = sc2.nextLine();
 		System.out.print(" Mangez vous des produits locaux ? (Y/n) :");
@@ -94,7 +98,8 @@ public class HabitudesAli extends Alimentation {
 	/** 
 	 * Constructeur paramétré
     */ 
-    public HabitudesAli(boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce){
+    public HabitudesAli(double txBoeuf, double txVege,boolean saison, boolean locaux, double gaspillage, boolean vrac, boolean ecommerce){
+    	super(txBoeuf,txVege);
     	if(gaspillage<0) {
     		System.out.println("erreur dans les valeurs\nOn initialise donc à 0 le gaspillage et faux le reste.");
 			this.saison = false;

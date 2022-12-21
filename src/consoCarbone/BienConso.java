@@ -19,6 +19,10 @@ public class BienConso extends ConsoCarbone{
         this(0);
         this.CalculImpactDep();
     }
+    /**
+     * Constructeur interactif
+     * @param sc scanner utilisé pour interagir avec l'utilisateur
+ */
 	public BienConso(Scanner sc){
 		//Scanner sc = new Scanner(System.in);
 		System.out.print(" Entrez le montant des dépenses annuelles :");
