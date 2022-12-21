@@ -137,7 +137,7 @@ public class BienConso extends ConsoCarbone{
     public void modif(Scanner sc) {
 		String str1="a";
 		int rep=-6;
-		while(rep != 1 && rep !=2 && rep!= 0) {
+		while(rep != 1 && rep!= 0) {
 			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
 			System.out.println("Tapez 1 pour modifiez le montant des dépenses : ");
 			str1 = sc.nextLine();

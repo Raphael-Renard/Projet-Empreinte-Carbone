@@ -198,7 +198,7 @@ public class Alimentation extends ConsoCarbone{
 			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
 			System.out.println("Quel paramètre de consommation voulez vous modifier ?");
 			System.out.println("Tapez 1 pour modifiez le taux de repas à base de boeuf ,");
-			System.out.println("Tapez 2 pour modifiez le taux de repas végétariens,");
+			System.out.println("Tapez 2 pour modifiez le taux de repas végétariens.");
 			str1 = sc.nextLine();
 			if(!str1.matches("-?\\d+")){
 				rep=-6;
