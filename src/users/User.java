@@ -5,8 +5,6 @@ import java.io.*;
 
 import consoCarbone.*;
 
-import java.io.*;
-
 /**
  * User est la classe qui associe un.e utilisateur.rice à sa consommation carbone
  */
@@ -245,7 +243,51 @@ public class User {
 			this.bienConso.modif(sc);
 			break;
 		case 3:
-			
+			for (Logement loge : listeLogement) { 
+				str1="a";
+				int rep1=-6;
+				while(rep != 1 && rep !=2) {
+					System.out.println(loge);
+					System.out.println("Tapez 1 pour modifiez la consommation liée a ce Logement,sinon tapez 2");
+					str1 = sc.nextLine();
+					if(!str1.matches("-?\\d+")){
+						rep1=-6;
+						System.out.println("Veuillez répondre uniquement par les options données.");
+					}
+					else rep1=Integer.valueOf(str1);
+					switch(rep1) {
+					case 1:
+						loge.modif(sc);
+						break;
+					case 2:
+						break;
+					}
+				}
+			}
+			break;
+		case 4:
+			for (Transport transp : listeTransport) { 
+				str1="a";
+				int rep1=-6;
+				while(rep != 1 && rep !=2) {
+					System.out.println(transp);
+					System.out.println("Tapez 1 pour modifiez la consommation liée a cette voiture,sinon tapez 2");
+					str1 = sc.nextLine();
+					if(!str1.matches("-?\\d+")){
+						rep1=-6;
+						System.out.println("Veuillez répondre uniquement par les options données.");
+					}
+					else rep1=Integer.valueOf(str1);
+					switch(rep1) {
+					case 1:
+						transp.modif(sc);
+						break;
+					case 2:
+						break;
+					}
+				}
+			}
+			break;
 		default:			
 		}
 	}

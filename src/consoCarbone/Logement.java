@@ -14,8 +14,6 @@ public class Logement extends ConsoCarbone{
      */
     private CE ce;
 
-
-
 	/** 
 	 * Constructeur par défaut
 	 */
@@ -127,6 +125,37 @@ public class Logement extends ConsoCarbone{
 		}
     }
 
+    public void modif(Scanner sc) {
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 && rep!= 0) {
+			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
+			System.out.println("Quel paramètre de consommation voulez vous modifier ?");
+			System.out.println("Tapez 1 pour modifiez la superficie du logement,");
+			System.out.println("Tapez 2 pour modifiez la classe énèrgétique du logement.");
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+		case 1:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.setsuperficie(Integer.valueOf(str1));
+			break;
+		case 2:
+			System.out.println("Donnez la nouvelle valeur (A/B/C/D/E/F/G): ");
+			str1 = sc.nextLine();
+			this.setce(CE.valueOf(str1));
+			break;			
+		}
+	}
+    
     /** Calcule de l'impact du logement en terme de gaz a effets de serre en TCO2eq.
 	 * Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
      */

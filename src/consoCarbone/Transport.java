@@ -21,13 +21,13 @@ public class Transport extends ConsoCarbone{ //javadoc
 	 */
 	private int amortissement;
 	
-
+	private double fabrication;
 	/** 
 	 * Constructeur par défaut 
 	*/
 	public Transport(){
         this(false, Taille.P, 0, 0, 0);
-		this.CalculImpactTransp(0);
+		this.CalculImpactTransp();
 	}
 	
 	/**
@@ -55,7 +55,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				this.taille = Taille.valueOf(str1);
 				this.kilomAnnee = k;
 				this.amortissement = a;
-				this.CalculImpactTransp(f);
+				this.fabrication = f;
+				this.CalculImpactTransp();
 			}
 		}
 		catch (NumberFormatException nfe) {
@@ -64,7 +65,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
-    		this.CalculImpactTransp(0);
+    		this.fabrication = 0;
+    		this.CalculImpactTransp();
 		}
 		catch (IllegalArgumentException iae) {
 			System.out.print("Input non lisible. On initialise la taille à G.");
@@ -77,7 +79,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				else {
 					this.kilomAnnee = Integer.valueOf(str2);
 					this.amortissement = Integer.valueOf(str4);
-					this.CalculImpactTransp(Double.valueOf(str5));
+					this.fabrication = Double.valueOf(str5);
+					this.CalculImpactTransp();
 				}
 			}
 			catch(Exception e){
@@ -86,7 +89,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				this.taille = Taille.P;
 				this.kilomAnnee = 0;
 				this.amortissement = 0;
-				this.CalculImpactTransp(0);
+				this.fabrication = 0;
+				this.CalculImpactTransp();
 			}
 		}
 		catch(Exception e){
@@ -95,7 +99,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
-    		this.CalculImpactTransp(0);
+    		this.fabrication = 0;
+    		this.CalculImpactTransp();
 		}
     }
 
@@ -120,7 +125,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				this.taille = Taille.valueOf(str1);
 				this.kilomAnnee = k;
 				this.amortissement = a;
-				this.CalculImpactTransp(f);
+				this.fabrication = f;
+				this.CalculImpactTransp();
 			}
 		}
 		catch (NumberFormatException nfe) {
@@ -129,7 +135,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
-    		this.CalculImpactTransp(0);
+    		this.fabrication = 0;
+    		this.CalculImpactTransp();
 		}
 		catch (IllegalArgumentException iae) {
 			System.out.print("Input non lisible. On initialise la taille à G.");
@@ -142,7 +149,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				else {
 					this.kilomAnnee = Integer.valueOf(str2);
 					this.amortissement = Integer.valueOf(str4);
-					this.CalculImpactTransp(Double.valueOf(str5));
+					this.fabrication = Double.valueOf(str5);
+					this.CalculImpactTransp();
 				}
 			}
 			catch(Exception e){
@@ -151,7 +159,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				this.taille = Taille.P;
 				this.kilomAnnee = 0;
 				this.amortissement = 0;
-				this.CalculImpactTransp(0);
+				this.fabrication = 0;
+				this.CalculImpactTransp();
 			}
 		}
 		catch(Exception e){
@@ -160,7 +169,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
-    		this.CalculImpactTransp(0);
+    		this.fabrication = 0;
+    		this.CalculImpactTransp();
 		}
     }
 
@@ -177,7 +187,8 @@ public class Transport extends ConsoCarbone{ //javadoc
 				this.taille = taille;
 				this.kilomAnnee = kilomAnnee;
 				this.amortissement = amortissement;
-				this.CalculImpactTransp(fabrication);
+				this.fabrication =fabrication;
+				this.CalculImpactTransp();
 			}
 		}
 		catch(Exception e){
@@ -186,10 +197,48 @@ public class Transport extends ConsoCarbone{ //javadoc
 			this.taille = Taille.P;
     		this.kilomAnnee = 0;
     		this.amortissement = 0;
-    		this.CalculImpactTransp(0);
+    		this.fabrication = 0;
+    		this.CalculImpactTransp();
 		}
     }
 
+    public void modif(Scanner sc) {
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 && rep != 3 && rep!= 0) {
+			System.out.println("Vous pouvez quitter quitter en tappant 0 ,");
+			System.out.println("Quel paramètre de consommation voulez vous modifier ?");
+			System.out.println("Tapez 1 pour modifiez la taille de la voiture,");
+			System.out.println("Tapez 2 pour modifiez le nombre de kilomètre parcourus chaque année,");
+			System.out.println("Tapez 3 pour modifiez le nombre d'année depuis l'achat de la voiture.");
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+		case 2:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.setkilom(Integer.valueOf(str1));
+			break;
+		case 1:
+			System.out.println("Donnez la nouvelle valeur (P/G): ");
+			str1 = sc.nextLine();
+			this.settaille(Taille.valueOf(str1));
+			break;	
+		case 3:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.setamortissement(Integer.valueOf(str1));
+			break;
+		}
+	}
+    
 	/**
 	 * getter
 	 * @return durée de conservation du véhicule
@@ -227,18 +276,18 @@ public class Transport extends ConsoCarbone{ //javadoc
 	 * setter
 	 * @param a est la durée de conservation du véhicule en années
 	 */
-    public void setamortissement(int a, double fabrication) {
+    public void setamortissement(int a) {
 		try {
 			if(a<0|fabrication<0) {
-				throw new Exception("erreur dans l'amortissement ou la fabrication");
+				throw new Exception("erreur dans l'amortissement");
 			}
 			else {
 				this.amortissement = a;
-				this.CalculImpactTransp(fabrication);
+				this.CalculImpactTransp();
 			}
 		}
 		catch(Exception e){
-			System.out.println("Amortissement ou fabrication négative. Le changement n'est pas accepté.");
+			System.out.println("Amortissement  négatif. Le changement n'est pas accepté.");
 		}
     }
 	
@@ -246,18 +295,18 @@ public class Transport extends ConsoCarbone{ //javadoc
 	 * setter
 	 * @param k est le nombre de kilomètres parcourus par an
 	 */
-    public void setkilom(int k, double fabrication) {
+    public void setkilom(int k) {
 		try {
-			if(k<0|fabrication<0) {
-				throw new Exception("erreur dans l'amortissement ou la fabrication");
+			if(k<0) {
+				throw new Exception("erreur dans le nombre de kilomètres parcourus.");
 			}
 			else {
 				this.kilomAnnee = k;
-				this.CalculImpactTransp(fabrication);
+				this.CalculImpactTransp();
 			}
 		}
 		catch(Exception e){
-			System.out.println("KilomAnnee ou fabrication négative. Le changement n'est pas accepté.");
+			System.out.println("KilomAnnee  négatif . Le changement n'est pas accepté.");
 		}
     }
     
@@ -280,10 +329,10 @@ public class Transport extends ConsoCarbone{ //javadoc
     /** Calcule de l'impact des transports en terme de gaz a effets de serre en TCO2eq.
 	 * Utilise la classe mère ConsoCarbone pour mettre à jour la consommation carbone.
     */
-	public void CalculImpactTransp(double fabrication){
+	public void CalculImpactTransp(){
         try{
 			if (this.possede) {
-				super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + fabrication / this.amortissement);
+				super.setimpact ( this.kilomAnnee * 1.93 * 0.0001 + this.fabrication / this.amortissement);
 			}
 			
 			else {

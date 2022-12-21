@@ -229,7 +229,87 @@ public class HabitudesAli extends Alimentation {
 		super.setimpact(tmp); //definition de impact dans classe ConsoCarbone
 	}
 
+    public void modif(Scanner sc) {
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 && rep !=3 && rep !=4 && rep !=5 && rep !=6 && rep !=7 && rep!= 0) {
+			System.out.println("Vous pouvez quitter quitter en tapant 0 ,");
+			System.out.println("Quel paramètre de consommation voulez vous modifier ?");
+			System.out.println("Tapez 1 pour modifiez le taux de repas à base de boeuf ,");
+			System.out.println("Tapez 2 pour modifiez le taux de repas végétariens,");
+			System.out.println("Tapez 3 pour modifiez la consommation de produits de saison,");
+			System.out.println("Tapez 4 pour modifiez la consommation de produits locaux,");
+			System.out.println("Tapez 5 pour modifiez le montant de gaspillage alimentaire par an,");
+			System.out.println("Tapez 6 pour modifiez l'achat des courses en  vrac,");
+			System.out.println("Tapez 7 pour modifiez l'achat des courses en ecommerces.");
 
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+		case 1:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.settxBoeuf(Integer.valueOf(str1));
+			break;
+		case 2:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.settxVege(Integer.valueOf(str1));
+			break;
+		case 3:
+			if(this.saison) {
+				this.saison = false;
+				System.out.println("L'utilisateur ne consomme plus de produits de saison.");
+			}
+			else {
+				this.saison = true;
+				System.out.println("L'utilisateur consomme des produits de saison.");
+			}
+			break;
+		case 4:
+			if(this.locaux) {
+				this.locaux = false;
+				System.out.println("L'utilisateur ne consomme plus de produits locaux.");
+			}
+			else {
+				this.locaux = true;
+				System.out.println("L'utilisateur consomme des produits locaux.");
+			}
+			break;
+		case 5:
+			System.out.println("Donnez la nouvelle valeur : ");
+			str1 = sc.nextLine();
+			this.setgaspillage(Integer.valueOf(str1));
+			break;
+		case 6:
+			if(this.vrac) {
+				this.vrac = false;
+				System.out.println("L'utilisateur ne fait plus ses courses en vrac.");
+			}
+			else {
+				this.vrac = true;
+				System.out.println("L'utilisateur fait ses courses en vrac.");
+			}
+			break;
+		case 7:
+			if(this.ecommerce) {
+				this.ecommerce = false;
+				System.out.println("L'utilisateur ne fait plus ses courses dans des ecommerces.");
+			}
+			else {
+				this.ecommerce = true;
+				System.out.println("L'utilisateur fait ses courses dans des ecommerces.");
+			}
+			break;
+		}
+	}
     /**
 	 * getter
 	 * @return le boolean qui représente si l'utilisateur.ice mange des aliments de saison

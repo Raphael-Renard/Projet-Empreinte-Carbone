@@ -1,12 +1,9 @@
 package users;
 
 import java.util.Scanner;
-
 import consoCarbone.CE;
 import consoCarbone.Taille;
 
-
-import java.util.Scanner;
 
 public class Main {
 	public static void debut() {
@@ -51,6 +48,7 @@ public class Main {
 			System.out.println("Pour voir l'empreinte détaillée tapez (1),");
 			System.out.println("Pour avoir les consommations ordonnées et des conseils tapez (2),");
 			System.out.println("Pour modifier votre utilisateur tapez (3) : ");
+			//ajout/supp logement transport
 			str1 = sc.nextLine();
 			if(!str1.matches("-?\\d+")){
 				rep=-6;
@@ -74,7 +72,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		User utilisateur = new User(0.4, 0.5,1500, 200,CE.A, true, Taille.P, 1500, 10, 0.4);
+		//User utilisateur = new User(0.4, 0.5,1500, 200,CE.A, true, Taille.P, 1500, 10, 0.4);
 		//use.ordonne();
 		//System.out.println(use.listeLogement);
 		//utilisateur.ordonne();
