@@ -2,6 +2,8 @@ package consoCarbone;
 
 import java.util.Scanner;
 
+import java.lang.NumberFormatException;
+
 /**
  * Alimentation est la classe qui définit un poste de consommation carbone de l’utilisateur.rice concernant son alimentation
  */
@@ -30,41 +32,62 @@ public class Alimentation extends ConsoCarbone{
         this(1,0);
         this.CalculImpactAli();
 	}
-        
+
+	   
     public Alimentation(Scanner sc){
 		System.out.print(" Entrez le taux de repas (une valeur entre 0 et 1) à base de boeuf :");
 		String str1 = sc.nextLine();
 		System.out.print(" Entrez le taux de repas végétariens :");
 		String str2 = sc.nextLine();
-    	double txBoeuf = Double.valueOf(str1),txVege = Double.valueOf(str2);
-    	if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont realistes
-    		System.out.println("erreur dans les taux\nOn initialise donc à 0 les taux.");
-    		this.txBoeuf = 0;
-            this.txVege = 0;
-    	}
-    	else {
-            this.txBoeuf = txBoeuf;
-            this.txVege = txVege;
-    	}
-		this.CalculImpactAli();
+    	try {
+			double txBoeuf = Double.valueOf(str1),txVege = Double.valueOf(str2);
+			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont réalistes
+				throw new Exception("erreur dans les taux");
+			}
+			else {
+				this.txBoeuf = txBoeuf;
+				this.txVege = txVege;
+			}
+		}
+		catch (NumberFormatException nfe) {
+			System.out.print("Input non lisible. On initialise les taux à 0.");
+			this.txBoeuf = 0;
+			this.txVege = 0;
+		}
+		catch (Exception e) {
+			System.out.println("Taux impossibles. On initialise les taux à 0.");
+			this.txBoeuf = 0;
+			this.txVege = 0;
+		}
+		finally {
+			this.CalculImpactAli();
+		}
     }
     
+
 	/** 
 	 * Constructeur paramétré
     */ 
     public Alimentation(double txBoeuf, double txVege){
-    	if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont realistes
-    		System.out.println("erreur dans les taux\nOn initialise donc à 0 les taux.");
-    		this.txBoeuf = 0;
-            this.txVege = 0;
-    	}
-    	else {
-            this.txBoeuf = txBoeuf;
-            this.txVege = txVege;
-    	}
-		this.CalculImpactAli();
+		try {
+			if(txBoeuf+txVege>1 | txBoeuf<0 | txVege<0) {  //on teste si les taux sont réalistes
+				throw new Exception("erreur dans les taux");
+			}
+			else {
+				this.txBoeuf = txBoeuf;
+				this.txVege = txVege;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans les taux. On initialise donc les taux à 0.");
+			this.txBoeuf = 0;
+			this.txVege = 0;
+		}
+		finally {
+			this.CalculImpactAli();
+		}
 	}
-	
+
 
     /** 
 	 * Calcule de l'impact de l'alimentation en terme de gaz a effets de serre en TCO2eq.
@@ -99,8 +122,20 @@ public class Alimentation extends ConsoCarbone{
 	 * @param tb est le taux de repas à base de boeuf
 	 */
 	public void settxBoeuf(double tb) {
-		this.txBoeuf=tb;
-		this.CalculImpactAli();
+		try {
+			if(tb+this.txVege>1 | tb<0) {
+				throw new Exception("erreur dans les taux");
+			}
+			else {
+				this.txBoeuf = tb;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans le nouveau taux. Changement non accepté.");
+		}
+		finally {
+			this.CalculImpactAli();
+		}
 	}
 	
 	/**
@@ -108,8 +143,20 @@ public class Alimentation extends ConsoCarbone{
 	 * @param tv est le taux de repas végétariens
 	 */
 	public void settxVege(double tv) {
-		this.txVege=tv;
-		this.CalculImpactAli();
+		try {
+			if(tv+this.txBoeuf>1 | tv<0) {
+				throw new Exception("erreur dans les taux");
+			}
+			else {
+				this.txVege = tv;
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Erreur dans le nouveau taux. Changement non accepté.");
+		}
+		finally {
+			this.CalculImpactAli();
+		}
 	}
 
 	
