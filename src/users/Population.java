@@ -3,6 +3,9 @@ package users;
 import java.util.*;
 import consoCarbone.*;
 
+/**
+ * Population est la classe qui associe à une collection d'utilisateur.rices à une population
+ */
 public class Population {
     /** collection d'utilisateur.ice composant la population
 	*/
