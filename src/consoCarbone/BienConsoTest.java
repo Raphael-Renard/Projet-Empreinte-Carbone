@@ -7,6 +7,7 @@ import java.io.PrintStream;
 
 //import org.junit.Before;
 //import org.junit.BeforeClass;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
@@ -36,7 +37,6 @@ class BienConsoTest {
 		this.bien.setmontant(m);
 		//Assert
 		assertEquals(this.bien.getMontant(),res);
-		// fail("Not yet implemented");
 	}
 	
 	@ParameterizedTest
@@ -50,7 +50,6 @@ class BienConsoTest {
 		// Assert
 		String s=out.toString();
 		assertEquals(rep,s.substring(0,s.lastIndexOf("\n")-1 ));
-		//fail("Not yet implemented"); // TODO
 	}
 
 }
