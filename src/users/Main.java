@@ -65,7 +65,7 @@ public class Main {
 			}
 			switch(rep) {
 			case 0:
-				System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+				System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
 				break;
 			case 1:
 				user.detaillerEmpreinte();
