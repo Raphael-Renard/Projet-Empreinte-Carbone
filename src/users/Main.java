@@ -8,7 +8,6 @@ public class Main {
 	 * Permet de créer un utilisateur avant de proposer les différentes actions possibles.
 	 */
 	public static void debut(Scanner sc1) {
-		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
 		String str1="a";
 		int rep=-6;
 		while(rep != 1 && rep !=2 && rep!= 0) {
@@ -166,7 +165,7 @@ public class Main {
 	 * Permet de créer une population et de rajouter des contraintes pour observer l'effet d'une politique environmentale
 	 */
 	public static void popu(Scanner sc) {
-		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
+		
 		String str1="a";
 		int rep=-6;
 		while(rep < 0) {
@@ -230,9 +229,27 @@ public class Main {
 	 * Lance la méthode debut() pour lancer le calculateur avec un utilisateur ou la méthode popu() pour une étude de population.
 	 */
 	public static void main(String[] args) {
+		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
 		Scanner sc1 = new Scanner(System.in);
-		debut(sc1);
-		popu(sc1);
+		String str1="a";
+		int rep=-6;
+		while(rep != 1 && rep !=2 ) {
+			System.out.println("Tapez 1 pour créer un Utilisateur ou 2 pour créer une population : ");
+			str1 = sc1.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 1:
+			debut(sc1);
+			break;
+		case 2:
+			popu(sc1);
+			break;
+		}
 		sc1.close();
 	}
 }
