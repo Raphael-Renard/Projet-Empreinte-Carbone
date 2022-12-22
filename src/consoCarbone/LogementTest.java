@@ -27,7 +27,9 @@ class LogementTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value ={"E-200-Songez à renover votre logement pour qu'il ait une meilleure classe énergétique.\nSi vous n'avez pas besoin d'un logement aussi grand, songez à déménager pour réduire les dépenses énergétiques.", "A-150-Si vous n'avez pas besoin d'un logement aussi grand, songez à déménager pour réduire les dépenses énergétiques."}, delimiter='-')
+	@CsvSource(value ={"E$70$Songez à renover votre logement pour qu'il ait une meilleure classe énergétique.", 
+		"A$250$Si vous n'avez pas besoin d'un logement aussi grand, songez à déménager pour réduire les dépenses énergétiques."}, 
+		delimiter='$')
 	void testConseil(CE ce, int s, String rep) {
 		// Act
 		ByteArrayOutputStream out = new ByteArrayOutputStream();    
@@ -50,7 +52,7 @@ class LogementTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource({"A,A", "Q,G"})
+	@CsvSource({"A,A","G,G"})
 	void testSetce(CE ce, CE res) {
 		//Act
 		this.log.setce(ce);
