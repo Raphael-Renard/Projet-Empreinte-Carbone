@@ -141,7 +141,7 @@ public class User {
 
 	/**
 	 * getter
-	 * @return empreinte de l'utilisateur
+	 * @return empreinte de l'utilisateur.ice
 	 */
 	public double getempreinte() {
 		return this.empreinte;
