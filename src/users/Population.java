@@ -118,7 +118,7 @@ public class Population {
 	 */
     public void ReduireSP(){
         this.empreinteTot = this.empreinteTot - 0.5 * this.listeUser.size();
-        this.empreinteMoy = this.empreinteTot - 0.5;
+        this.empreinteMoy = this.empreinteMoy - 0.5;
     }
 
     /**
