@@ -119,6 +119,16 @@ public class Main {
 				//fonction de changement
 				break;
 			case 2:
+				int rep1=-6;
+				while(rep1 <= 0) {
+					System.out.println("Quelle est la taille de la population rajoutée : ");
+					str1 = sc.nextLine();
+					if(!str1.matches("-?\\d+")){
+						rep1=-6;
+						System.out.println("Veuillez répondre uniquement par les options données.");
+					}
+					else rep1=Integer.valueOf(str1);
+				}
 				while(rep != 1 && rep !=2 && rep!= 0) {
 					System.out.println("Vous pouvez quitter quitter en tapant (0).");
 					System.out.println("Voulez-vous créer un utilisateur moyen avec un fichier (1) ou en donnant les valeurs à la main (2) : ");
@@ -137,13 +147,13 @@ public class Main {
 				case 1:
 					System.out.println("Veuillez donner le chemin d'accès de votre fichier :");
 					User user1 = new User(sc.nextLine());
-					for (i=0;i<rep;i++) {
+					for (i=0;i<rep1;i++) {
 						pop.addUser(user1);
 					}
 					break;
 				case 2:
 					User user2 = new User(sc);
-					for (i=0;i<rep;i++) {
+					for (i=0;i<rep1;i++) {
 						pop.addUser(user2);
 					}
 					break;		
@@ -204,12 +214,14 @@ public class Main {
 				for (i=0;i<rep;i++) {
 					pop.addUser(user1);
 				}
+				actions(sc,pop);
 				break;
 			case 2:
 				User user2 = new User(sc1);
 				for (i=0;i<rep;i++) {
 					pop.addUser(user2);
 				}
+				actions(sc,pop);
 				break;		
 			}
 			
