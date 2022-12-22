@@ -229,6 +229,13 @@ public class HabitudesAli extends Alimentation {
 		super.setimpact(tmp); //definition de impact dans classe ConsoCarbone
 	}
 
+    /**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
+	 * Permet de modifier un paramètre de l'objet HabitudesAli de façon intéractive.
+	 * Pour les attributs de type booléen, une modification changera automatiquement la valeur à celle opposée (false si true et inversement)
+	 */
+    @Override
     public void modif(Scanner sc) {
 		String str1="a";
 		int rep=-6;
@@ -410,6 +417,10 @@ public class HabitudesAli extends Alimentation {
 	    return ("id : " + super.getid() + ",\nAlimentation de saison : " + this.getsaison() + ",\nAlimentation locale : " + this.getlocaux() + ",\nGaspillage alimentaire : "+this.getgaspillage()+"kg,\nCourse en vrac : "+this.getvrac()+",\nCourse dans des e-commerces : "+this.getecommerce()+",\nimpact : " + this.getImpact()+" TCO2eq\n");
 	}
 	
+	/** 
+	 * Méthode qui donne des conseils pour réduire son empreinte carbone
+	 */
+	@Override
 	public void conseil() {
 		if(!this.getsaison()) {
 			System.out.println("Essayez de consommer des produits de saison.");

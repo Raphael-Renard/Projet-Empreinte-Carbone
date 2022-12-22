@@ -134,6 +134,11 @@ public class BienConso extends ConsoCarbone{
 		}
 	}
     
+    /**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
+	 * Permet de modifier le montant des dépenses de l'objet BienConso de façon intéractive.
+	 */
     public void modif(Scanner sc) {
 		String str1="a";
 		int rep=-6;

@@ -216,6 +216,13 @@ public class User {
 		Collections.max(liste).conseil();
 	}
 
+	/**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
+	 * Utilisée par la fonction actions() dans Main, elle propose de choisir un type de consommation à modifier.
+	 * Pour les modifications des consommations, on peut modifier les attributs pour chaque consommation.
+	 * Pour Logement et Transport on peut aussi en ajouter ou en supprimer un.
+	 */
 	public void modifUser(Scanner sc) {
 		String str1="a";
 		int rep=-6;

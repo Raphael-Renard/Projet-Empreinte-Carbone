@@ -125,6 +125,11 @@ public class Logement extends ConsoCarbone{
 		}
     }
 
+    /**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
+	 * Permet de modifier les attributs du Logement de façon intéractive.
+	 */
     public void modif(Scanner sc) {
 		String str1="a";
 		int rep=-6;

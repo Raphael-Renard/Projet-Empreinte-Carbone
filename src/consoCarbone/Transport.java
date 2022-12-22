@@ -202,6 +202,11 @@ public class Transport extends ConsoCarbone{ //javadoc
 		}
     }
 
+    /**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
+	 * Permet de modifier les attributs du Transport de façon intéractive.
+	 */
     public void modif(Scanner sc) {
 		String str1="a";
 		int rep=-6;

@@ -191,6 +191,11 @@ public class Alimentation extends ConsoCarbone{
 		}
 	}
 
+	/**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
+	 * Permet de modifier un paramètre de l'objet Alimentation de façon intéractive.
+	 */
 	public void modif(Scanner sc) {
 		String str1="a";
 		int rep=-6;
@@ -221,6 +226,7 @@ public class Alimentation extends ConsoCarbone{
 			break;			
 		}
 	}
+	
 	/**
 	 Affiche la consommation de l'alimentaion en paramètre. Puis affiche la distribution de l'impact moyen d'un français à cause de l'alimentation.
 	 */

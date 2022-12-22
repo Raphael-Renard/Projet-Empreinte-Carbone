@@ -3,6 +3,10 @@ package users;
 import java.util.Scanner;
 
 public class Main {
+	/**
+	 * Cadre intéractif pour la calculateur.
+	 * Permet de créer un utilisateur avant de proposer les différentes actions possibles.
+	 */
 	public static void debut() {
 		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
 		Scanner sc1 = new Scanner(System.in);
@@ -35,11 +39,16 @@ public class Main {
 		sc1.close();
 		System.out.println("FIN");
 	}
-	
+	/**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur
+	 * @param user Utilisateur pour lequel on considère son empreinte et/ou des modifications des consommations.
+	 * Donne l'empreinte de l'Utilisateur puis propose de détailler l'empreinte, d'avoir des conseil ou de modifier l'utilisateur.
+	 */
 	public static void actions(Scanner sc, User user) {
 		int rep=-6;
 		while(rep!=0) {
-			System.out.println("\nVous avez créer un utilisateur. Son empreinte est de "+user.getempreinte()+" TCO2.\n");
+			System.out.println("\nL'empreinte de votre utilisateur est de "+user.getempreinte()+" TCO2.\n");
 			String str1="a";
 			rep=-6;
 			while(rep != 1 && rep !=2 && rep!=3 && rep!= 0) {
@@ -74,6 +83,10 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * Lance la méthode debut() pour lanceer le calculateur.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		debut();
 	}
