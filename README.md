@@ -9,7 +9,10 @@ Pour la compilation du projet utiliser éclipse et exécuter le code directement
 	javac ./Projet-Empreinte-Carbone
 Pour exécuter le programme on exécute le fichier Main.java du package users avec éclipse ou avec la commande
 	java ./Projet-Empreinte-Carbone/users/Main.java
-Pour l'utiliser il faut suivre les instructions qui s'affichent sur la console. 
+Poue exécuter les Test Junits il faut soit exécute sur éclipse avec run as JUnits Test ou exécuter la commande : 
+	java org.junit.runner.JUnitCore LogementTest BienConsoTest
+	
+Pour utiliser le programme il faut suivre les instructions qui s'affichent sur la console. 
 
 Pour créer un utilisateur à partir d'un fichier il  faut que le fichier soit de la forme : 
 
