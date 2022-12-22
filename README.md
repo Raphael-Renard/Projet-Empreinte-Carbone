@@ -5,8 +5,10 @@ Votre projet devra également contenir un chier ReadMe présentant succinctemen
 Le projet implémente un calculateur d'empreinte carbone. Il est contenu dans 2 package : consoCarbone et users. Le premiers package contient les classes détaillant les différentes consommations possibles, le second contient les classes utilisants les premières pour créer un utilisateur avec plusieurs consommations et gérer celles-ci.
 
 
-Pour la compilation du projet utiliser éclipse et exécuter le code directement ou compiler avec la commande
-Pour exécuter le programme on exécute le fichier Main.java du package users.
+Pour la compilation du projet utiliser éclipse et exécuter le code directement ou compiler avec la commande :
+	javac ./Projet-Empreinte-Carbone
+Pour exécuter le programme on exécute le fichier Main.java du package users avec éclipse ou avec la commande
+	java ./Projet-Empreinte-Carbone/users/Main.java
 Pour l'utiliser il faut suivre les instructions qui s'affichent sur la console. 
 
 Pour créer un utilisateur à partir d'un fichier il  faut que le fichier soit de la forme : 
@@ -48,4 +50,4 @@ durée de conservation du véhicule
 [répéter autant de fois qu'il y a de voitures]
 
 
-Par exemple le fichier test.txt créer un utilisateur avec 1 Logement et 2 voitures.
+Par exemple le fichier test.txt créer un utilisateur avec 1 Logement et 2 voitures. Le fichier test.txt se trouve avec le chemin ./Projet-Empreinte-Carbone/test.txt
