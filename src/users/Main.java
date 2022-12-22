@@ -93,11 +93,11 @@ public class Main {
 	public static void actions(Scanner sc, Population pop) {
 		int rep=-6;
 		while(rep!=0) {
-			System.out.println("\nL'empreinte de votre population est de "+pop.getempreinteTot()+" TCO2 au total.");
-			System.out.println("L'empreinte de votre Utilisateur moyen est de "+pop.getempreinteMoy()+" TCO2.\n");
 			String str1="a";
 			rep=-6;
 			while(rep != 1 && rep !=2 && rep!= 0) {
+				System.out.println("\nL'empreinte de votre population est de "+pop.getempreinteTot()+" TCO2 au total.");
+				System.out.println("L'empreinte de votre Utilisateur moyen est de "+pop.getempreinteMoy()+" TCO2.\n");
 				System.out.println("Vous pouvez quitter en tapant (0),");
 				System.out.println("Pour modifier tous vos utilisateurs en ajoutant une politique environmentale tapez (1),");
 				System.out.println("Pour ajouter des utilisateurs dans la population tapez (2) :");
@@ -113,7 +113,7 @@ public class Main {
 				System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
 				break;
 			case 1:
-				//fonction de changement
+				rep=-6;
 				while(rep != 1 && rep !=2 && rep!= 3) {
 					System.out.println("Voulez-vous renover les logements (1), réduire la consommation des services publiques (2) ou interdire l'achat de plus d'une voiture (3) : ");
 					str1 = sc.nextLine();
@@ -123,7 +123,6 @@ public class Main {
 					}
 					else rep=Integer.valueOf(str1);
 				}
-				
 				switch(rep) {
 				case 1:
 					pop.RenovationEnergetique();
