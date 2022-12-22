@@ -109,18 +109,48 @@ public class Main {
 			break;
 		default:
 			System.out.println("La population est composée du même utilisateur moyen.");
-			User use = new User(sc);
+			System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
+			Scanner sc1 = new Scanner(System.in);
+			str1="a";
+			rep=-6;
+			while(rep != 1 && rep !=2 && rep!= 0) {
+				System.out.println("Vous pouvez quitter quitter en tapant (0).");
+				System.out.println("Voulez-vous créer un utilisateur avec un fichier (1) ou en donnant les valeurs à la main (2) : ");
+				str1 = sc1.nextLine();
+				if(!str1.matches("-?\\d+")){
+					rep=-6;
+					System.out.println("Veuillez répondre uniquement par les options données.");
+				}
+				else rep=Integer.valueOf(str1);
+			}
 			Population pop = new Population();
 			int i;
-			for (i=0;i<rep;i++) {
-				pop.addUser(use);
+			switch(rep) {
+			case 0:
+				System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
+				break;
+			case 1:
+				System.out.println("Veuillez donner le chemin d'accès de votre fichier :");
+				User user1 = new User(sc1.nextLine());
+				for (i=0;i<rep;i++) {
+					pop.addUser(user1);
+				}
+				break;
+			case 2:
+				User user2 = new User(sc1);
+				for (i=0;i<rep;i++) {
+					pop.addUser(user2);
+				}
+				break;		
 			}
+			
 			break;
 		}
 		sc.close();
 	}
+	
 	/**
-	 * Lance la méthode debut() pour lancer le calculateur.
+	 * Lance la méthode debut() pour lancer le calculateur avec un utilisateur ou la méthode popu() pour une étude de population.
 	 */
 	public static void main(String[] args) {
 		debut();

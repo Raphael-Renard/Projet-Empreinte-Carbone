@@ -25,7 +25,20 @@ public class Population {
 		this.calculerEmpreinteMoy();
 		this.calculerEmpreinteTot();
     } 
-
+	/**
+	 * getter
+	 * @return l'empreinte totale de la population
+	 */
+	public double getempreinteTot() {
+		return this.empreinteTot;
+	}
+	/**
+	 * getter
+	 * @return l'empreinte moyenne d'un membre de la population
+	 */
+	public double getempreinteMoy() {
+		return this.empreinteMoy;
+	}
     /**
 	 * Méthode pour ajouter un utilisateur à la population
 	 */
