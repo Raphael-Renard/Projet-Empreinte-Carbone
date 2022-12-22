@@ -151,7 +151,7 @@ public class User {
 	 * Méthode qui calcule l'empreinte carbone de l'utilisateur.rice
 	 * @return empreinte carbone
 	 */
-	private double calculerEmpreinte() {
+	protected double calculerEmpreinte() {
 		int sommelogement=0;
 		for (Logement loge : listeLogement) {
 			sommelogement += loge.getImpact();
