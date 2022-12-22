@@ -16,6 +16,9 @@ Poue exécuter les Test Junits, il faut soit exécuter sur éclipse avec run as 
 
 	java org.junit.runner.JUnitCore LogementTest BienConsoTest
 	
+Pour créer la JavaDoc soit on fait Project puis generate Javadoc soit on utilise la commande :
+
+	javadoc -d doc consoCarbone users
 Pour utiliser le programme, il faut suivre les instructions qui s'affichent sur la console. 
 
 Pour créer un utilisateur à partir d'un fichier, il faut que le fichier soit de la forme : 
