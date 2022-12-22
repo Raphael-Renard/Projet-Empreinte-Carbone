@@ -125,16 +125,10 @@ public class Population {
 	 * Méthode qui teste une mesure de politique publique forçant les habitants à rénover leur logement si leur CE est en dessous de D
 	 */
     public void RenovationEnergetique(){
-        ArrayList<User> newListeUser = new ArrayList<User>(this.listeUser);
         for (User user : this.listeUser) {
-            ArrayList<Logement> newListeLog = new ArrayList<Logement>(user.getlogements());
             for (Logement log : user.getlogements()){
                 if(log.getce() == CE.E | log.getce() == CE.F |log.getce() == CE.G){log.setce(CE.D);}
-                newListeLog.add(log);
             }
-            newListeUser.remove(newListeUser.lastIndexOf(user));
-            user.setlogements(newListeLog);
-            newListeUser.add(user);
         }
         this.calculerEmpreinteMoy();
 		this.calculerEmpreinteTot();
@@ -145,16 +139,12 @@ public class Population {
 	 * Méthode qui teste une mesure de politique publique interdisant aux habitants de posséder plus d'une voiture
 	 */
     public void UneVoitureMax(){
-        ArrayList<User> newListeUser = new ArrayList<User>(this.listeUser);
         for (User user : this.listeUser) {
             ArrayList<Transport> newListeTransp = new ArrayList<Transport>();
             if (user.getTransports().size()>1) {
                 newListeTransp.add(user.getTransports().get(0));
                 user.setTransports(newListeTransp);
             }
-            newListeUser.remove(newListeUser.lastIndexOf(user));
-            user.setTransports(newListeTransp);
-            newListeUser.add(user);
         }
         this.calculerEmpreinteMoy();
 		this.calculerEmpreinteTot();
@@ -173,7 +163,7 @@ public class Population {
         Population popu = new Population(liste);
         System.out.println(popu.empreinteMoy);
         System.out.println(popu.empreinteTot);
-        popu.ReduireSP();
+        popu.RenovationEnergetique();
         System.out.println(popu.empreinteTot);
     }
 }
