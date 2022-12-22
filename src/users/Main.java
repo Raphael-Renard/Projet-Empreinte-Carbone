@@ -85,6 +85,75 @@ public class Main {
 			}
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur
+	 * @param pop Population pour laquelle on considère son empreinte et/ou des modifications des consommations.
+	 * Donne l'empreinte de la Population puis propose de modifier la population.
+	 */
+	public static void actions(Scanner sc, Population pop) {
+		int rep=-6;
+		while(rep!=0) {
+			System.out.println("\nL'empreinte de votre population est de "+pop.getempreinteTot()+" TCO2 au total.");
+			System.out.println("L'empreinte de votre Utilisateur moyen est de "+pop.getempreinteMoy()+" TCO2.\n");
+			String str1="a";
+			rep=-6;
+			while(rep != 1 && rep !=2 && rep!= 0) {
+				System.out.println("Vous pouvez quitter en tapant (0),");
+				System.out.println("Pour modifier tous vos utilisateurs en ajoutant une politique environmentale tapez (1),");
+				System.out.println("Pour ajouter des utilisateurs dans la population tapez (2) :");
+				str1 = sc.nextLine();
+				if(!str1.matches("-?\\d+")){
+					rep=-6;
+					System.out.println("Veuillez répondre uniquement par les options données.");
+				}
+				else rep=Integer.valueOf(str1);
+			}
+			switch(rep) {
+			case 0:
+				System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
+				break;
+			case 1:
+				//fonction de changement
+				break;
+			case 2:
+				while(rep != 1 && rep !=2 && rep!= 0) {
+					System.out.println("Vous pouvez quitter quitter en tapant (0).");
+					System.out.println("Voulez-vous créer un utilisateur moyen avec un fichier (1) ou en donnant les valeurs à la main (2) : ");
+					str1 = sc.nextLine();
+					if(!str1.matches("-?\\d+")){
+						rep=-6;
+						System.out.println("Veuillez répondre uniquement par les options données.");
+					}
+					else rep=Integer.valueOf(str1);
+				}
+				int i;
+				switch(rep) {
+				case 0:
+					System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
+					break;
+				case 1:
+					System.out.println("Veuillez donner le chemin d'accès de votre fichier :");
+					User user1 = new User(sc.nextLine());
+					for (i=0;i<rep;i++) {
+						pop.addUser(user1);
+					}
+					break;
+				case 2:
+					User user2 = new User(sc);
+					for (i=0;i<rep;i++) {
+						pop.addUser(user2);
+					}
+					break;		
+				}
+				break;
+			}
+		}
+	}
+	
+	
 	/**
 	 * Permet de créer une population et de rajouter des contraintes pour observer l'effet d'une politique environmentale
 	 */
@@ -115,7 +184,7 @@ public class Main {
 			rep=-6;
 			while(rep != 1 && rep !=2 && rep!= 0) {
 				System.out.println("Vous pouvez quitter quitter en tapant (0).");
-				System.out.println("Voulez-vous créer un utilisateur avec un fichier (1) ou en donnant les valeurs à la main (2) : ");
+				System.out.println("Voulez-vous créer un utilisateur moyen avec un fichier (1) ou en donnant les valeurs à la main (2) : ");
 				str1 = sc1.nextLine();
 				if(!str1.matches("-?\\d+")){
 					rep=-6;
