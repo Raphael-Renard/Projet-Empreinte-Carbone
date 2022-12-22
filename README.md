@@ -5,10 +5,14 @@ Le projet implémente un calculateur d'empreinte carbone. Il est contenu dans 2 
 
 
 Pour la compilation du projet utiliser éclipse et exécuter le code directement ou compiler avec la commande :
+
 	javac ./Projet-Empreinte-Carbone
-Pour exécuter le programme on exécute le fichier Main.java du package users avec éclipse ou avec la commande
+	
+Pour exécuter le programme on exécute le fichier Main.java du package users avec éclipse ou avec la commande :
+
 	java ./Projet-Empreinte-Carbone/users/Main.java
 Poue exécuter les Test Junits il faut soit exécute sur éclipse avec run as JUnits Test ou exécuter la commande : 
+
 	java org.junit.runner.JUnitCore LogementTest BienConsoTest
 	
 Pour utiliser le programme il faut suivre les instructions qui s'affichent sur la console. 
