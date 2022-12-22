@@ -380,7 +380,12 @@ public class User {
 		}
 		this.empreinte = calculerEmpreinte();
 	}
-	
+	/**
+	 * 
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur
+	 * Sauvegarde un utilisateur dans un fichier dans la forme compatible avec le programme.
+	 * Attention si le fichier cible existe deja le resultat risque de ne pas etre compatible avec le calculateur.
+	 */
 	public void sauv(Scanner sc) {
 		String str1="a";
 		System.out.println("Donnez le chemin et le nom du fichier à créer (./mondossier/fichiersauvegarde.txt) : ");
