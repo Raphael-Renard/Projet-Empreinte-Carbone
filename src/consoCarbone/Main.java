@@ -15,7 +15,7 @@ public class Main { //classe contenant une méthode main permetant de faire des 
     	ConsoCarbone c1 = new BienConso(20);
     	System.out.println("1er cas :\n"+c1+"\n");
 
-    	BienConso hab = new BienConso();
+    //	BienConso hab = new BienConso();
 
 		// fait appel a la fonction toString de Logement
 		Logement log1 = new Logement();

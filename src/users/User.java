@@ -224,8 +224,8 @@ public class User {
 			System.out.println("Quel type de consommation voulez vous modifier ?");
 			System.out.println("Tapez 1 pour modifiez la consommation liée à l'Alimentation,");
 			System.out.println("Tapez 2 pour modifiez la consommation liée aux dépenses,");
-			System.out.println("Tapez 3 pour modifiez la consommation liée au Logement,"); //attention liste
-			System.out.println("Tapez 4 pour modifiez la consommation liée aux Transports : "); //attention liste
+			System.out.println("Tapez 3 pour modifiez la consommation liée au Logement,");
+			System.out.println("Tapez 4 pour modifiez la consommation liée aux Transports : ");
 			str1 = sc.nextLine();
 			if(!str1.matches("-?\\d+")){
 				rep=-6;
@@ -236,6 +236,7 @@ public class User {
 		switch(rep) {
 		case 0:
 			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+			break;
 		case 1:
 			this.alimentation.modif(sc);
 			break;
@@ -243,52 +244,146 @@ public class User {
 			this.bienConso.modif(sc);
 			break;
 		case 3:
-			for (Logement loge : listeLogement) { 
-				str1="a";
-				int rep1=-6;
-				while(rep != 1 && rep !=2) {
-					System.out.println(loge);
-					System.out.println("Tapez 1 pour modifiez la consommation liée a ce Logement,sinon tapez 2");
-					str1 = sc.nextLine();
-					if(!str1.matches("-?\\d+")){
-						rep1=-6;
-						System.out.println("Veuillez répondre uniquement par les options données.");
-					}
-					else rep1=Integer.valueOf(str1);
-					switch(rep1) {
-					case 1:
-						loge.modif(sc);
-						break;
-					case 2:
-						break;
+			str1="a";
+			rep=-6;
+			while(rep != 1 && rep !=2 && rep !=3) {
+				System.out.println("Tapez 1 pour ajouter un logement,");
+				System.out.println("Tapez 2 pour supprimer un logement,");
+				System.out.println("Tapez 3 pour modifier un logement déjà existant : ");
+				str1 = sc.nextLine();
+				if(!str1.matches("-?\\d+")){
+					rep=-6;
+					System.out.println("Veuillez répondre uniquement par les options données.");
+				}
+				else rep=Integer.valueOf(str1);
+			}
+			switch(rep) {
+			case 1:
+				this.listeLogement.add(new Logement(sc));
+				break;
+			case 2:
+				int fin=0;
+				for (Logement loge : listeLogement) { 
+					str1="a";
+					int rep1=-6;
+					while(rep1 != 1 && rep1 !=2 && fin !=1) {
+						System.out.println(loge);
+						System.out.println("Tapez 1 pour supprimer le logement ,sinon tapez 2");
+						str1 = sc.nextLine();
+						if(!str1.matches("-?\\d+")){
+							rep1=-6;
+							System.out.println("Veuillez répondre uniquement par les options données.");
+						}
+						else rep1=Integer.valueOf(str1);
+						switch(rep1) {
+						case 1:
+							fin=1;
+							listeLogement.remove(loge);
+							break;
+						case 2:
+							break;
+						}
 					}
 				}
+				break;
+			case 3:
+				fin=0;
+				for (Logement loge : listeLogement) { 
+					str1="a";
+					int rep1=-6;
+					while(rep1 != 1 && rep1 !=2 && fin!=1) {
+						System.out.println(loge);
+						System.out.println("Tapez 1 pour modifiez la consommation liée a ce Logement,sinon tapez 2");
+						str1 = sc.nextLine();
+						if(!str1.matches("-?\\d+")){
+							rep1=-6;
+							System.out.println("Veuillez répondre uniquement par les options données.");
+						}
+						else rep1=Integer.valueOf(str1);
+						switch(rep1) {
+						case 1:
+							fin=1;
+							loge.modif(sc);
+							break;
+						case 2:
+							break;
+						}
+					}
+				}
+				break;
 			}
+			
 			break;
 		case 4:
-			for (Transport transp : listeTransport) { 
-				str1="a";
-				int rep1=-6;
-				while(rep != 1 && rep !=2) {
-					System.out.println(transp);
-					System.out.println("Tapez 1 pour modifiez la consommation liée a cette voiture,sinon tapez 2");
-					str1 = sc.nextLine();
-					if(!str1.matches("-?\\d+")){
-						rep1=-6;
-						System.out.println("Veuillez répondre uniquement par les options données.");
-					}
-					else rep1=Integer.valueOf(str1);
-					switch(rep1) {
-					case 1:
-						transp.modif(sc);
-						break;
-					case 2:
-						break;
+			str1="a";
+			rep=-6;
+			while(rep != 1 && rep !=2 && rep !=3) {
+				System.out.println("Tapez 1 pour ajouter une voiture,");
+				System.out.println("Tapez 2 pour supprimer une voiture,");
+				System.out.println("Tapez 3 pour modifier une voiture déjà existante, : ");
+				str1 = sc.nextLine();
+				if(!str1.matches("-?\\d+")){
+					rep=-6;
+					System.out.println("Veuillez répondre uniquement par les options données.");
+				}
+				else rep=Integer.valueOf(str1);
+			}
+			switch(rep) {
+			case 1:
+				this.listeTransport.add(new Transport(sc));
+				break;
+			case 2:
+				int fin=0;
+				for (Transport transp : listeTransport) { 
+					str1="a";
+					int rep1=-6;
+					while(rep1 != 1 && rep1 !=2 && fin!=1) {
+						System.out.println(transp);
+						System.out.println("Tapez 1 pour supprimer la voiture ,sinon tapez 2");
+						str1 = sc.nextLine();
+						if(!str1.matches("-?\\d+")){
+							rep1=-6;
+							System.out.println("Veuillez répondre uniquement par les options données.");
+						}
+						else rep1=Integer.valueOf(str1);
+						switch(rep1) {
+						case 1:
+							fin=1;
+							listeTransport.remove(transp);
+							break;
+						case 2:
+							break;
+						}
 					}
 				}
-			}
 			break;
-		default:			
+			case 3:
+				fin=0;
+				for (Transport transp : listeTransport) { 
+					str1="a";
+					int rep1=-6;
+					while(rep1 != 1 && rep1 !=2 && fin!=1) {
+						System.out.println(transp);
+						System.out.println("Tapez 1 pour modifiez la consommation liée a cette voiture,sinon tapez 2");
+						str1 = sc.nextLine();
+						if(!str1.matches("-?\\d+")){
+							rep1=-6;
+							System.out.println("Veuillez répondre uniquement par les options données.");
+						}
+						else rep1=Integer.valueOf(str1);
+						switch(rep1) {
+						case 1:
+							fin=1;
+							transp.modif(sc);
+							break;
+						case 2:
+							break;
+						}
+					}
+				}
+			break;
+			}		
 		}
+		this.empreinte = calculerEmpreinte();
 	}
 } 
