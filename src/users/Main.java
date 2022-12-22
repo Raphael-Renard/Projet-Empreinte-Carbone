@@ -85,7 +85,40 @@ public class Main {
 			}
 		}
 	}
-	
+	/**
+	 * Permet de créer une population et de rajouter des contraintes pour observer l'effet d'une politique environmentale
+	 */
+	public static void popu() {
+		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
+		Scanner sc = new Scanner(System.in);
+		String str1="a";
+		int rep=-6;
+		while(rep < 0) {
+			System.out.println("Vous pouvez quitter en tapant (0),");
+			System.out.println("Quelle est la taille de la population créée : ");
+			str1 = sc.nextLine();
+			if(!str1.matches("-?\\d+")){
+				rep=-6;
+				System.out.println("Veuillez répondre uniquement par les options données.");
+			}
+			else rep=Integer.valueOf(str1);
+		}
+		switch(rep) {
+		case 0:
+			System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
+			break;
+		default:
+			System.out.println("La population est composée du même utilisateur moyen.");
+			User use = new User(sc);
+			Population pop = new Population();
+			int i;
+			for (i=0;i<rep;i++) {
+				pop.addUser(use);
+			}
+			break;
+		}
+		sc.close();
+	}
 	/**
 	 * Lance la méthode debut() pour lancer le calculateur.
 	 */

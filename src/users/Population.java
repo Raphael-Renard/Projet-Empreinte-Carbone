@@ -65,6 +65,9 @@ public class Population {
         Scanner sc1 = new Scanner(System.in);
         user.modifUser(sc1);
         this.addUser(user);
+        sc1.close();
+        this.calculerEmpreinteMoy();
+		this.calculerEmpreinteTot();
     }
 
     /**
