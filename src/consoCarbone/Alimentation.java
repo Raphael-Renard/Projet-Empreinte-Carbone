@@ -27,7 +27,6 @@ public class Alimentation extends ConsoCarbone{
 
 	/**
 	 * Constructeur par défaut donnant une consommation maximum
-	 * @param sc scanner utilisé pour interagir avec l'utilisateur
 	 */
 	public Alimentation(){
         this(1,0);
@@ -71,6 +70,7 @@ public class Alimentation extends ConsoCarbone{
 
     /** 
 	 * Constructeur intéractif sans print
+	 * @param sc Scanner permettant de lire le fichier
 	 * @param i peut être n'importe quel entier
 	 */
     public Alimentation(Scanner sc, int i){

@@ -106,6 +106,7 @@ public class Transport extends ConsoCarbone{ //javadoc
 
 	/**
      * Constructeur interactif sans print
+     * @param sc Scanner permettant de lire le fichier
      * @param i peut être n'importe quel entier
      */
 	public Transport(Scanner sc, int i){

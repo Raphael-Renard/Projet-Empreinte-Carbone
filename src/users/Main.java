@@ -85,7 +85,6 @@ public class Main {
 	
 	/**
 	 * Lance la méthode debut() pour lancer le calculateur.
-	 * @param args
 	 */
 	public static void main(String[] args) {
 		debut();

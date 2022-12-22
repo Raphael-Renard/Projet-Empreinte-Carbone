@@ -113,6 +113,7 @@ public class HabitudesAli extends Alimentation {
 
 	/**
 	 * Constructeur interactif sans print
+	 * @param sc2 Scanner permettant de lire le fichier
 	 * @param i peut être n'importe quel entier
 	*/
     public HabitudesAli(Scanner sc2, int i){

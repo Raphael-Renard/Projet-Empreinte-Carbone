@@ -51,6 +51,7 @@ public class BienConso extends ConsoCarbone{
 
 	/**
      * Constructeur interactif sans print
+     * @param sc Scanner permettant de lire le fichier
      * @param i peut être n'importe quel entier
  	*/
 	public BienConso(Scanner sc, int i){

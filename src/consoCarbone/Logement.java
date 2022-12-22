@@ -67,6 +67,7 @@ public class Logement extends ConsoCarbone{
 
 	/**
      * Constructeur interactif sans print
+     * @param sc Scanner permettant de lire le fichier
      * @param i peut être n'importe quel entier
      */
     public Logement(Scanner sc, int i){
