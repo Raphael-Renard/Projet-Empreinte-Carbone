@@ -140,63 +140,6 @@ public class User {
 	}
 
 	/**
-	 * 
-	 * @return empreinte de l'utilisateur
-	 */
-	public double getempreinte() {
-		return this.empreinte;
-	}
-<<<<<<< Updated upstream
-=======
-
-	/**
-     * Constructeur par lecture d'un fichier texte
-     * @param adresse chemin d'accès du fichier
-	 * 
-	 * Le fichier doit être présenté comme suit :
-	 * taux de repas à base de boeuf (entre 0 et 1)
-	 * taux de repas végétarien (entre 0 et 1)
-	 * produits de saison ? (Y/n)
-	 * produits locaux ? (Y/n)
-	 * kg de nourriture gaspillée par an
-	 * courses en vrac ? (Y/n)
-	 * courses dans des e-commerces ? (Y/n)
-	 * dépenses annuelles
-	 * nombre d'appartements
-	 * superficie
-	 * classe énergétique
-	 * [répéter autant de fois qu'il y a de logements]
-	 * nombre de voitures
-	 * taille de la voiture
-	 * nb de km parcourus par an
-	 * durée de conservation du véhicule
-	 * émissions nécessaires à la fabrication de la voiture
-	 * [répéter autant de fois qu'il y a de voitures]
-     */
-	public User(String adresse) {
-		try{
-			File doc = new File(adresse);
-			Scanner sc1 = new Scanner(doc);
-			alimentation = new HabitudesAli(sc1,1);
-			bienConso = new BienConso(sc1,1);
-			listeLogement = new ArrayList<Logement>();
-			String str3 = sc1.nextLine(); // condition >0 ou pas
-			for (int i=0; i<Integer.valueOf(str3);i++) {
-				listeLogement.add( new Logement(sc1,1));
-			}
-			listeTransport = new ArrayList<Transport>();
-			str3 = sc1.nextLine(); // condition >0 ou pas
-			for (int i=0; i<Integer.valueOf(str3);i++) {
-				listeTransport.add(new Transport(sc1,1));
-			}
-			services = new ServicesPublics();
-			empreinte = calculerEmpreinte();
-			sc1.close();
-		}
-		catch(FileNotFoundException e) {System.out.println("file not found");}
-	}
-
-	/**
 	 * getter
 	 * @return empreinte de l'utilisateur.ice
 	 */
@@ -204,7 +147,6 @@ public class User {
 		return this.empreinte;
 	}
 
->>>>>>> Stashed changes
 	/**
 	 * getter
 	 * @return collection de logements de l'utilisateur.ice
