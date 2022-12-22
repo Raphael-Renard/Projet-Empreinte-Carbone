@@ -225,7 +225,7 @@ public class Transport extends ConsoCarbone{ //javadoc
 		}
 		switch(rep) {
 		case 0:
-			System.out.println("Vous avez quitter le calculateur d'empreinte carbonne.");
+			System.out.println("Vous avez quitté le calculateur d'empreinte carbonne.");
 		case 2:
 			System.out.println("Donnez la nouvelle valeur : ");
 			str1 = sc.nextLine();
