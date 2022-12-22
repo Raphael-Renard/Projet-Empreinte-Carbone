@@ -6,3 +6,23 @@ pages max) contenant :
 — Une présentation de vos extensions éventuelles.
 — Une discussion sur ce qui a été le plus dur à implémenter pour vous et sur le niveau de diculté
 du projet.
+
+
+Le projet implémente un calculateur d'empreinte carbone. Il est contenu dans 2 package : consoCarbone et users. 
+Le premiers package contient les classes détaillant les différentes consommations possibles, le second contient les classes utilisants les premières pour créer un utilisateur avec plusieurs consommations et gérer celles-ci.
+
+Dans le premier package se trouvent les classes BienConsoTest, LogementTest, Alimentation, BienConso, CE, ConsoCarbone, HabitudesAli, Logement, ServicesPublics, Taille et Transport.
+
+Les classes CE et Taille sont des énumérations utilisées respectivement par Logement et Transport pour définir des attributs.
+
+Les classes BienConsoTest et LogementTest contiennent des tests unitaires pour respectivement BienConso et Logement.
+
+Les classes Alimentation, BienConso, Logement, ServicesPubliques et Transport représentent chacun un type de consommation différent et héritent directement de ConsoCarbone.
+ConsoCarbone est une classe abstraite utilisé comme base pour les consommations.
+
+La classe HabitudesAli hérite de Alimentation et spécifie des habitudes alimentaires en plus des consommations alimentaires générales.
+
+Dans le second package users se trouvent les classes Main et Users.
+La classe Main contient le cadre du calculateur et permet de créer un utilisateur (à la main ou à partir d'un fichier) puis de donner l'empreinte de l'Utilisateur, le détail de l'empreinte, d'avoir des conseils ou de modifier l'utilisateur.
+
+La classe User contient les méthodes permettant de faire toutes les actions proposées dans Main.
