@@ -88,21 +88,29 @@ public class Population {
 	 * Méthode pour modifier un utilisateur de la population
 	 */
     public void modifierUser(User user){
+        try {
         this.listeUser.remove(this.listeUser.lastIndexOf(user));
         Scanner sc1 = new Scanner(System.in);
         user.modifUser(sc1);
         this.addUser(user);
-        // exception si user pas dans liste
+        }
+        catch(Exception e) {
+            System.out.println("User not in list");
+        }
     }
 
     /**
 	 * Méthode pour enlever un utilisateur à la population
 	 */
     public void removeUser(User user) {
-        this.listeUser.remove(this.listeUser.lastIndexOf(user));
-        this.calculerEmpreinteMoy();
-		this.calculerEmpreinteTot();
-        // exception si user pas dans liste
+        try{
+            this.listeUser.remove(this.listeUser.lastIndexOf(user));
+            this.calculerEmpreinteMoy();
+            this.calculerEmpreinteTot();
+        }
+        catch (Exception e) {
+            System.out.println("User not in list");
+        }
     }
 
     /**
@@ -163,8 +171,9 @@ public class Population {
         liste.add(user2);
         liste.add(user3);
         Population popu = new Population(liste);
-        popu.ReduireSP();
         System.out.println(popu.empreinteMoy);
+        System.out.println(popu.empreinteTot);
+        popu.ReduireSP();
         System.out.println(popu.empreinteTot);
     }
 }
