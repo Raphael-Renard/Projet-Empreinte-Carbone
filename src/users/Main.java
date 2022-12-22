@@ -1,7 +1,7 @@
 package users;
 
 import java.util.Scanner;
-//test ajout
+
 public class Main {
 	/**
 	 * Cadre intéractif pour la calculateur.
