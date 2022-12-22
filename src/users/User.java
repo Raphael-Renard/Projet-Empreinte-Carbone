@@ -12,7 +12,7 @@ public class User {
 	//private int id;
 	/** poste de consommation carbone alimentaire
 	 */
-	private Alimentation alimentation;
+	private HabitudesAli alimentation;
 	
 	/** poste de consommation carbone lié aux dépenses en biens de consommation
 	*/
@@ -38,7 +38,7 @@ public class User {
 	 * Constructeur par défaut 
 	*/ 
 	public User() {
-		alimentation = new Alimentation();
+		alimentation = new HabitudesAli();
 		bienConso = new BienConso();
 		listeLogement = new ArrayList<Logement>();
 		listeLogement.add(new Logement());
@@ -48,19 +48,6 @@ public class User {
 		empreinte = calculerEmpreinte();
 	}
 
-	/** 
-	 * Constructeur paramétré sans habitudes alimentaires
-	*/
-	public User(double txBoeuf, double txVege,double montant, int superficie, CE ce, boolean possede, Taille taille, int kilomAnnee, int amortissement, double fabrication) {
-		alimentation = new Alimentation(txBoeuf, txVege);
-		bienConso = new BienConso(montant);
-		listeLogement = new ArrayList<Logement>();
-		listeLogement.add( new Logement(superficie, ce));
-		listeTransport = new ArrayList<Transport>();
-		listeTransport.add(new Transport(possede, taille, kilomAnnee, amortissement, fabrication));
-		services = new ServicesPublics();
-		empreinte = calculerEmpreinte();
-	}
 	/** 
 	 * Constructeur paramétré avec habitudes alimentaires
 	*/
@@ -392,5 +379,44 @@ public class User {
 			}		
 		}
 		this.empreinte = calculerEmpreinte();
+	}
+	
+	public void sauv(Scanner sc) {
+		String str1="a";
+		System.out.println("Donnez le chemin et le nom du fichier à créer (./mondossier/fichiersauvegarde.txt) : ");
+		str1 = sc.nextLine();
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(str1);
+			writer.println(this.alimentation.gettxBoeuf());
+			writer.println(this.alimentation.gettxVege());
+			if(this.alimentation.getsaison()) str1="Y";
+			else str1 ="n";
+			writer.println(str1);
+			if(this.alimentation.getlocaux()) str1="Y";
+			else str1 ="n";
+			writer.println(str1);
+			writer.println(this.alimentation.getgaspillage());
+			if(this.alimentation.getvrac()) str1="Y";
+			else str1 ="n";
+			writer.println(str1);
+			if(this.alimentation.getecommerce()) str1="Y";
+			else str1 ="n";
+			writer.println(str1);
+			writer.println(this.bienConso.getMontant());
+			writer.println(this.listeLogement.size());
+			for (Logement loge : listeLogement) {
+				writer.println(loge.getsuperficie());
+				writer.println(loge.getce());
+			}
+			writer.println(this.listeTransport.size());
+			for (Transport transp : listeTransport) {
+				writer.println(transp.gettaille());
+				writer.println(transp.getkilom());
+				writer.println(transp.getamortissement());
+				writer.println(transp.getfabrication());
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {System.out.println("file not found");}
 	}
 } 

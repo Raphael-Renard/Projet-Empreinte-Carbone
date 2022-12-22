@@ -51,11 +51,12 @@ public class Main {
 			System.out.println("\nL'empreinte de votre utilisateur est de "+user.getempreinte()+" TCO2.\n");
 			String str1="a";
 			rep=-6;
-			while(rep != 1 && rep !=2 && rep!=3 && rep!= 0) {
+			while(rep != 1 && rep !=2 && rep!=3 && rep!= 4 && rep!= 0) {
 				System.out.println("Vous pouvez quitter en tapant (0),");
 				System.out.println("Pour voir l'empreinte détaillée tapez (1),");
 				System.out.println("Pour avoir les consommations ordonnées et des conseils tapez (2),");
-				System.out.println("Pour modifier votre utilisateur tapez (3) : ");
+				System.out.println("Pour modifier votre utilisateur tapez (3),");
+				System.out.println("Pour sauvegarder votre utilisateur dans un fichier tapez (4) :");
 				str1 = sc.nextLine();
 				if(!str1.matches("-?\\d+")){
 					rep=-6;
@@ -79,6 +80,8 @@ public class Main {
 				user.modifUser(sc);
 				rep=-6;
 				break;
+			case 4:
+				user.sauv(sc);
 			}
 		}
 	}

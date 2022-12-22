@@ -252,7 +252,13 @@ public class Transport extends ConsoCarbone{ //javadoc
 	public int getamortissement() {
 		return this.amortissement;
 	}
-    
+	/**
+	 * getter
+	 * @return émission nécéssaire à la fabrication du véhicule
+	 */
+	public double getfabrication() {
+		return this.fabrication;
+	}
 	/**
 	 * getter
 	 * @return nombre de km parcourus par an
