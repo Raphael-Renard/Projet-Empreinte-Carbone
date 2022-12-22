@@ -7,9 +7,8 @@ public class Main {
 	 * Cadre intéractif pour la calculateur.
 	 * Permet de créer un utilisateur avant de proposer les différentes actions possibles.
 	 */
-	public static void debut() {
+	public static void debut(Scanner sc1) {
 		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
-		Scanner sc1 = new Scanner(System.in);
 		String str1="a";
 		int rep=-6;
 		while(rep != 1 && rep !=2 && rep!= 0) {
@@ -36,7 +35,6 @@ public class Main {
 			actions(sc1,user2);
 			break;		
 		}
-		sc1.close();
 		System.out.println("FIN");
 	}
 	/**
@@ -167,9 +165,8 @@ public class Main {
 	/**
 	 * Permet de créer une population et de rajouter des contraintes pour observer l'effet d'une politique environmentale
 	 */
-	public static void popu() {
+	public static void popu(Scanner sc) {
 		System.out.println("~~Bienvenue sur notre calculateur d’empreinte carbone~~");
-		Scanner sc = new Scanner(System.in);
 		String str1="a";
 		int rep=-6;
 		while(rep < 0) {
@@ -227,13 +224,15 @@ public class Main {
 			
 			break;
 		}
-		sc.close();
 	}
 	
 	/**
 	 * Lance la méthode debut() pour lancer le calculateur avec un utilisateur ou la méthode popu() pour une étude de population.
 	 */
 	public static void main(String[] args) {
-		debut();
+		Scanner sc1 = new Scanner(System.in);
+		debut(sc1);
+		popu(sc1);
+		sc1.close();
 	}
 }
