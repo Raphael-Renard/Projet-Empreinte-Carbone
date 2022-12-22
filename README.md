@@ -1,7 +1,7 @@
 # Projet-Empreinte-Carbone
 
 
-Le projet implémente un calculateur d'empreinte carbone. Il est contenu dans 2 package : consoCarbone et users. Le premiers package contient les classes détaillant les différentes consommations possibles, le second contient les classes utilisants les premières pour créer un utilisateur avec plusieurs consommations et gérer celles-ci.
+Le projet implémente un calculateur d'empreinte carbone. Il est contenu dans 2 package : consoCarbone et users. Le premiers package contient les classes détaillant les différentes consommations possibles, le second contient les classes utilisants les premières pour créer un utilisateur avec plusieurs consommations et gérer celles-ci ou pour créer une population dans le but d'observer l'influence de politiques environementales.
 
 
 Pour la compilation du projet, utiliser éclipse et exécuter le code directement ou compiler avec la commande :
