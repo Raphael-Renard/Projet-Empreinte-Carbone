@@ -114,14 +114,16 @@ public class Main {
 				break;
 			case 1:
 				//fonction de changement
-				System.out.println("Voulez-vous renover les logements (1), réduire la consommation des services publiques (2) ou interdire l'achat de plus d'une voiture (3) : ");
-				str1 = sc.nextLine();
-				if(!str1.matches("-?\\d+")){
-					rep=-6;
-					System.out.println("Veuillez répondre uniquement par les options données.");
+				while(rep != 1 && rep !=2 && rep!= 3) {
+					System.out.println("Voulez-vous renover les logements (1), réduire la consommation des services publiques (2) ou interdire l'achat de plus d'une voiture (3) : ");
+					str1 = sc.nextLine();
+					if(!str1.matches("-?\\d+")){
+						rep=-6;
+						System.out.println("Veuillez répondre uniquement par les options données.");
+					}
+					else rep=Integer.valueOf(str1);
 				}
-				else rep=Integer.valueOf(str1);
-
+				
 				switch(rep) {
 				case 1:
 					pop.RenovationEnergetique();
@@ -185,6 +187,7 @@ public class Main {
 	
 	
 	/**
+	 * @param sc Scanner permettant de communiquer avec l'utilisateur.
 	 * Permet de créer une population et de rajouter des contraintes pour observer l'effet d'une politique environmentale
 	 */
 	public static void popu(Scanner sc) {
