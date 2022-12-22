@@ -150,20 +150,4 @@ public class Population {
 		this.calculerEmpreinteTot();
     }
 
-
-
-    public static void main(String[] args) {
-		User user1 = new User(0,1,true,true,19,false,true,245,34,CE.D,true,Taille.P,2003,10,1000);
-        User user2 = new User(0.5,0.2,false,true,34,true,false,1700,150,CE.A,true,Taille.G,500,5,1200);
-        User user3 = new User();
-        ArrayList<User> liste = new ArrayList<User>();
-        liste.add(user1);
-        liste.add(user2);
-        liste.add(user3);
-        Population popu = new Population(liste);
-        System.out.println(popu.empreinteMoy);
-        System.out.println(popu.empreinteTot);
-        popu.RenovationEnergetique();
-        System.out.println(popu.empreinteTot);
-    }
 }

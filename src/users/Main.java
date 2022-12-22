@@ -114,7 +114,30 @@ public class Main {
 				break;
 			case 1:
 				//fonction de changement
+				System.out.println("Voulez-vous renover les logements (1), réduire la consommation des services publiques (2) ou interdire l'achat de plus d'une voiture (3) : ");
+				str1 = sc.nextLine();
+				if(!str1.matches("-?\\d+")){
+					rep=-6;
+					System.out.println("Veuillez répondre uniquement par les options données.");
+				}
+				else rep=Integer.valueOf(str1);
+
+				switch(rep) {
+				case 1:
+					pop.RenovationEnergetique();
+        			System.out.println(pop.getempreinteTot());
+					break;
+				case 2:
+					pop.ReduireSP();
+					System.out.println(pop.getempreinteTot());
+					break;
+				case 3:
+					pop.UneVoitureMax();
+					System.out.println(pop.getempreinteTot());
+					break;		
+				}
 				break;
+
 			case 2:
 				int rep1=-6;
 				while(rep1 <= 0) {
